@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gama Portal
 
-## Getting Started
+Gama topluluğunun web portalı. Türkiye'nin teknolojik ve bilimsel bağımsızlığına katkı sağlamak amacıyla yola çıkan topluluğun üyelerini, projelerini ve il temsilcilerini bir araya getirir.
 
-First, run the development server:
+## Teknoloji Yığını
+
+- [Next.js](https://nextjs.org) (App Router) — React framework
+- [Tailwind CSS](https://tailwindcss.com) — stil
+- [Supabase](https://supabase.com) — veritabanı ve kimlik doğrulama (MVP sonrası entegre edilecek)
+- [TypeScript](https://www.typescriptlang.org)
+
+## Geliştirme
+
+Gereksinimler: Node.js 20+
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+http://localhost:3000 adresinde çalışır.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Proje Yapısı
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+src/
+├── app/          # Sayfalar (App Router)
+│   ├── page.tsx          # Anasayfa
+│   ├── projeler/         # Proje vitrini
+│   ├── iller/            # İl temsilcileri
+│   ├── hakkimizda/       # Vizyon & misyon
+│   └── katil/            # Katılım formu
+├── components/   # Header, Footer ve paylaşılan bileşenler
+└── lib/
+    └── site.ts   # Site yapılandırması ve veriler
+```
 
-## Learn More
+## Yol Haritası
 
-To learn more about Next.js, take a look at the following resources:
+- [x] MVP v1 — statik sayfalar ve katılım formu
+- [ ] Supabase bağlantısı — başvuruların veritabanına kaydı
+- [ ] Yönetim paneli — koordinatör/proje yönetimi
+- [ ] Canlıya alma + alan adı
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Katkı
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Yeni başlayanlardan ileri seviyeye görev katmanları: içerik ve dokümantasyon, basit bileşenler, sayfalar, formlar, API ve mimari. Sorun bildirmek veya fikir paylaşmak için GitHub issue açın.
