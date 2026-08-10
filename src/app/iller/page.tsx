@@ -38,20 +38,33 @@ export default function IllerPage() {
               </span>
             </div>
             <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {bolge.iller.map((il) => (
-                <div
-                  key={il.il}
-                  className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition-colors hover:border-emerald-400/40 hover:bg-white/[0.06]"
-                >
-                  <div className="min-w-0">
-                    <p className="font-semibold text-white">{il.il}</p>
-                    <p className="truncate text-xs text-zinc-200">
-                      Temsilci: {il.temsilci}
-                    </p>
+              {bolge.iller.map((il) => {
+                const atanmis = il.temsilci !== "Belirleniyor";
+                return (
+                  <div
+                    key={il.il}
+                    className={`flex items-center justify-between gap-3 rounded-xl border px-4 py-3 transition-colors ${
+                      atanmis
+                        ? "border-white/10 bg-white/[0.03] hover:border-emerald-400/40 hover:bg-white/[0.06]"
+                        : "border-white/5 bg-white/[0.02]"
+                    }`}
+                  >
+                    <div className="min-w-0">
+                      <p className="font-semibold text-white">{il.il}</p>
+                      <p className="truncate text-xs text-zinc-300">
+                        {atanmis ? `Temsilci: ${il.temsilci}` : "Koordinatör belirleniyor"}
+                      </p>
+                    </div>
+                    <span
+                      className={`h-2 w-2 shrink-0 rounded-full ${
+                        atanmis
+                          ? "bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"
+                          : "bg-zinc-600"
+                      }`}
+                    />
                   </div>
-                  <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                </div>
-              ))}
+                );
+              })}
             </div>
           </section>
         ))}

@@ -1,35 +1,9 @@
-const isimler = [
-  "Ahmet Yılmaz",
-  "Elif Demir",
-  "Mehmet Kaya",
-  "Zeynep Çelik",
-  "Mustafa Şahin",
-  "Ayşe Aydın",
-  "Ali Yıldız",
-  "Fatma Öztürk",
-  "Emre Arslan",
-  "Merve Doğan",
-  "Burak Koç",
-  "Selin Yıldırım",
-  "Can Özdemir",
-  "Esra Aktaş",
-  "Kerem Güneş",
-  "Derya Aksoy",
-  "Oğuz Şimşek",
-  "Cansu Korkmaz",
-  "Deniz Aydoğan",
-  "Melis Erdoğan",
-  "Barış Çetin",
-  "Seda Polat",
-  "Yusuf Kılıç",
-  "Nazlı Kara",
-  "Hakan Ateş",
-  "Ece Avcı",
-  "Tuna Yalçın",
-  "Pınar Güler",
-  "Alp Yavuz",
-  "İrem Balcı",
-];
+const koordinatorler: Record<string, string> = {
+  "Tekirdağ": "Melek Işıker",
+  "Ankara": "Emre Pehlivan",
+  "Mersin": "Bade Biçer",
+  "Konya": "Mehmet Ali Alkan",
+};
 
 const bolgeler = [
   {
@@ -150,11 +124,11 @@ const bolgeler = [
   },
 ];
 
-export const regions = bolgeler.map((bolge, bi) => ({
+export const regions = bolgeler.map((bolge) => ({
   bolge: bolge.bolge,
-  iller: bolge.iller.map((il, ii) => ({
+  iller: bolge.iller.map((il) => ({
     il,
-    temsilci: isimler[(bi * 13 + ii * 7) % isimler.length],
+    temsilci: koordinatorler[il] ?? "Belirleniyor",
   })),
 }));
 
