@@ -17,7 +17,7 @@ export default function ProjectsPage() {
       </p>
 
       <div className="mt-12 flex flex-1 flex-col items-center justify-center rounded-3xl border border-dashed border-white/20 bg-white/[0.03] p-16 text-center backdrop-blur">
-        <Logo className="h-16 w-16 animate-pulse drop-shadow-[0_0_24px_rgba(51,100,255,0.6)]" />
+        <Logo className="h-16 w-16 animate-pulse" />
         <h2 className="mt-6 text-xl font-bold text-white md:text-2xl">
           Projeler yakında duyurulacak
         </h2>

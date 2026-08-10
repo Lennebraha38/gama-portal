@@ -12,7 +12,7 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050816]/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link href="/" className="group flex items-center gap-3" onClick={() => setAcik(false)}>
-          <Logo className="h-9 w-9 drop-shadow-[0_0_12px_rgba(51,100,255,0.6)] transition-transform group-hover:scale-105" />
+          <Logo className="h-9 w-9 transition-transform group-hover:scale-105" />
           <span className="text-xl font-bold tracking-tight">{siteConfig.name}</span>
         </Link>
 
