@@ -12,7 +12,7 @@ const roller = [
 ];
 
 const inputClass =
-  "rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2.5 text-sm text-white placeholder-zinc-500 backdrop-blur transition-colors focus:border-gama-400 focus:outline-none focus:ring-1 focus:ring-gama-400";
+  "rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2.5 text-sm text-white placeholder-zinc-400 backdrop-blur transition-colors focus:border-gama-400 focus:outline-none focus:ring-1 focus:ring-gama-400";
 
 export default function KatilPage() {
   const [gonderildi, setGonderildi] = useState(false);
@@ -22,7 +22,7 @@ export default function KatilPage() {
       <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
         Bize Katıl
       </h1>
-      <p className="mt-3 text-zinc-400">
+      <p className="mt-3 text-zinc-200">
         Formu doldur; yazılım, donanım veya mentorluk yolculuğuna ilk adımı
         atalım.
       </p>

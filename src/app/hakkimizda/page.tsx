@@ -16,13 +16,13 @@ export default function HakkimizdaPage() {
         </h1>
       </div>
       <p className="mt-8 text-lg leading-8 text-zinc-200">{siteConfig.mission}</p>
-      <p className="mt-4 text-lg leading-8 text-zinc-400">
+      <p className="mt-4 text-lg leading-8 text-zinc-200">
         Kaynak, takım ve mentorluk imkanlarıyla gençlerimizi buluşturuyor, onları
         en etkin gençlik araştırma-geliştirme birliği olma yolunda bir araya
         getiriyoruz. Coğrafi sınırları ortadan kaldırarak her gencimizin
         yenilikçi fikirlerini hayata geçirmesine destek olmayı hedefliyoruz.
       </p>
-      <p className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm text-zinc-400 backdrop-blur">
+      <p className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm text-zinc-300 backdrop-blur">
         Detaylı vizyon, misyon ve kurumsal bilgiler yakında eklenecek.
       </p>
     </div>

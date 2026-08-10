@@ -12,7 +12,7 @@ export default function ProjectsPage() {
       <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
         Projeler
       </h1>
-      <p className="mt-3 max-w-2xl text-zinc-400">
+      <p className="mt-3 max-w-2xl text-zinc-200">
         Gama çatısı altında yürütülecek projeler burada duyurulacak.
       </p>
 
@@ -21,7 +21,7 @@ export default function ProjectsPage() {
         <h2 className="mt-6 text-xl font-bold text-white md:text-2xl">
           Projeler yakında duyurulacak
         </h2>
-        <p className="mt-2 max-w-md text-sm leading-6 text-zinc-400">
+        <p className="mt-2 max-w-md text-sm leading-6 text-zinc-200">
           İlk projelerimizin heyecanı sürüyor. Açıkladığımız anda burada
           görebilirsin.
         </p>

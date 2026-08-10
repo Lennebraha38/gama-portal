@@ -83,6 +83,24 @@ body {
     background-position: 100% 50%;
   }
 }
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
 
 .animate-drift-1 {
   animation: drift-1 18s ease-in-out infinite;
@@ -102,6 +120,27 @@ body {
 .animate-gradient-x {
   background-size: 300% 100%;
   animation: gradient-x 6s ease infinite;
+}
+.animate-fade-up {
+  animation: fade-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.animate-float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+.delay-500 {
+  animation-delay: 0.5s;
 }
 
 .text-gradient {

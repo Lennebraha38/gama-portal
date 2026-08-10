@@ -37,19 +37,19 @@ export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
       <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-4 pb-20 pt-24 text-center md:pt-32">
-        <div className="flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-zinc-200 backdrop-blur">
+        <div className="animate-fade-up flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-zinc-200 backdrop-blur">
           <Logo className="h-5 w-5" />
           Türkiye&apos;nin gençlik araştırma-geliştirme birliği
         </div>
-        <h1 className="mt-8 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+        <h1 className="animate-fade-up delay-100 mt-8 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
           Teknolojik ve bilimsel bağımsızlık için{" "}
           <span className="text-gradient animate-gradient-x">gençler</span>{" "}
           buluşuyor.
         </h1>
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-300">
+        <p className="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-8 text-zinc-100">
           {siteConfig.mission}
         </p>
-        <div className="mt-10 flex flex-col gap-3 sm:flex-row">
+        <div className="animate-fade-up delay-300 mt-10 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/katil"
             className="rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-8 py-3.5 font-semibold text-white transition-all hover:shadow-[0_0_30px_rgba(139,92,246,0.7)]"
@@ -63,7 +63,7 @@ export default function Home() {
             İl Temsilcileri
           </Link>
         </div>
-        <div className="mt-16 grid w-full max-w-3xl grid-cols-3 gap-4">
+        <div className="animate-fade-up delay-400 mt-16 grid w-full max-w-3xl grid-cols-3 gap-4">
           {[
             { deger: "81", etiket: "İl Temsilcisi" },
             { deger: "7", etiket: "Bölge" },
@@ -71,10 +71,10 @@ export default function Home() {
           ].map((s) => (
             <div
               key={s.etiket}
-              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur"
+              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur transition-all hover:-translate-y-1 hover:border-gama-400/40 hover:shadow-[0_0_24px_rgba(51,100,255,0.25)]"
             >
               <p className="text-2xl font-extrabold text-white md:text-3xl">{s.deger}</p>
-              <p className="mt-1 text-xs font-medium text-zinc-400 md:text-sm">{s.etiket}</p>
+              <p className="mt-1 text-xs font-medium text-zinc-200 md:text-sm">{s.etiket}</p>
             </div>
           ))}
         </div>
@@ -85,7 +85,7 @@ export default function Home() {
           {[...siteConfig.marquee, ...siteConfig.marquee].map((k, i) => (
             <span
               key={i}
-              className="flex items-center gap-8 text-sm font-semibold uppercase tracking-widest text-zinc-400"
+              className="flex items-center gap-8 text-sm font-semibold uppercase tracking-widest text-zinc-200"
             >
               {k}
               <span className="text-gama-400">Γ</span>
@@ -110,7 +110,7 @@ export default function Home() {
                 {iconMap[i]}
               </span>
               <h3 className="mt-4 text-lg font-semibold text-white">{pillar.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-zinc-400">{pillar.description}</p>
+              <p className="mt-2 text-sm leading-6 text-zinc-200">{pillar.description}</p>
             </div>
           ))}
         </div>
@@ -123,7 +123,7 @@ export default function Home() {
             <h2 className="text-2xl font-bold tracking-tight text-white md:text-4xl">
               Türkiye&apos;nin geleceğine imza at.
             </h2>
-            <p className="mx-auto mt-3 max-w-xl text-zinc-300">
+            <p className="mx-auto mt-3 max-w-xl text-zinc-100">
               Kaynak, takım ve mentorluk imkanları seni bekliyor. Bugün katıl,
               yarın Türkiye&apos;nin teknoloji sahnesinde sen ol.
             </p>
