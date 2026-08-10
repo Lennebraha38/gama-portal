@@ -26,38 +26,14 @@ export const siteConfig = {
     { href: "/iller", label: "İl Temsilcileri" },
     { href: "/hakkimizda", label: "Hakkımızda" },
   ],
+  marquee: [
+    "Yapay Zekâ",
+    "Milli Yazılım",
+    "Siber Güvenlik",
+    "Otonom Sistemler",
+    "Uzay Teknolojileri",
+    "Biyoteknoloji",
+    "Veri Bilimi",
+    "Savunma Teknolojileri",
+  ],
 } as const;
-
-export const provilist = [
-  {
-    il: "İstanbul",
-    temsilci: "İçerik belirleniyor",
-    durum: "Koordinatör atandı",
-  },
-  {
-    il: "Ankara",
-    temsilci: "İçerik belirleniyor",
-    durum: "Koordinatör atandı",
-  },
-  {
-    il: "İzmir",
-    temsilci: "İçerik belirleniyor",
-    durum: "Koordinatör atandı",
-  },
-];
-
-export const projectList = [
-  {
-    ad: "Gama Portal",
-    alan: "Yazılım",
-    durum: "Aktif",
-    aciklama:
-      "Topluluğun web portalı: üye, il ve proje yönetimi. İlk ürünümüz.",
-  },
-  {
-    ad: "İlk Projen",
-    alan: "AR-GE",
-    durum: "Yakında",
-    aciklama: "Yeni üyelerin soğumadan projeye ısınacağı mentorluk programı.",
-  },
-];

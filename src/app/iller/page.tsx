@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { provilist } from "@/lib/site";
+import Link from "next/link";
+import { regions, toplamIl } from "@/lib/provinces";
 
 export const metadata: Metadata = {
   title: "İl Temsilcileri",
@@ -8,36 +9,51 @@ export const metadata: Metadata = {
 export default function IllerPage() {
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-16">
-      <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
-        İl Temsilcileri
-      </h1>
-      <p className="mt-3 max-w-2xl text-zinc-600 dark:text-zinc-400">
-        Türkiye&apos;nin dört bir yanında Gama&apos;yı temsil eden
-        koordinatörler. Sen de bulunduğun ilde temsilci olmak istersen{" "}
-        <a
+      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+            İl Temsilcileri
+          </h1>
+          <p className="mt-3 max-w-2xl text-zinc-400">
+            Türkiye&apos;nin <span className="font-semibold text-white">{toplamIl} ili</span>{" "}
+            ve 7 bölgesinde Gama&apos;yı temsil eden koordinatörlerimiz seni
+            bekliyor.
+          </p>
+        </div>
+        <Link
           href="/katil"
-          className="font-medium text-gama-600 underline dark:text-gama-400"
+          className="rounded-full border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:border-white/40 hover:bg-white/10 md:self-end"
         >
-          katıl
-        </a>
-        .
-      </p>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {provilist.map((item) => (
-          <article
-            key={item.il}
-            className="rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900"
-          >
-            <div className="flex items-center justify-between gap-4">
-              <h2 className="text-lg font-semibold">{item.il}</h2>
-              <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-950 dark:text-emerald-400">
-                {item.durum}
+          Temsilci Adayı Ol
+        </Link>
+      </div>
+
+      <div className="mt-12 grid gap-8">
+        {regions.map((bolge) => (
+          <section key={bolge.bolge} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur md:p-8">
+            <div className="flex items-center gap-3">
+              <h2 className="text-lg font-bold text-white">{bolge.bolge}</h2>
+              <span className="rounded-full bg-white/10 px-3 py-1 text-xs font-semibold text-zinc-300">
+                {bolge.iller.length} il
               </span>
             </div>
-            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
-              Temsilci: <span className="font-medium">{item.temsilci}</span>
-            </p>
-          </article>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {bolge.iller.map((il) => (
+                <div
+                  key={il.il}
+                  className="flex items-center justify-between gap-3 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 transition-colors hover:border-emerald-400/40 hover:bg-white/[0.06]"
+                >
+                  <div className="min-w-0">
+                    <p className="font-semibold text-white">{il.il}</p>
+                    <p className="truncate text-xs text-zinc-400">
+                      Temsilci: {il.temsilci}
+                    </p>
+                  </div>
+                  <span className="h-2 w-2 shrink-0 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
+                </div>
+              ))}
+            </div>
+          </section>
         ))}
       </div>
     </div>

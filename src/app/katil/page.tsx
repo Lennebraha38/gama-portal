@@ -1,13 +1,7 @@
 "use client";
 
 import { useState } from "react";
-
-const iller = [
-  "İstanbul",
-  "Ankara",
-  "İzmir",
-  "Diğer (listede yok)",
-];
+import { tumIller } from "@/lib/provinces";
 
 const roller = [
   "Üye",
@@ -17,6 +11,9 @@ const roller = [
   "Mentor",
 ];
 
+const inputClass =
+  "rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2.5 text-sm text-white placeholder-zinc-500 backdrop-blur transition-colors focus:border-gama-400 focus:outline-none focus:ring-1 focus:ring-gama-400";
+
 export default function KatilPage() {
   const [gonderildi, setGonderildi] = useState(false);
 
@@ -25,17 +22,15 @@ export default function KatilPage() {
       <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
         Bize Katıl
       </h1>
-      <p className="mt-3 text-zinc-600 dark:text-zinc-400">
+      <p className="mt-3 text-zinc-400">
         Formu doldur; yazılım, donanım veya mentorluk yolculuğuna ilk adımı
-        atalım. (Veritabanı bağlantısı kurulana dek başvurular buradan kaydedilir.)
+        atalım.
       </p>
 
       {gonderildi ? (
-        <div className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50 p-6 dark:border-emerald-800 dark:bg-emerald-950">
-          <p className="font-semibold text-emerald-800 dark:text-emerald-300">
-            Başvurun alındı!
-          </p>
-          <p className="mt-1 text-sm text-emerald-700 dark:text-emerald-400">
+        <div className="mt-10 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-6 backdrop-blur">
+          <p className="font-semibold text-emerald-300">Başvurun alındı!</p>
+          <p className="mt-1 text-sm text-emerald-400">
             Ekibimiz seninle en kısa sürede iletişime geçecek.
           </p>
         </div>
@@ -47,54 +42,44 @@ export default function KatilPage() {
             setGonderildi(true);
           }}
         >
-          <label className="grid gap-2 text-sm font-medium">
+          <label className="grid gap-2 text-sm font-medium text-zinc-200">
             Ad Soyad
-            <input
-              required
-              className="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-              type="text"
-              name="ad"
-              placeholder="Adın soyadın"
-            />
+            <input required className={inputClass} type="text" name="ad" placeholder="Adın soyadın" />
           </label>
-          <label className="grid gap-2 text-sm font-medium">
+          <label className="grid gap-2 text-sm font-medium text-zinc-200">
             E-posta
-            <input
-              required
-              className="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-              type="email"
-              name="eposta"
-              placeholder="ornek@eposta.com"
-            />
+            <input required className={inputClass} type="email" name="eposta" placeholder="ornek@eposta.com" />
           </label>
-          <label className="grid gap-2 text-sm font-medium">
+          <label className="grid gap-2 text-sm font-medium text-zinc-200">
             İl
-            <select
-              required
-              className="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-              name="il"
-            >
-              {iller.map((il) => (
-                <option key={il}>{il}</option>
+            <select required className={inputClass} name="il" defaultValue="">
+              <option value="" disabled>
+                İl seç
+              </option>
+              {tumIller.map((il) => (
+                <option key={il} value={il} className="text-zinc-900">
+                  {il}
+                </option>
               ))}
             </select>
           </label>
-          <label className="grid gap-2 text-sm font-medium">
+          <label className="grid gap-2 text-sm font-medium text-zinc-200">
             İlgilendiğin rol
-            <select
-              required
-              className="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-900"
-              name="rol"
-            >
+            <select required className={inputClass} name="rol" defaultValue="">
+              <option value="" disabled>
+                Rol seç
+              </option>
               {roller.map((rol) => (
-                <option key={rol}>{rol}</option>
+                <option key={rol} value={rol} className="text-zinc-900">
+                  {rol}
+                </option>
               ))}
             </select>
           </label>
-          <label className="grid gap-2 text-sm font-medium">
+          <label className="grid gap-2 text-sm font-medium text-zinc-200">
             Kendini kısaca tanıt
             <textarea
-              className="rounded-lg border border-zinc-300 bg-white px-4 py-2.5 text-sm dark:border-zinc-700 dark:bg-zinc-900"
+              className={inputClass}
               name="tanitim"
               rows={4}
               placeholder="Deneyimlerin, hedeflerin, ilgi alanların..."
@@ -102,7 +87,7 @@ export default function KatilPage() {
           </label>
           <button
             type="submit"
-            className="rounded-full bg-gama-600 px-7 py-3 font-semibold text-white transition-colors hover:bg-gama-700"
+            className="rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
           >
             Başvuruyu Gönder
           </button>
