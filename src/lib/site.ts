@@ -25,6 +25,7 @@ export const siteConfig = {
     { href: "/projeler", label: "Projeler" },
     { href: "/iller", label: "İl Temsilcileri" },
     { href: "/hakkimizda", label: "Hakkımızda" },
+    { href: "/iletisim", label: "İletişim" },
   ],
   marquee: [
     "Yapay Zekâ",

@@ -10,7 +10,15 @@ export function Footer() {
           <span className="font-semibold text-zinc-100">{siteConfig.name}</span>
           <span>· {siteConfig.tagline}</span>
         </div>
-        <p>© {new Date().getFullYear()} Gama Topluluğu</p>
+        <div className="flex flex-col gap-2 md:items-end">
+          <a
+            href="mailto:gamaturkiye@gmail.com"
+            className="text-gama-400 transition-colors hover:text-gama-300"
+          >
+            gamaturkiye@gmail.com
+          </a>
+          <p>© {new Date().getFullYear()} Gama Topluluğu</p>
+        </div>
       </div>
     </footer>
   );
