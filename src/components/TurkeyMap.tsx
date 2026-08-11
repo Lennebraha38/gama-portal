@@ -1,7 +1,7 @@
 import { regions } from "@/lib/provinces";
 import harita from "@/data/turkiye-paths.json";
 
-type IlPath = { il: string; d: string; cx: number; cy: number };
+type IlPath = { il: string; d: string; fx: number; fy: number; fs: number };
 
 const koordinatorler: Record<string, string> = {};
 for (const bolge of regions) {
@@ -81,12 +81,15 @@ export function TurkeyMap() {
           return (
             <text
               key={`lbl-${p.il}`}
-              x={p.cx}
-              y={p.cy}
+              x={p.fx}
+              y={p.fy}
               textAnchor="middle"
-              fontSize="11"
-              fontWeight="700"
-              fill="#06281c"
+              fontSize={p.fs}
+              fontWeight="800"
+              fill="#052e22"
+              stroke="#052e22"
+              strokeWidth="0.5"
+              paintOrder="stroke"
             >
               {p.il}
             </text>

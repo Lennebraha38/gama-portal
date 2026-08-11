@@ -58,6 +58,82 @@ def ring_to_d(ring):
 
 EPS = 0.0003
 
+def point_in_polygon(x, y, poly):
+    inside = False
+    n = len(poly)
+    j = n - 1
+    for i in range(n):
+        xi, yi = poly[i]
+        xj, yj = poly[j]
+        if ((yi > y) != (yj > y)) and (x < (xj - xi) * (y - yi) / (yj - yi) + xi):
+            inside = not inside
+        j = i
+    return inside
+
+def dist_to_edges(x, y, poly):
+    n = len(poly)
+    best = float("inf")
+    for i in range(n):
+        x1, y1 = poly[i]
+        x2, y2 = poly[(i + 1) % n]
+        dx, dy = x2 - x1, y2 - y1
+        if dx == dy == 0:
+            d = math.hypot(x - x1, y - y1)
+        else:
+            t = max(0.0, min(1.0, ((x - x1) * dx + (y - y1) * dy) / (dx * dx + dy * dy)))
+            d = math.hypot(x - (x1 + t * dx), y - (y1 + t * dy))
+        if d < best:
+            best = d
+    return best
+
+def polylabel_lite(ring, cells=60):
+    xs = [p[0] for p in ring]
+    ys = [p[1] for p in ring]
+    minx, maxx = min(xs), max(xs)
+    miny, maxy = min(ys), max(ys)
+    if maxx - minx < 1e-6 or maxy - miny < 1e-6:
+        return (minx + maxx) / 2, (miny + maxy) / 2
+    best, best_d = None, -1
+    for i in range(cells + 1):
+        x = minx + (maxx - minx) * i / cells
+        for j in range(cells + 1):
+            y = miny + (maxy - miny) * j / cells
+            if point_in_polygon(x, y, ring):
+                d = dist_to_edges(x, y, ring)
+                if d > best_d:
+                    best_d, best = d, (x, y)
+    cx, cy = best
+    step = max(maxx - minx, maxy - miny) / cells
+    for _ in range(4):
+        local_best, local_d = None, -1
+        for ox in (-step, 0, step):
+            for oy in (-step, 0, step):
+                x, y = cx + ox, cy + oy
+                if point_in_polygon(x, y, ring):
+                    d = dist_to_edges(x, y, ring)
+                    if d > local_d:
+                        local_d, local_best = d, (x, y)
+        if local_best:
+            cx, cy, best_d = local_best[0], local_best[1], local_d
+        step /= 2
+    return cx, cy
+
+def outer_ring(rings):
+    best, best_area = None, -1
+    for r in rings:
+        xs = [p[0] for p in r]
+        ys = [p[1] for p in r]
+        area = (max(xs) - min(xs)) * (max(ys) - min(ys))
+        if area > best_area:
+            best_area, best = area, r
+    return best
+
+def fit_font(name, ring, size_max=12, size_min=7):
+    xs = [p[0] for p in ring]
+    width = max(xs) - min(xs)
+    size = min(size_max, int(width / (len(name) * 0.62))) if width > 0 else size_min
+    return max(size_min, size)
+
 rename = {
     "Istanbul": "İstanbul",
     "Izmir": "İzmir",
@@ -94,14 +170,23 @@ def project(x, y):
 out = []
 for entry in paths:
     d_parts = []
-    pts_for_centroid = []
+    projected_rings = []
     for ring in entry["rings"]:
         pr = [project(x, y) for x, y in ring]
+        projected_rings.append(pr)
         d_parts.append(ring_to_d(pr))
-        pts_for_centroid.extend(pr)
-    cx = sum(p[0] for p in pts_for_centroid) / len(pts_for_centroid)
-    cy = sum(p[1] for p in pts_for_centroid) / len(pts_for_centroid)
-    out.append({"il": entry["il"], "d": " ".join(d_parts), "cx": round(cx, 1), "cy": round(cy, 1)})
+    main = outer_ring(projected_rings)
+    fx, fy = polylabel_lite(main)
+    fs = fit_font(entry["il"], main)
+    out.append(
+        {
+            "il": entry["il"],
+            "d": " ".join(d_parts),
+            "fx": round(fx, 1),
+            "fy": round(fy, 1),
+            "fs": fs,
+        }
+    )
 
 out.sort(key=lambda e: e["il"])
 with open(DST, "w") as f:
