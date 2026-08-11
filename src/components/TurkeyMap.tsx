@@ -1,72 +1,111 @@
 import { regions } from "@/lib/provinces";
+import harita from "@/data/turkiye-paths.json";
 
-const koordinatlar: Record<string, { x: number; y: number }> = {
-  "Tekirdağ": { x: 9, y: 13 },
-  "Ankara": { x: 31, y: 20 },
-  "Konya": { x: 27, y: 26 },
-  "Mersin": { x: 26, y: 32 },
-  "Adana": { x: 33, y: 34 },
-};
+type IlPath = { il: string; d: string; cx: number; cy: number };
 
-const yol =
-  "M9,11 L15,14 L22,11 L30,10 L37,12 L44,12 L51,13 L57,11 L65,10 L72,15 L70,21 L66,28 L60,31 L54,29 L49,32 L42,38 L38,33 L32,31 L26,33 L20,32 L14,31 L9,29 L5,25 L4,20 L6,16 Z";
+const koordinatorler: Record<string, string> = {};
+for (const bolge of regions) {
+  for (const il of bolge.iller) {
+    if (il.temsilci !== "Belirleniyor") {
+      koordinatorler[il.il] = il.temsilci;
+    }
+  }
+}
+
+const iller = harita.iller as IlPath[];
 
 export function TurkeyMap() {
-  const aktif = regions
-    .flatMap((bolge) => bolge.iller)
-    .filter((il) => il.temsilci !== "Belirleniyor" && koordinatlar[il.il]);
+  const aktifSayisi = iller.filter((p) => koordinatorler[p.il]).length;
 
   return (
-    <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur md:p-8">
-      <div className="flex items-center gap-2 text-sm text-zinc-300">
-        <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-        Koordinatörü atanan iller ({aktif.length})
+    <div className="rounded-3xl border border-white/10 bg-[#050816]/60 p-4 backdrop-blur md:p-6">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <h2 className="text-lg font-bold text-white">Koordinatör Haritası</h2>
+        <div className="flex items-center gap-4 text-xs text-zinc-300">
+          <span className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-sm bg-zinc-700" />
+            Koordinatör yok
+          </span>
+          <span className="flex items-center gap-2">
+            <span className="h-2.5 w-2.5 rounded-sm bg-gradient-to-br from-emerald-400 to-cyan-500 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
+            Koordinatör atandı ({aktifSayisi})
+          </span>
+        </div>
       </div>
-      <svg viewBox="0 0 100 60" className="mt-4 w-full" aria-hidden>
+
+      <svg
+        viewBox={`0 0 ${harita.w} ${harita.h}`}
+        className="mt-4 w-full"
+        role="img"
+        aria-label="Türkiye il sınırları haritası"
+      >
         <defs>
-          <linearGradient id="tr-fill" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="#3364ff" stopOpacity="0.35" />
-            <stop offset="100%" stopColor="#22d3ee" stopOpacity="0.18" />
+          <linearGradient id="koor-grad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#34d399" />
+            <stop offset="100%" stopColor="#22d3ee" />
           </linearGradient>
+          <filter id="koor-glow" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
         </defs>
-        <path
-          d={yol}
-          fill="url(#tr-fill)"
-          stroke="rgba(148,163,184,0.5)"
-          strokeWidth="0.4"
-          strokeLinejoin="round"
-        />
-        {aktif.map((il) => {
-          const c = koordinatlar[il.il];
+
+        {iller.map((p) => {
+          const temsilci = koordinatorler[p.il];
+          const atanmis = Boolean(temsilci);
           return (
-            <g key={il.il}>
-              <circle cx={c.x} cy={c.y} r="2" fill="#34d399">
-                <animate attributeName="r" values="1.5;3.2;1.5" dur="2.4s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.9;0.3;0.9" dur="2.4s" repeatCount="indefinite" />
-              </circle>
-              <text
-                x={c.x}
-                y={c.y - 3}
-                fontSize="2.4"
-                fill="#e2e8f0"
-                textAnchor="middle"
-                fontWeight="600"
-              >
-                {il.temsilci.split(" ")[0]}
-              </text>
-            </g>
+            <path
+              key={p.il}
+              d={p.d}
+              fill={atanmis ? "url(#koor-grad)" : "#1c2130"}
+              stroke={atanmis ? "#a7f3d0" : "#3f4759"}
+              strokeWidth={atanmis ? 1.4 : 0.6}
+              strokeLinejoin="round"
+              filter={atanmis ? "url(#koor-glow)" : undefined}
+              className="cursor-pointer transition-[opacity,fill] hover:opacity-80"
+            >
+              <title>
+                {p.il}
+                {temsilci ? ` · Koordinatör: ${temsilci}` : ""}
+              </title>
+            </path>
+          );
+        })}
+
+        {iller.map((p) => {
+          const temsilci = koordinatorler[p.il];
+          if (!temsilci) return null;
+          return (
+            <text
+              key={`lbl-${p.il}`}
+              x={p.cx}
+              y={p.cy}
+              textAnchor="middle"
+              fontSize="11"
+              fontWeight="700"
+              fill="#06281c"
+            >
+              {p.il}
+            </text>
           );
         })}
       </svg>
+
       <div className="mt-4 flex flex-wrap gap-2">
-        {aktif.map((il) => (
-          <span
-            key={il.il}
-            className="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300"
-          >
-            {il.il} · {il.temsilci}
-          </span>
-        ))}
+        {iller
+          .filter((p) => koordinatorler[p.il])
+          .sort((a, b) => a.il.localeCompare(b.il, "tr"))
+          .map((p) => (
+            <span
+              key={p.il}
+              className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-300"
+            >
+              {p.il} · {koordinatorler[p.il]}
+            </span>
+          ))}
       </div>
     </div>
   );
