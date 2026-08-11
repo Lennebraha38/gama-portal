@@ -56,7 +56,7 @@ def ring_to_d(ring):
     parts.append("Z")
     return " ".join(parts)
 
-EPS = 0.002
+EPS = 0.0003
 
 rename = {
     "Istanbul": "İstanbul",
