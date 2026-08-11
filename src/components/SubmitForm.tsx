@@ -19,10 +19,14 @@ export function SubmitForm({
   subject,
   fields,
   buttonText = "Gönder",
+  successTitle = "Başvurun alındı!",
+  successText = "Ekibimiz en kısa sürede seninle iletişime geçecek.",
 }: {
   subject: string;
   fields: Field[];
   buttonText?: string;
+  successTitle?: string;
+  successText?: string;
 }) {
   const [durum, setDurum] = useState<"bekle" | "gonderen" | "basarili" | "hata">("bekle");
   const [hata, setHata] = useState("");
@@ -61,10 +65,8 @@ export function SubmitForm({
   if (durum === "basarili") {
     return (
       <div className="mt-10 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-6 backdrop-blur">
-        <p className="font-semibold text-emerald-300">Başvurun alındı!</p>
-        <p className="mt-1 text-sm text-emerald-400">
-          Ekibimiz en kısa sürede seninle iletişime geçecek.
-        </p>
+        <p className="font-semibold text-emerald-300">{successTitle}</p>
+        <p className="mt-1 text-sm text-emerald-400">{successText}</p>
       </div>
     );
   }

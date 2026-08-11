@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { siteConfig } from "@/lib/site";
+import { mentors } from "@/lib/mentors";
 import { Logo } from "@/components/Logo";
 
 export const metadata: Metadata = {
@@ -27,6 +29,48 @@ export default function HakkimizdaPage() {
       <p className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm text-zinc-300 backdrop-blur">
         Detaylı vizyon, misyon ve kurumsal bilgiler yakında eklenecek.
       </p>
+
+      <div className="mt-16">
+        <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Mentor Kadromuz</h2>
+        <p className="mt-2 text-sm leading-6 text-zinc-200">
+          Alanında uzman mentorlarla gençlerimizi birebir buluşturuyoruz.
+        </p>
+
+        {mentors.length === 0 ? (
+          <div className="mt-8 flex flex-col items-center rounded-3xl border border-dashed border-white/20 bg-white/[0.03] p-12 text-center backdrop-blur">
+            <Logo className="h-12 w-12 animate-pulse" />
+            <h3 className="mt-5 text-lg font-bold text-white">
+              Mentor kadrosu oluşturuluyor
+            </h3>
+            <p className="mt-2 max-w-md text-sm leading-6 text-zinc-200">
+              Yapay zekâ, siber güvenlik, uzay ve biyoteknoloji alanlarında
+              mentorlarımız ekibe katılıyor. İlk vitrin yakında burada.
+            </p>
+            <Link
+              href="/temsilci"
+              className="mt-7 rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
+            >
+              Mentor Olmak İstiyorum
+            </Link>
+          </div>
+        ) : (
+          <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {mentors.map((m) => (
+              <div
+                key={m.ad}
+                className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur"
+              >
+                <h3 className="text-lg font-bold text-white">{m.ad}</h3>
+                <p className="mt-1 text-sm font-semibold text-gama-400">{m.unvan}</p>
+                <p className="mt-3 text-sm leading-6 text-zinc-200">{m.odak}</p>
+                <span className="mt-4 inline-block rounded-full bg-gama-500/20 px-3 py-1 text-xs font-semibold text-gama-300">
+                  {m.alan}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

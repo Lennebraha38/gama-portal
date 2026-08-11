@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 import { Logo } from "@/components/Logo";
+import { Stats } from "@/components/Stats";
+import { SubmitForm } from "@/components/SubmitForm";
 
 const icons = {
   kaynak: (
@@ -63,21 +65,7 @@ export default function Home() {
             İl Temsilcileri
           </Link>
         </div>
-        <div className="animate-fade-up delay-400 mt-16 grid w-full max-w-3xl grid-cols-3 gap-4">
-          {[
-            { deger: "81", etiket: "İl Temsilcisi" },
-            { deger: "7", etiket: "Bölge" },
-            { deger: "7/24", etiket: "Aktif" },
-          ].map((s) => (
-            <div
-              key={s.etiket}
-              className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur transition-all hover:-translate-y-1 hover:border-gama-400/40 hover:shadow-[0_0_24px_rgba(51,100,255,0.25)]"
-            >
-              <p className="text-2xl font-extrabold text-white md:text-3xl">{s.deger}</p>
-              <p className="mt-1 text-xs font-medium text-zinc-200 md:text-sm">{s.etiket}</p>
-            </div>
-          ))}
-        </div>
+        <Stats />
       </section>
 
       <section className="relative overflow-hidden border-y border-white/10 bg-white/[0.03] py-6 backdrop-blur">
@@ -113,6 +101,61 @@ export default function Home() {
               <p className="mt-2 text-sm leading-6 text-zinc-200">{pillar.description}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-4 pb-20">
+        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-10 backdrop-blur md:p-14">
+          <div className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-600/10 via-violet-600/10 to-cyan-500/10" />
+          <div className="relative">
+            <p className="text-center text-sm font-semibold uppercase tracking-widest text-gama-400">
+              Gama Manifestosu
+            </p>
+            <h2 className="mt-3 text-center text-2xl font-bold tracking-tight md:text-3xl">
+              Neden varız?
+            </h2>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {siteConfig.manifesto.map((m, i) => (
+                <div
+                  key={m.baslik}
+                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-1 hover:border-gama-400/40"
+                >
+                  <span className="text-gradient text-3xl font-extrabold">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-3 text-base font-semibold text-white">{m.baslik}</h3>
+                  <p className="mt-2 text-sm leading-6 text-zinc-200">{m.metin}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-4xl px-4 pb-20">
+        <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur md:p-12">
+          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+            Vizyonu takip et
+          </h2>
+          <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-zinc-200">
+            Atölyeler, duyurular ve projelerden ilk senin haberin olsun. Ayda
+            bir özet — spam yok.
+          </p>
+          <SubmitForm
+            subject="Bülten aboneliği"
+            buttonText="Abone Ol"
+            successTitle="Aboneliğin alındı!"
+            successText="Bültenimize aramıza hoş geldin. İlk duyuru geldiğinde haberin olacak."
+            fields={[
+              {
+                name: "email",
+                label: "E-posta adresin",
+                type: "email",
+                required: true,
+                placeholder: "sen@ornek.com",
+              },
+            ]}
+          />
         </div>
       </section>
 

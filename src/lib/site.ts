@@ -30,6 +30,34 @@ export const siteConfig = {
     { href: "/sss", label: "SSS" },
     { href: "/iletisim", label: "İletişim" },
   ],
+  stats: [
+    { deger: "81", hedef: 81, etiket: "İl Temsilcisi" },
+    { deger: "7", hedef: 7, etiket: "Bölge" },
+    { deger: "5", hedef: 5, etiket: "Koordinatör" },
+    { deger: "7/24", etiket: "Aktif" },
+  ],
+  manifesto: [
+    {
+      baslik: "Bağımsızlık",
+      metin:
+        "Teknolojide ve bilimde dışa bağımlı olmadan, kendi gücümüzle üretmeyi amaç ediniriz.",
+    },
+    {
+      baslik: "Herkese Fırsat",
+      metin:
+        "Nerede doğduğun değil, ne hayal ettiğin önemli. Coğrafi sınırları kaldırırız.",
+    },
+    {
+      baslik: "Birlikte Üretmek",
+      metin:
+        "Bilgi paylaştıkça çoğalır. Takım olmadan büyük hayaller gerçek olmaz.",
+    },
+    {
+      baslik: "İz Bırakmak",
+      metin:
+        "Kısa vadeli kazançlar değil, Türkiye'nin geleceğine yıllar sonra konuşulacak işler bırakırız.",
+    },
+  ],
   marquee: [
     "Yapay Zekâ",
     "Milli Yazılım",
