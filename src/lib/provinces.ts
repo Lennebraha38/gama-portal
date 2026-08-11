@@ -3,6 +3,7 @@ const koordinatorler: Record<string, string> = {
   "Ankara": "Emre Pehlivan",
   "Mersin": "Bade Biçer",
   "Konya": "Mehmet Ali Alkan",
+  "Adana": "Sena Özkan",
 };
 
 const bolgeler = [
