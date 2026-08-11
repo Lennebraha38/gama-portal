@@ -41,10 +41,7 @@ export const siteConfig = {
     "Savunma Teknolojileri",
   ],
   socials: [
-    { id: "instagram", label: "Instagram", href: "#" },
-    { id: "x", label: "X (Twitter)", href: "#" },
-    { id: "discord", label: "Discord", href: "#" },
-    { id: "telegram", label: "Telegram", href: "#" },
+    { id: "instagram", label: "Instagram", href: "https://www.instagram.com/gama_turkiye" },
   ],
   analytics: {
     goatcounter: "",
