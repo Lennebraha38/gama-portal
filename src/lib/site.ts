@@ -44,6 +44,6 @@ export const siteConfig = {
     { id: "instagram", label: "Instagram", href: "https://www.instagram.com/gama_turkiye" },
   ],
   analytics: {
-    goatcounter: "",
+    goatcounter: "lennebraha38",
   },
 } as const;
