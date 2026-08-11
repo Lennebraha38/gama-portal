@@ -4,6 +4,8 @@ import { Logo } from "@/components/Logo";
 
 export const metadata: Metadata = {
   title: "Hakkımızda",
+  description:
+    "Gama; Türkiye'nin teknolojik ve bilimsel bağımsızlığı için gençleri kaynak, takım ve mentorlukla buluşturan araştırma-geliştirme birliği.",
 };
 
 export default function HakkimizdaPage() {

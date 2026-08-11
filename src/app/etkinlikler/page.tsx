@@ -5,6 +5,8 @@ import { Logo } from "@/components/Logo";
 
 export const metadata: Metadata = {
   title: "Etkinlikler",
+  description:
+    "Gama Topluluğu'nun atölye, hackathon, seminer ve topluluk etkinlikleri. Yaklaşan etkinlikleri kaçırma.",
 };
 
 export default function EtkinliklerPage() {

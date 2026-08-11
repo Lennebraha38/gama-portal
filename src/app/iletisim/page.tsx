@@ -4,6 +4,8 @@ import { SocialIcon } from "@/components/SocialIcon";
 
 export const metadata: Metadata = {
   title: "İletişim",
+  description:
+    "Gama Topluluğu ile iletişime geç. Soru, fikir ve iş birliği tekliflerin için bize ulaş.",
 };
 
 export default function IletisimPage() {

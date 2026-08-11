@@ -5,6 +5,8 @@ import { TurkeyMap } from "@/components/TurkeyMap";
 
 export const metadata: Metadata = {
   title: "İl Temsilcileri",
+  description:
+    "Türkiye'nin 81 ilinde ve 7 bölgesinde Gama'yı temsil eden koordinatörler. İl temsilciliği başvuruları açık.",
 };
 
 export default function IllerPage() {
@@ -22,7 +24,7 @@ export default function IllerPage() {
           </p>
         </div>
         <Link
-          href="/katil"
+          href="/temsilci"
           className="rounded-full border border-white/20 bg-white/5 px-6 py-2.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:border-white/40 hover:bg-white/10 md:self-end"
         >
           Temsilci Adayı Ol

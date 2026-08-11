@@ -4,6 +4,8 @@ import { Logo } from "@/components/Logo";
 
 export const metadata: Metadata = {
   title: "Projeler",
+  description:
+    "Gama çatısı altında yürütülen ve açık ilanları yayınlanan projeler. Fikrini hayata geçirmek için başvur.",
 };
 
 export default function ProjectsPage() {

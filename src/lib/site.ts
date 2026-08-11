@@ -1,6 +1,7 @@
 export const siteConfig = {
   name: "Gama",
   tagline: "Türkiye'nin geleceğine imza at.",
+  siteUrl: "https://lennebraha38.github.io/gama-portal",
   mission:
     "Türkiye'nin teknolojik ve bilimsel bağımsızlığına katkı sağlamak için yola çıktık. Vizyonumuz, coğrafi sınırları ortadan kaldırarak her gencimizin yenilikçi fikirlerini hayata geçirmesine destek olmak.",
   pillars: [
@@ -45,4 +46,7 @@ export const siteConfig = {
     { id: "discord", label: "Discord", href: "#" },
     { id: "telegram", label: "Telegram", href: "#" },
   ],
+  analytics: {
+    goatcounter: "",
+  },
 } as const;
