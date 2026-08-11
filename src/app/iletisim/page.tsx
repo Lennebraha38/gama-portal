@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/site";
+import { SocialIcon } from "@/components/SocialIcon";
 
 export const metadata: Metadata = {
   title: "İletişim",
@@ -31,6 +33,25 @@ export default function IletisimPage() {
         <p className="mt-4 text-sm text-zinc-300">
           En geç 48 saat içinde sana dönüş yapıyoruz.
         </p>
+      </div>
+
+      <div className="mt-6 rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur">
+        <h2 className="text-lg font-semibold text-white">Sosyal Medya</h2>
+        <p className="mt-1 text-sm text-zinc-300">
+          Gelişmeleri ve duyuruları takip etmek için bizi takip et.
+        </p>
+        <div className="mt-5 flex items-center justify-center gap-3">
+          {siteConfig.socials.map((s) => (
+            <a
+              key={s.id}
+              href={s.href}
+              aria-label={s.label}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-zinc-200 transition-colors hover:border-gama-400/50 hover:text-white"
+            >
+              <SocialIcon id={s.id} className="h-5 w-5" />
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );

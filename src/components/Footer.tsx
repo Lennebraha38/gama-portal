@@ -1,16 +1,29 @@
 import { siteConfig } from "@/lib/site";
 import { Logo } from "@/components/Logo";
+import { SocialIcon } from "@/components/SocialIcon";
 
 export function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10 bg-[#050816]/70 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-10 text-sm text-zinc-300 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 text-sm text-zinc-300 md:flex-row md:items-center md:justify-between">
         <div className="flex items-center gap-3">
           <Logo className="h-7 w-7" />
           <span className="font-semibold text-zinc-100">{siteConfig.name}</span>
           <span>· {siteConfig.tagline}</span>
         </div>
-        <div className="flex flex-col gap-2 md:items-end">
+        <div className="flex flex-col gap-3 md:items-end">
+          <div className="flex items-center gap-2">
+            {siteConfig.socials.map((s) => (
+              <a
+                key={s.id}
+                href={s.href}
+                aria-label={s.label}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/5 text-zinc-300 transition-colors hover:border-gama-400/50 hover:text-white"
+              >
+                <SocialIcon id={s.id} className="h-4 w-4" />
+              </a>
+            ))}
+          </div>
           <a
             href="mailto:gamaturkiye@gmail.com"
             className="text-gama-400 transition-colors hover:text-gama-300"

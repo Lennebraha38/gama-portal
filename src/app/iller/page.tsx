@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { regions, toplamIl } from "@/lib/provinces";
+import { TurkeyMap } from "@/components/TurkeyMap";
 
 export const metadata: Metadata = {
   title: "İl Temsilcileri",
@@ -26,6 +27,10 @@ export default function IllerPage() {
         >
           Temsilci Adayı Ol
         </Link>
+      </div>
+
+      <div className="mt-10">
+        <TurkeyMap />
       </div>
 
       <div className="mt-12 grid gap-8">
