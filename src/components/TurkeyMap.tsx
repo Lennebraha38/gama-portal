@@ -74,27 +74,6 @@ export function TurkeyMap() {
             </path>
           );
         })}
-
-        {iller.map((p) => {
-          const temsilci = koordinatorler[p.il];
-          if (!temsilci) return null;
-          return (
-            <text
-              key={`lbl-${p.il}`}
-              x={p.fx}
-              y={p.fy}
-              textAnchor="middle"
-              fontSize={p.fs}
-              fontWeight="800"
-              fill="#052e22"
-              stroke="#052e22"
-              strokeWidth="0.5"
-              paintOrder="stroke"
-            >
-              {p.il}
-            </text>
-          );
-        })}
       </svg>
 
       <div className="mt-4 flex flex-wrap gap-2">
