@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { PageTransition } from "@/components/PageTransition";
 
 const sorular = [
   {
@@ -69,7 +70,8 @@ export default function SssPage() {
   const [acik, setAcik] = useState<number | null>(0);
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
+    <PageTransition>
+      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
       <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
         Sıkça Sorulan Sorular
       </h1>
@@ -127,6 +129,7 @@ export default function SssPage() {
           Bize Yaz
         </a>
       </div>
-    </div>
+      </div>
+    </PageTransition>
   );
 }

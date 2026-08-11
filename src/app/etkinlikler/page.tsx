@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { events } from "@/lib/events";
 import { Logo } from "@/components/Logo";
+import { PageTransition } from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Etkinlikler",
@@ -11,7 +12,8 @@ export const metadata: Metadata = {
 
 export default function EtkinliklerPage() {
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-4 py-16">
+    <PageTransition>
+      <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-4 py-16">
       <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
         Etkinlikler &amp; Duyurular
       </h1>
@@ -31,6 +33,7 @@ export default function EtkinliklerPage() {
           </p>
           <Link
             href="/katil"
+            transitionTypes={["nav-forward"]}
             className="mt-8 rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
           >
             Bize Katıl
@@ -57,6 +60,7 @@ export default function EtkinliklerPage() {
           ))}
         </div>
       )}
-    </div>
+      </div>
+    </PageTransition>
   );
 }

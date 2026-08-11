@@ -9,9 +9,17 @@ export function Header() {
   const [acik, setAcik] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-[#050816]/70 backdrop-blur-xl">
+    <header
+      className="sticky top-0 z-50 border-b border-white/10 bg-[#050816]/70 backdrop-blur-xl"
+      style={{ viewTransitionName: "site-header" }}
+    >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link href="/" className="group flex items-center gap-3" onClick={() => setAcik(false)}>
+        <Link
+          href="/"
+          className="group flex items-center gap-3"
+          onClick={() => setAcik(false)}
+          transitionTypes={["nav-back"]}
+        >
           <Logo className="h-9 w-9 transition-transform group-hover:scale-105" />
           <span className="text-xl font-bold tracking-tight">{siteConfig.name}</span>
         </Link>
@@ -21,6 +29,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
+              transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
               className="text-zinc-100 transition-colors hover:text-white"
             >
               {item.label}
@@ -31,6 +40,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <Link
             href="/katil"
+            transitionTypes={["nav-forward"]}
             className="hidden rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-5 py-2 text-sm font-semibold text-white transition-all hover:shadow-[0_0_20px_rgba(139,92,246,0.6)] sm:block"
           >
             Katıl
@@ -74,6 +84,7 @@ export function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setAcik(false)}
+                transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
                 className="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-100 transition-colors hover:bg-white/10"
               >
                 {item.label}
@@ -82,6 +93,7 @@ export function Header() {
             <Link
               href="/katil"
               onClick={() => setAcik(false)}
+              transitionTypes={["nav-forward"]}
               className="mt-2 rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-5 py-2.5 text-center text-sm font-semibold text-white"
             >
               Katıl

@@ -1,6 +1,7 @@
 "use client";
 
 import { SubmitForm } from "@/components/SubmitForm";
+import { PageTransition } from "@/components/PageTransition";
 import { tumIller } from "@/lib/provinces";
 
 const roller = [
@@ -13,7 +14,8 @@ const roller = [
 
 export default function KatilPage() {
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-4 py-16">
+    <PageTransition>
+      <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-4 py-16">
       <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
         Bize Katıl
       </h1>
@@ -62,6 +64,7 @@ export default function KatilPage() {
           },
         ]}
       />
-    </div>
+      </div>
+    </PageTransition>
   );
 }

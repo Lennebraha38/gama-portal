@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
 import { SocialIcon } from "@/components/SocialIcon";
+import { PageTransition } from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "İletişim",
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
 
 export default function IletisimPage() {
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
+    <PageTransition>
+      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
       <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
         İletişim
       </h1>
@@ -55,6 +57,7 @@ export default function IletisimPage() {
           ))}
         </div>
       </div>
-    </div>
+      </div>
+    </PageTransition>
   );
 }

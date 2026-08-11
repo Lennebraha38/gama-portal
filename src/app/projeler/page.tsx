@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
+import { PageTransition } from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Projeler",
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-16">
+    <PageTransition>
+      <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-16">
       <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
         Projeler
       </h1>
@@ -29,11 +31,13 @@ export default function ProjectsPage() {
         </p>
         <Link
           href="/katil"
+          transitionTypes={["nav-forward"]}
           className="mt-8 rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
         >
           İlk Projede Sen Ol
         </Link>
       </div>
-    </div>
+      </div>
+    </PageTransition>
   );
 }

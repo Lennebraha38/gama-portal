@@ -3,6 +3,7 @@ import { siteConfig } from "@/lib/site";
 import { Logo } from "@/components/Logo";
 import { Stats } from "@/components/Stats";
 import { SubmitForm } from "@/components/SubmitForm";
+import { PageTransition } from "@/components/PageTransition";
 
 const icons = {
   kaynak: (
@@ -37,7 +38,8 @@ const iconGradients = [
 
 export default function Home() {
   return (
-    <div className="flex flex-1 flex-col">
+    <PageTransition>
+      <div className="flex flex-1 flex-col">
       <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-4 pb-20 pt-24 text-center md:pt-32">
         <div className="animate-fade-up flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-zinc-200 backdrop-blur">
           <Logo className="h-5 w-5" />
@@ -54,12 +56,14 @@ export default function Home() {
         <div className="animate-fade-up delay-300 mt-10 flex flex-col gap-3 sm:flex-row">
           <Link
             href="/katil"
+            transitionTypes={["nav-forward"]}
             className="rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-8 py-3.5 font-semibold text-white transition-all hover:shadow-[0_0_30px_rgba(139,92,246,0.7)]"
           >
             Bize Katıl
           </Link>
           <Link
             href="/iller"
+            transitionTypes={["nav-forward"]}
             className="rounded-full border border-white/20 bg-white/5 px-8 py-3.5 font-semibold text-white backdrop-blur transition-colors hover:border-white/40 hover:bg-white/10"
           >
             İl Temsilcileri
@@ -172,6 +176,7 @@ export default function Home() {
             </p>
             <Link
               href="/katil"
+              transitionTypes={["nav-forward"]}
               className="mt-8 inline-block rounded-full bg-white px-8 py-3.5 font-semibold text-gama-950 transition-colors hover:bg-gama-100"
             >
               Bize Katıl
@@ -179,6 +184,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </PageTransition>
   );
 }

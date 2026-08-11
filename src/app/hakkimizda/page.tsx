@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 import { mentors } from "@/lib/mentors";
 import { Logo } from "@/components/Logo";
+import { PageTransition } from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   title: "Hakkımızda",
@@ -12,7 +13,8 @@ export const metadata: Metadata = {
 
 export default function HakkimizdaPage() {
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
+    <PageTransition>
+      <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
       <div className="flex items-center gap-4">
         <Logo className="h-12 w-12 drop-shadow-[0_0_16px_rgba(51,100,255,0.6)]" />
         <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
@@ -48,6 +50,7 @@ export default function HakkimizdaPage() {
             </p>
             <Link
               href="/temsilci"
+              transitionTypes={["nav-forward"]}
               className="mt-7 rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
             >
               Mentor Olmak İstiyorum
@@ -71,6 +74,7 @@ export default function HakkimizdaPage() {
           </div>
         )}
       </div>
-    </div>
+      </div>
+    </PageTransition>
   );
 }
