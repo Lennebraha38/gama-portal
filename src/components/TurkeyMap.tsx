@@ -1,3 +1,5 @@
+"use client";
+
 import { regions } from "@/lib/provinces";
 import harita from "@/data/turkiye-paths.json";
 
