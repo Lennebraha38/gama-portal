@@ -40,17 +40,15 @@ html {
   from {
     opacity: 0;
     transform: translateY(0.35em);
-    filter: blur(8px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
-    filter: blur(0);
   }
 }
 .animate-yazili {
   animation: yazili 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
-  will-change: opacity, transform, filter;
+  will-change: opacity, transform;
 }
 
 .text-glow {
