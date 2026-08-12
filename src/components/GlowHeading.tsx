@@ -30,7 +30,7 @@ export function GlowHeading({
       <span aria-label={`${onceki} ${vurgu} ${sonra}`}>
         <span aria-hidden>{harfler(onceki, 0)}</span>
         <span aria-hidden>{"\u00A0"}</span>
-        <span aria-hidden className="text-gradient text-glow">
+        <span aria-hidden className="text-gradient">
           {harfler(vurgu, vurguBas)}
         </span>
         <span aria-hidden>{"\u00A0"}</span>
