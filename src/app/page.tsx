@@ -5,7 +5,6 @@ import { Stats } from "@/components/Stats";
 import { SubmitForm } from "@/components/SubmitForm";
 import { PageTransition } from "@/components/PageTransition";
 import { Reveal } from "@/components/Reveal";
-import { GlowHeading } from "@/components/GlowHeading";
 import { TiltCard } from "@/components/TiltCard";
 
 const icons = {
@@ -48,12 +47,11 @@ export default function Home() {
           <Logo className="h-5 w-5" />
           Türkiye&apos;nin gençlik araştırma-geliştirme birliği
         </div>
-        <GlowHeading
-          onceki="Teknolojik ve bilimsel bağımsızlık için"
-          vurgu="gençler"
-          sonra="buluşuyor."
-          className="mt-8 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl"
-        />
+        <h1 className="animate-fade-up delay-100 mt-8 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+          Teknolojik ve bilimsel bağımsızlık için{" "}
+          <span className="text-gradient">gençler</span>{" "}
+          buluşuyor.
+        </h1>
         <p className="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-8 text-zinc-100">
           {siteConfig.mission}
         </p>
