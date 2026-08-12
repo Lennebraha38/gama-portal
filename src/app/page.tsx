@@ -5,6 +5,8 @@ import { Stats } from "@/components/Stats";
 import { SubmitForm } from "@/components/SubmitForm";
 import { PageTransition } from "@/components/PageTransition";
 import { Reveal } from "@/components/Reveal";
+import { GlowHeading } from "@/components/GlowHeading";
+import { TiltCard } from "@/components/TiltCard";
 
 const icons = {
   kaynak: (
@@ -46,11 +48,12 @@ export default function Home() {
           <Logo className="h-5 w-5" />
           Türkiye&apos;nin gençlik araştırma-geliştirme birliği
         </div>
-        <h1 className="animate-fade-up delay-100 mt-8 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-          Teknolojik ve bilimsel bağımsızlık için{" "}
-          <span className="text-gradient animate-gradient-x">gençler</span>{" "}
-          buluşuyor.
-        </h1>
+        <GlowHeading
+          onceki="Teknolojik ve bilimsel bağımsızlık için"
+          vurgu="gençler"
+          sonra="buluşuyor."
+          className="mt-8 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl"
+        />
         <p className="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-8 text-zinc-100">
           {siteConfig.mission}
         </p>
@@ -96,15 +99,17 @@ export default function Home() {
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {siteConfig.pillars.map((pillar, i) => (
             <Reveal key={pillar.title} delay={i * 120}>
-              <div className="group h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.08]">
-                <span
-                  className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${iconGradients[i]} text-white shadow-lg`}
-                >
-                  {iconMap[i]}
-                </span>
-                <h3 className="mt-4 text-lg font-semibold text-white">{pillar.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-zinc-200">{pillar.description}</p>
-              </div>
+              <TiltCard className="h-full">
+                <div className="group h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all duration-300 hover:border-white/25 hover:bg-white/[0.08]">
+                  <span
+                    className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${iconGradients[i]} text-white shadow-lg`}
+                  >
+                    {iconMap[i]}
+                  </span>
+                  <h3 className="mt-4 text-lg font-semibold text-white">{pillar.title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-zinc-200">{pillar.description}</p>
+                </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
@@ -124,13 +129,15 @@ export default function Home() {
               <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {siteConfig.manifesto.map((m, i) => (
                   <Reveal key={m.baslik} delay={i * 100}>
-                    <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gama-400/40">
-                      <span className="text-gradient text-3xl font-extrabold">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="mt-3 text-base font-semibold text-white">{m.baslik}</h3>
-                      <p className="mt-2 text-sm leading-6 text-zinc-200">{m.metin}</p>
-                    </div>
+                    <TiltCard className="h-full">
+                      <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:border-gama-400/40">
+                        <span className="text-gradient text-3xl font-extrabold">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <h3 className="mt-3 text-base font-semibold text-white">{m.baslik}</h3>
+                        <p className="mt-2 text-sm leading-6 text-zinc-200">{m.metin}</p>
+                      </div>
+                    </TiltCard>
                   </Reveal>
                 ))}
               </div>

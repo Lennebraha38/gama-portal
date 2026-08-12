@@ -36,6 +36,29 @@ html {
   scroll-behavior: smooth;
 }
 
+@keyframes yazili {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+.animate-yazili {
+  animation: yazili 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+  will-change: opacity, transform, filter;
+}
+
+.text-glow {
+  text-shadow:
+    0 0 18px rgba(139, 92, 246, 0.65),
+    0 0 42px rgba(34, 211, 238, 0.35);
+}
+
 .animate-drift-1,
 .animate-drift-2,
 .animate-drift-3,
@@ -244,6 +267,7 @@ html {
   .animate-marquee,
   .animate-gradient-x,
   .animate-fade-up,
+  .animate-yazili,
   .animate-drift-1,
   .animate-drift-2,
   .animate-drift-3,
