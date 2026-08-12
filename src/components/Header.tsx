@@ -76,31 +76,37 @@ export function Header() {
         </div>
       </div>
 
-      {acik && (
-        <nav className="border-t border-white/10 bg-[#050816]/95 px-4 py-4 backdrop-blur-xl md:hidden">
-          <div className="flex flex-col gap-1">
-            {siteConfig.nav.map((item) => (
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-out md:hidden ${
+          acik ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <nav className="border-t border-white/10 bg-[#050816]/95 px-4 py-4 backdrop-blur-xl">
+            <div className="flex flex-col gap-1">
+              {siteConfig.nav.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setAcik(false)}
+                  transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
+                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-100 transition-colors hover:bg-white/10"
+                >
+                  {item.label}
+                </Link>
+              ))}
               <Link
-                key={item.href}
-                href={item.href}
+                href="/katil"
                 onClick={() => setAcik(false)}
-                transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
-                className="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-100 transition-colors hover:bg-white/10"
+                transitionTypes={["nav-forward"]}
+                className="mt-2 rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-5 py-2.5 text-center text-sm font-semibold text-white"
               >
-                {item.label}
+                Katıl
               </Link>
-            ))}
-            <Link
-              href="/katil"
-              onClick={() => setAcik(false)}
-              transitionTypes={["nav-forward"]}
-              className="mt-2 rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-5 py-2.5 text-center text-sm font-semibold text-white"
-            >
-              Katıl
-            </Link>
-          </div>
-        </nav>
-      )}
+            </div>
+          </nav>
+        </div>
+      </div>
     </header>
   );
 }

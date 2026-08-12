@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Logo } from "@/components/Logo";
 import { PageTransition } from "@/components/PageTransition";
+import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "Projeler",
@@ -13,14 +14,17 @@ export default function ProjectsPage() {
   return (
     <PageTransition>
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-16">
-      <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
-        Projeler
-      </h1>
-      <p className="mt-3 max-w-2xl text-zinc-200">
-        Gama çatısı altında yürütülecek projeler burada duyurulacak.
-      </p>
+        <Reveal>
+          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+            Projeler
+          </h1>
+          <p className="mt-3 max-w-2xl text-zinc-200">
+            Gama çatısı altında yürütülecek projeler burada duyurulacak.
+          </p>
+        </Reveal>
 
-      <div className="mt-12 flex flex-1 flex-col items-center justify-center rounded-3xl border border-dashed border-white/20 bg-white/[0.03] p-16 text-center backdrop-blur">
+      <Reveal delay={120} className="flex flex-1 flex-col">
+        <div className="mt-12 flex flex-1 flex-col items-center justify-center rounded-3xl border border-dashed border-white/20 bg-white/[0.03] p-16 text-center backdrop-blur">
         <Logo className="h-16 w-16 animate-pulse" />
         <h2 className="mt-6 text-xl font-bold text-white md:text-2xl">
           Projeler yakında duyurulacak
@@ -37,6 +41,7 @@ export default function ProjectsPage() {
           İlk Projede Sen Ol
         </Link>
       </div>
+      </Reveal>
       </div>
     </PageTransition>
   );

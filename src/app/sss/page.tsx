@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { PageTransition } from "@/components/PageTransition";
+import { Reveal } from "@/components/Reveal";
 
 const sorular = [
   {
@@ -72,14 +73,17 @@ export default function SssPage() {
   return (
     <PageTransition>
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
-      <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
-        Sıkça Sorulan Sorular
-      </h1>
-      <p className="mt-3 text-zinc-200">
-        Aklına takılan soru burada yoksa bize yazmaktan çekinme.
-      </p>
+        <Reveal>
+          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+            Sıkça Sorulan Sorular
+          </h1>
+          <p className="mt-3 text-zinc-200">
+            Aklına takılan soru burada yoksa bize yazmaktan çekinme.
+          </p>
+        </Reveal>
 
-      <div className="mt-10 grid gap-3">
+      <Reveal delay={100}>
+        <div className="mt-10 grid gap-3">
         {sorular.map((item, i) => {
           const aktif = acik === i;
           return (
@@ -107,28 +111,37 @@ export default function SssPage() {
                   </svg>
                 </span>
               </button>
-              {aktif && (
-                <div className="border-t border-white/10 px-6 py-4 text-sm leading-7 text-zinc-200">
-                  {item.cevap}
+              <div
+                className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                  aktif ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div className="border-t border-white/10 px-6 py-4 text-sm leading-7 text-zinc-200">
+                    {item.cevap}
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           );
         })}
       </div>
+      </Reveal>
 
-      <div className="mt-10 rounded-3xl border border-white/10 bg-gradient-to-br from-gama-950 via-indigo-950 to-violet-950 p-8 text-center">
-        <h2 className="text-lg font-bold text-white">Aradığını bulamadın mı?</h2>
-        <p className="mt-2 text-sm text-zinc-300">
-          Sorunu bize ilet, en kısa sürede cevaplayalım.
-        </p>
-        <a
-          href="mailto:gamaturkiye@gmail.com"
-          className="mt-5 inline-block rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
-        >
-          Bize Yaz
-        </a>
-      </div>
+      <Reveal delay={120}>
+        <div className="mt-10 rounded-3xl border border-white/10 bg-gradient-to-br from-gama-950 via-indigo-950 to-violet-950 p-8 text-center">
+          <h2 className="text-lg font-bold text-white">Aradığını bulamadın mı?</h2>
+          <p className="mt-2 text-sm text-zinc-300">
+            Sorunu bize ilet, en kısa sürede cevaplayalım.
+          </p>
+          <a
+            href="mailto:gamaturkiye@gmail.com"
+            className="mt-5 inline-block rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
+          >
+            Bize Yaz
+          </a>
+        </div>
+      </Reveal>
       </div>
     </PageTransition>
   );

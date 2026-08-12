@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SubmitForm } from "@/components/SubmitForm";
 import { PageTransition } from "@/components/PageTransition";
+import { Reveal } from "@/components/Reveal";
 import { regions } from "@/lib/provinces";
 
 export const metadata: Metadata = {
@@ -22,15 +23,18 @@ export default function TemsilciPage() {
   return (
     <PageTransition>
       <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-4 py-16">
-      <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
-        İl Temsilcisi Adayı Ol
-      </h1>
-      <p className="mt-3 text-zinc-200">
-        Bulunduğun ilde Gama&apos;yı temsil etmek ister misin? Koordinatörlük
-        başvurunu ilet, ekibimiz seninle iletişime geçsin.
-      </p>
+        <Reveal>
+          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+            İl Temsilcisi Adayı Ol
+          </h1>
+          <p className="mt-3 text-zinc-200">
+            Bulunduğun ilde Gama&apos;yı temsil etmek ister misin? Koordinatörlük
+            başvurunu ilet, ekibimiz seninle iletişime geçsin.
+          </p>
+        </Reveal>
 
-      <SubmitForm
+      <Reveal delay={120}>
+        <SubmitForm
         subject="İl temsilcisi başvurusu"
         buttonText="Adaylığını Gönder"
         fields={[
@@ -71,6 +75,7 @@ export default function TemsilciPage() {
           },
         ]}
       />
+      </Reveal>
       </div>
     </PageTransition>
   );

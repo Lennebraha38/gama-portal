@@ -2,6 +2,7 @@
 
 import { SubmitForm } from "@/components/SubmitForm";
 import { PageTransition } from "@/components/PageTransition";
+import { Reveal } from "@/components/Reveal";
 import { tumIller } from "@/lib/provinces";
 
 const roller = [
@@ -16,15 +17,18 @@ export default function KatilPage() {
   return (
     <PageTransition>
       <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-4 py-16">
-      <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
-        Bize Katıl
-      </h1>
-      <p className="mt-3 text-zinc-200">
-        Formu doldur; yazılım, donanım veya mentorluk yolculuğuna ilk adımı
-        atalım.
-      </p>
+        <Reveal>
+          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+            Bize Katıl
+          </h1>
+          <p className="mt-3 text-zinc-200">
+            Formu doldur; yazılım, donanım veya mentorluk yolculuğuna ilk adımı
+            atalım.
+          </p>
+        </Reveal>
 
-      <SubmitForm
+      <Reveal delay={120}>
+        <SubmitForm
         subject="Yeni üyelik başvurusu"
         buttonText="Başvuruyu Gönder"
         fields={[
@@ -64,6 +68,7 @@ export default function KatilPage() {
           },
         ]}
       />
+      </Reveal>
       </div>
     </PageTransition>
   );

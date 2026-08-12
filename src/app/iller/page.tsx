@@ -3,6 +3,7 @@ import Link from "next/link";
 import { regions, toplamIl } from "@/lib/provinces";
 import { TurkeyMap } from "@/components/TurkeyMap";
 import { PageTransition } from "@/components/PageTransition";
+import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "İl Temsilcileri",
@@ -14,7 +15,8 @@ export default function IllerPage() {
   return (
     <PageTransition>
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-16">
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <Reveal>
+          <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
             İl Temsilcileri
@@ -33,12 +35,16 @@ export default function IllerPage() {
           Temsilci Adayı Ol
         </Link>
       </div>
+        </Reveal>
 
-      <div className="mt-10">
-        <TurkeyMap />
-      </div>
+      <Reveal delay={100}>
+        <div className="mt-10">
+          <TurkeyMap />
+        </div>
+      </Reveal>
 
-      <div className="mt-12 grid gap-8">
+      <Reveal delay={120}>
+        <div className="mt-12 grid gap-8">
         {regions.map((bolge) => (
           <section key={bolge.bolge} className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur md:p-8">
             <div className="flex items-center gap-3">
@@ -79,6 +85,7 @@ export default function IllerPage() {
           </section>
         ))}
       </div>
+      </Reveal>
       </div>
     </PageTransition>
   );

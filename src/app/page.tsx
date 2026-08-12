@@ -4,6 +4,7 @@ import { Logo } from "@/components/Logo";
 import { Stats } from "@/components/Stats";
 import { SubmitForm } from "@/components/SubmitForm";
 import { PageTransition } from "@/components/PageTransition";
+import { Reveal } from "@/components/Reveal";
 
 const icons = {
   kaynak: (
@@ -87,60 +88,63 @@ export default function Home() {
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-4 py-20">
-        <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
-          Sana ne sunuyoruz?
-        </h2>
+        <Reveal>
+          <h2 className="text-center text-2xl font-bold tracking-tight md:text-3xl">
+            Sana ne sunuyoruz?
+          </h2>
+        </Reveal>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {siteConfig.pillars.map((pillar, i) => (
-            <div
-              key={pillar.title}
-              className="group rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.08]"
-            >
-              <span
-                className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${iconGradients[i]} text-white shadow-lg`}
-              >
-                {iconMap[i]}
-              </span>
-              <h3 className="mt-4 text-lg font-semibold text-white">{pillar.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-zinc-200">{pillar.description}</p>
-            </div>
+            <Reveal key={pillar.title} delay={i * 120}>
+              <div className="group h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-white/25 hover:bg-white/[0.08]">
+                <span
+                  className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${iconGradients[i]} text-white shadow-lg`}
+                >
+                  {iconMap[i]}
+                </span>
+                <h3 className="mt-4 text-lg font-semibold text-white">{pillar.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-zinc-200">{pillar.description}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-4 pb-20">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-10 backdrop-blur md:p-14">
-          <div className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-600/10 via-violet-600/10 to-cyan-500/10" />
-          <div className="relative">
-            <p className="text-center text-sm font-semibold uppercase tracking-widest text-gama-400">
-              Gama Manifestosu
-            </p>
-            <h2 className="mt-3 text-center text-2xl font-bold tracking-tight md:text-3xl">
-              Neden varız?
-            </h2>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {siteConfig.manifesto.map((m, i) => (
-                <div
-                  key={m.baslik}
-                  className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all hover:-translate-y-1 hover:border-gama-400/40"
-                >
-                  <span className="text-gradient text-3xl font-extrabold">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="mt-3 text-base font-semibold text-white">{m.baslik}</h3>
-                  <p className="mt-2 text-sm leading-6 text-zinc-200">{m.metin}</p>
-                </div>
-              ))}
+        <Reveal>
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-10 backdrop-blur md:p-14">
+            <div className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-600/10 via-violet-600/10 to-cyan-500/10" />
+            <div className="relative">
+              <p className="text-center text-sm font-semibold uppercase tracking-widest text-gama-400">
+                Gama Manifestosu
+              </p>
+              <h2 className="mt-3 text-center text-2xl font-bold tracking-tight md:text-3xl">
+                Neden varız?
+              </h2>
+              <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                {siteConfig.manifesto.map((m, i) => (
+                  <Reveal key={m.baslik} delay={i * 100}>
+                    <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gama-400/40">
+                      <span className="text-gradient text-3xl font-extrabold">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="mt-3 text-base font-semibold text-white">{m.baslik}</h3>
+                      <p className="mt-2 text-sm leading-6 text-zinc-200">{m.metin}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="mx-auto w-full max-w-4xl px-4 pb-20">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur md:p-12">
-          <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-            Vizyonu takip et
-          </h2>
+        <Reveal>
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur md:p-12">
+            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+              Vizyonu takip et
+            </h2>
           <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-zinc-200">
             Atölyeler, duyurular ve projelerden ilk senin haberin olsun. Ayda
             bir özet — spam yok.
@@ -160,11 +164,13 @@ export default function Home() {
               },
             ]}
           />
-        </div>
+          </div>
+        </Reveal>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-4 pb-20">
-        <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-gama-950 via-indigo-950 to-violet-950 p-10 text-center md:p-16">
+        <Reveal>
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-gama-950 via-indigo-950 to-violet-950 p-10 text-center md:p-16">
           <div className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-600/30 via-violet-600/30 to-cyan-500/30" />
           <div className="relative">
             <h2 className="text-2xl font-bold tracking-tight text-white md:text-4xl">
@@ -183,6 +189,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        </Reveal>
       </section>
       </div>
     </PageTransition>

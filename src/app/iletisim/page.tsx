@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { siteConfig } from "@/lib/site";
 import { SocialIcon } from "@/components/SocialIcon";
 import { PageTransition } from "@/components/PageTransition";
+import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   title: "İletişim",
@@ -13,14 +14,17 @@ export default function IletisimPage() {
   return (
     <PageTransition>
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
-      <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
-        İletişim
-      </h1>
-      <p className="mt-3 max-w-2xl text-zinc-200">
-        Soruların, fikirlerin veya iş birliği tekliflerin için bize ulaş.
-      </p>
+        <Reveal>
+          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+            İletişim
+          </h1>
+          <p className="mt-3 max-w-2xl text-zinc-200">
+            Soruların, fikirlerin veya iş birliği tekliflerin için bize ulaş.
+          </p>
+        </Reveal>
 
-      <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur md:p-12">
+      <Reveal delay={100}>
+        <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur md:p-12">
         <span className="mx-auto inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-gama-500 to-cyan-400 text-white shadow-lg">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
             <rect width="20" height="16" x="2" y="4" rx="2" />
@@ -38,8 +42,10 @@ export default function IletisimPage() {
           En geç 48 saat içinde sana dönüş yapıyoruz.
         </p>
       </div>
+      </Reveal>
 
-      <div className="mt-6 rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur">
+      <Reveal delay={150}>
+        <div className="mt-6 rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur">
         <h2 className="text-lg font-semibold text-white">Sosyal Medya</h2>
         <p className="mt-1 text-sm text-zinc-300">
           Gelişmeleri ve duyuruları takip etmek için bizi takip et.
@@ -57,6 +63,7 @@ export default function IletisimPage() {
           ))}
         </div>
       </div>
+      </Reveal>
       </div>
     </PageTransition>
   );
