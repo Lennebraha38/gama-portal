@@ -5,9 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site";
 import { Logo } from "@/components/Logo";
-import { SiteArama, type AramaVerisi } from "@/components/SiteArama";
+import { SiteArama } from "@/components/SiteArama";
 
-export function Header({ veriler }: { veriler: AramaVerisi[] }) {
+export function Header() {
   const [acik, setAcik] = useState(false);
   const pathname = usePathname();
   const aktif = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
@@ -55,7 +55,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
 
         <div className="flex items-center gap-3">
           <div className="hidden w-64 md:block">
-            <SiteArama veriler={veriler} />
+            <SiteArama />
           </div>
           <Link
             href="/katil"
@@ -106,7 +106,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
         <div className="overflow-hidden">
           <nav className="border-t border-white/10 bg-[#060b18]/95 px-4 py-4 backdrop-blur-xl">
             <div className="mb-3 md:hidden">
-              <SiteArama veriler={veriler} />
+              <SiteArama />
             </div>
             <div className="flex flex-col gap-1">
               {siteConfig.nav.map((item) => (

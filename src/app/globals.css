@@ -144,6 +144,7 @@ html {
 }
 .animate-marquee {
   animation: marquee 45s linear infinite;
+  will-change: transform;
 }
 .animate-gradient-x {
   background-size: 300% 100%;
@@ -419,5 +420,16 @@ html {
   ::view-transition-group(*) {
     animation-duration: 0s !important;
     animation-delay: 0s !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

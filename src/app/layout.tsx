@@ -6,7 +6,6 @@ import { Footer } from "@/components/Footer";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { siteConfig } from "@/lib/site";
 import { Analytics } from "@/components/Analytics";
-import { aramaVerileri } from "@/lib/arama";
 
 export const viewport: Viewport = {
   themeColor: "#060b18",
@@ -96,7 +95,7 @@ export default function RootLayout(props: LayoutProps<"/">) {
       />
         <Analytics />
         <AnimatedBackground />
-        <Header veriler={aramaVerileri()} />
+        <Header />
         <main className="relative z-10 flex flex-1 flex-col">{props.children}</main>
         <Footer />
       </body>

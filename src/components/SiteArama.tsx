@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 
 export type AramaVerisi = {
@@ -11,14 +11,35 @@ export type AramaVerisi = {
   etiket: string;
 };
 
-export function SiteArama({ veriler }: { veriler: AramaVerisi[] }) {
+const veriUrl = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/arama-verileri.json`;
+
+let veriSozu: Promise<AramaVerisi[]> | null = null;
+
+function aramaVerileriniYukle(): Promise<AramaVerisi[]> {
+  veriSozu ??= fetch(veriUrl, { cache: "force-cache" }).then((res) => {
+    if (!res.ok) throw new Error("Arama verisi alınamadı");
+    return res.json() as Promise<AramaVerisi[]>;
+  });
+  return veriSozu;
+}
+
+export function SiteArama() {
   const [sorgu, setSorgu] = useState("");
   const [acik, setAcik] = useState(false);
+  const [veriler, setVeriler] = useState<AramaVerisi[] | null>(null);
+  const [hata, setHata] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    if (veriler !== null || hata || sorgu.trim().length < 2) return;
+    aramaVerileriniYukle()
+      .then(setVeriler)
+      .catch(() => setHata(true));
+  }, [sorgu, veriler, hata]);
 
   const sonuclar = useMemo(() => {
     const q = sorgu.trim().toLocaleLowerCase("tr-TR");
-    if (q.length < 2) return [];
+    if (q.length < 2 || veriler === null) return [];
     return veriler
       .filter((v) =>
         `${v.baslik} ${v.ozet} ${v.etiket}`
@@ -75,7 +96,13 @@ export function SiteArama({ veriler }: { veriler: AramaVerisi[] }) {
           role="listbox"
           className="absolute left-0 right-0 top-full z-50 mt-2 max-h-96 overflow-y-auto rounded-2xl border border-white/15 bg-[#0a0f2a]/95 p-2 shadow-2xl backdrop-blur-xl"
         >
-          {sonuclar.length === 0 ? (
+          {hata ? (
+            <p className="px-4 py-6 text-center text-sm text-zinc-400">
+              Arama yüklenemedi. Lütfen tekrar dene.
+            </p>
+          ) : veriler === null ? (
+            <p className="px-4 py-6 text-center text-sm text-zinc-400">Aranıyor...</p>
+          ) : sonuclar.length === 0 ? (
             <p className="px-4 py-6 text-center text-sm text-zinc-400">
               &quot;{sorgu}&quot; için sonuç bulunamadı.
             </p>
