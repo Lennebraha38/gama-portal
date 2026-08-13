@@ -14,37 +14,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: PR merge oldu mu?
-        id: pr
+      - name: PR durumunu kontrol et ve merge olduysa geçişi uygula
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          BODY=$(gh api repos/is-a-dev/register/pulls/46913 --jq '{state, merged, merged_at, html_url}' 2>/dev/null || echo '{"state":"error"}')
+          BODY=$(gh api repos/is-a-dev/register/pulls/46913 --jq '{state, merged, merged_at}' 2>/dev/null || echo '{"state":"error"}')
           echo "durum: $BODY"
           MERGED=$(echo "$BODY" | python3 -c "import json,sys; print(json.load(sys.stdin).get('merged') or False)")
-          echo "merged=$MERGED" >> "$GITHUB_OUTPUT"
-          if [ "$MERGED" = "True" ]; then
-            echo "PR MERGE EDİLDİ — domain geçişi başlatılıyor"
-          else
-            echo "PR henüz açık, geçiş yapılmıyor"
+          if [ "$MERGED" != "True" ]; then
+            echo "gama.is-a.dev PR #46913 henüz merge edilmedi — geçiş yapılmıyor."
+            exit 0
           fi
-
-      - name: Domain geçişini uygula
-        if: "steps.pr.outputs.merged == True"
-        run: |
+          echo "PR merge edildi — gama.is-a.dev alan adına geçiliyor."
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           sed -i 's|siteUrl: "https://lennebraha38.github.io/gama-portal"|siteUrl: "https://gama.is-a.dev"|' src/lib/site.ts
           sed -i 's|basePath: "/gama-portal"|basePath: ""|' next.config.ts
           git diff --stat
-
-      - name: Commit ve push
-        if: "steps.pr.outputs.merged == True"
-        run: |
           git add -A
-          git commit -m "gama.is-a.dev alan adına otomatik geçiş (is-a.dev PR merged)" || echo "değişiklik yok"
+          git commit -m "gama.is-a.dev alan adına otomatik geçiş (is-a.dev PR merged)"
           git push origin main
-
-      - name: Merge değilse açık durum etiketi
-        if: "steps.pr.outputs.merged != True"
-        run: 'echo "Merge değilse bekleme durumu: gama.is-a.dev PR #46913 hâlâ açık"'
