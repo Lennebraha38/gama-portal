@@ -8,7 +8,7 @@ const TurkeyMap = dynamic(() =>
   {
     ssr: false,
     loading: () => (
-      <div className="flex h-64 items-center justify-center rounded-3xl border border-white/10 bg-[#070b14]/60 backdrop-blur">
+      <div className="flex h-64 items-center justify-center rounded-3xl border border-white/10 bg-[#060b18]/60 backdrop-blur">
         <span className="text-sm text-zinc-400">Harita yükleniyor...</span>
       </div>
     ),
@@ -42,7 +42,7 @@ export function HaritaBolumu() {
   return (
     <div ref={ref} aria-hidden={!gorunur ? true : undefined}>
       {gorunur ? <TurkeyMap /> : (
-        <div className="flex h-64 items-center justify-center rounded-3xl border border-white/10 bg-[#070b14]/60 backdrop-blur">
+        <div className="flex h-64 items-center justify-center rounded-3xl border border-white/10 bg-[#060b18]/60 backdrop-blur">
           <span className="text-sm text-zinc-400">Harita yükleniyor...</span>
         </div>
       )}

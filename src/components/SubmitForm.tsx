@@ -13,7 +13,7 @@ type Field = {
 };
 
 const inputClass =
-  "rounded-xl border border-white/15 bg-white/[0.07] px-4 py-2.5 text-sm text-white placeholder-zinc-400 backdrop-blur transition-all focus:border-gama-400 focus:outline-none focus:ring-2 focus:ring-gama-400/40 focus:shadow-[0_0_20px_rgba(56,189,248,0.25)]";
+  "rounded-xl border border-white/15 bg-white/[0.07] px-4 py-2.5 text-sm text-white placeholder-zinc-400 backdrop-blur transition-all focus:border-gama-400 focus:outline-none focus:ring-2 focus:ring-gama-400/40 focus:shadow-[0_0_20px_rgba(96,165,250,0.25)]";
 
 export function SubmitForm({
   subject,
@@ -128,7 +128,7 @@ export function SubmitForm({
       <button
         type="submit"
         disabled={durum === "gonderen"}
-        className="rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-7 py-3 font-semibold text-white shadow-[0_0_20px_rgba(56,189,248,0.4)] transition-all hover:shadow-[0_0_36px_rgba(56,189,248,0.65)] disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none"
+        className="rounded-full bg-gradient-to-r from-gama-500 to-gama-400 px-7 py-3 font-semibold text-white shadow-[0_0_20px_rgba(96,165,250,0.4)] transition-all hover:shadow-[0_0_36px_rgba(96,165,250,0.65)] disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none"
       >
         {durum === "gonderen" ? "Gönderiliyor..." : buttonText}
       </button>

@@ -39,7 +39,7 @@ export default function ProjectsPage() {
         <Link
           href="/katil"
           transitionTypes={["nav-forward"]}
-          className="mt-8 rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(56,189,248,0.55)]"
+          className="mt-8 rounded-full bg-gradient-to-r from-gama-500 to-gama-400 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(96,165,250,0.55)]"
         >
           İlk Projede Sen Ol
         </Link>

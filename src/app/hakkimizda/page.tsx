@@ -21,7 +21,7 @@ export default function HakkimizdaPage() {
             Sistem 01 <span className="text-zinc-400">/</span> Gama
           </p>
           <div className="mt-4 flex items-center gap-4">
-            <Logo className="h-12 w-12 drop-shadow-[0_0_16px_rgba(56,189,248,0.6)]" />
+            <Logo className="h-12 w-12 drop-shadow-[0_0_16px_rgba(96,165,250,0.6)]" />
             <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
               Hakkımızda
             </h1>
@@ -70,7 +70,7 @@ export default function HakkimizdaPage() {
             <Link
               href="/temsilci"
               transitionTypes={["nav-forward"]}
-              className="mt-7 rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(56,189,248,0.55)]"
+              className="mt-7 rounded-full bg-gradient-to-r from-gama-500 to-gama-400 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(96,165,250,0.55)]"
             >
               Mentor Olmak İstiyorum
             </Link>

@@ -109,7 +109,7 @@ export default async function EtkinlikDetayPage({ params }: Props) {
                   href={e.kayit}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1 inline-block rounded-full bg-gradient-to-r from-gama-600 to-cyan-500 px-5 py-2 text-xs font-semibold text-white transition-all hover:shadow-[0_0_16px_rgba(34,211,238,0.5)]"
+                  className="mt-1 inline-block rounded-full bg-gradient-to-r from-gama-600 to-gama-500 px-5 py-2 text-xs font-semibold text-white transition-all hover:shadow-[0_0_16px_rgba(96,165,250,0.5)]"
                 >
                   Kayıt Ol
                 </a>

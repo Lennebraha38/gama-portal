@@ -34,9 +34,9 @@ const icons = {
 
 const iconMap = [icons.kaynak, icons.takim, icons.mentorluk];
 const iconGradients = [
-  "from-gama-500 to-cyan-400",
+  "from-gama-500 to-gama-400",
   "from-gama-600 to-gama-400",
-  "from-cyan-500 to-gama-500",
+  "from-gama-500 to-gama-500",
 ];
 
 function BolumBaslik({
@@ -111,7 +111,7 @@ export default function Home() {
               <Link
                 href="/katil"
                 transitionTypes={["nav-forward"]}
-                className="rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-8 py-3.5 w-full text-center font-semibold text-white shadow-[0_0_26px_rgba(56,189,248,0.45)] transition-all hover:shadow-[0_0_40px_rgba(56,189,248,0.7)] sm:w-auto"
+                className="rounded-full bg-gradient-to-r from-gama-500 to-gama-400 px-8 py-3.5 w-full text-center font-semibold text-white shadow-[0_0_26px_rgba(96,165,250,0.45)] transition-all hover:shadow-[0_0_40px_rgba(96,165,250,0.7)] sm:w-auto"
               >
                 Bize Katıl
               </Link>
@@ -169,8 +169,8 @@ export default function Home() {
         </section>
 
         <section className="relative overflow-hidden border-y border-white/10 bg-white/[0.03] py-6 backdrop-blur">
-          <div aria-hidden className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#070b14] to-transparent z-10" />
-          <div aria-hidden className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#070b14] to-transparent z-10" />
+          <div aria-hidden className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#060b18] to-transparent z-10" />
+          <div aria-hidden className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#060b18] to-transparent z-10" />
           <div className="flex w-max animate-marquee gap-8 whitespace-nowrap">
             {[...siteConfig.marquee, ...siteConfig.marquee].map((k, i) => (
               <span
@@ -313,7 +313,7 @@ export default function Home() {
         <section className="mx-auto w-full max-w-6xl px-4 pb-20">
           <Reveal>
             <div className="panel-grad relative overflow-hidden rounded-3xl p-10 md:p-14">
-              <div aria-hidden className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-500/10 via-cyan-400/10 to-amber-500/5" />
+              <div aria-hidden className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-600/15 via-gama-500/10 to-amber-500/5" />
               <div className="relative">
                 <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
                   <div>
@@ -350,7 +350,7 @@ export default function Home() {
             <div className="card-glass relative overflow-hidden rounded-3xl p-8 text-center backdrop-blur md:p-12">
               <div
                 aria-hidden
-                className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gama-500/15 blur-[90px]"
+                className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gama-500/20 blur-[90px]"
               />
               <div
                 aria-hidden
@@ -389,8 +389,8 @@ export default function Home() {
 
         <section className="mx-auto w-full max-w-6xl px-4 pb-20">
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-gama-500/20 bg-gradient-to-br from-[#081426] via-[#0a1526] to-[#071120] p-10 text-center shadow-[0_0_80px_-20px_rgba(56,189,248,0.4)] md:p-16">
-              <div className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-500/20 via-cyan-400/20 to-amber-500/10" />
+            <div className="relative overflow-hidden rounded-3xl border border-gama-500/20 bg-gradient-to-br from-[#0c1a33] via-[#102348] to-[#0a1526] p-10 text-center shadow-[0_0_80px_-20px_rgba(96,165,250,0.4)] md:p-16">
+              <div className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-500/20 via-gama-400/20 to-amber-500/10" />
               <div className="absolute inset-0 bg-grid opacity-60" />
               <div className="relative">
                 <p className="sys-label">
@@ -406,7 +406,7 @@ export default function Home() {
                 <Link
                   href="/katil"
                   transitionTypes={["nav-forward"]}
-                  className="mt-8 inline-block rounded-full bg-white px-8 py-3.5 font-semibold text-[#081426] transition-colors hover:bg-gama-200"
+                  className="mt-8 inline-block rounded-full bg-white px-8 py-3.5 font-semibold text-[#0c1a33] transition-colors hover:bg-gama-200"
                 >
                   Bize Katıl
                 </Link>

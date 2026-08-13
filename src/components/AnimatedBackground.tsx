@@ -48,10 +48,10 @@ export function AnimatedBackground() {
   }, []);
 
   return (
-    <div aria-hidden className="fixed inset-0 -z-10 overflow-hidden bg-[#070b14]">
+    <div aria-hidden className="fixed inset-0 -z-10 overflow-hidden bg-[#060b18]">
       <div
         ref={ust}
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.15),transparent_60%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(59,130,246,0.16),transparent_60%)]"
         style={{ willChange: "transform" }}
       />
       <div
@@ -60,7 +60,7 @@ export function AnimatedBackground() {
         style={{ willChange: "transform" }}
       />
       <div className="absolute -left-32 top-[-10%] h-[500px] w-[500px] animate-drift-1 rounded-full bg-gama-600/25 blur-[120px]" />
-      <div className="absolute right-[-10%] top-[25%] h-[420px] w-[420px] animate-drift-2 rounded-full bg-cyan-500/20 blur-[120px]" />
+      <div className="absolute right-[-10%] top-[25%] h-[420px] w-[420px] animate-drift-2 rounded-full bg-gama-500/20 blur-[120px]" />
       <div className="absolute bottom-[-20%] left-[28%] h-[460px] w-[460px] animate-drift-3 rounded-full bg-gama-900/40 blur-[120px]" />
       <div
         ref={izgara}

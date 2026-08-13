@@ -5,12 +5,12 @@ import { SocialIcon } from "@/components/SocialIcon";
 
 export function Footer() {
   return (
-    <footer className="relative z-10 border-t border-gama-500/20 bg-[#070b14]/85 backdrop-blur-xl">
+    <footer className="relative z-10 border-t border-gama-500/20 bg-[#060b18]/85 backdrop-blur-xl">
       <div aria-hidden className="section-divider absolute inset-x-0 top-0" />
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="flex items-center gap-3">
-            <Logo className="h-8 w-8 drop-shadow-[0_0_10px_rgba(56,189,248,0.5)]" />
+            <Logo className="h-8 w-8 drop-shadow-[0_0_10px_rgba(96,165,250,0.5)]" />
             <div>
               <span className="font-semibold text-white">{siteConfig.name}</span>
               <span className="text-zinc-400"> · {siteConfig.tagline}</span>

@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #070b14;
+  --background: #060b18;
   --foreground: #dbe3f0;
 }
 
@@ -13,17 +13,17 @@
 }
 
 @theme {
-  --color-gama-50: #f0f9ff;
-  --color-gama-100: #e0f2fe;
-  --color-gama-200: #bae6fd;
-  --color-gama-300: #7dd3fc;
-  --color-gama-400: #38bdf8;
-  --color-gama-500: #0ea5e9;
-  --color-gama-600: #0284c7;
-  --color-gama-700: #0369a1;
-  --color-gama-800: #075985;
-  --color-gama-900: #0c4a6e;
-  --color-gama-950: #082f49;
+  --color-gama-50: #eff6ff;
+  --color-gama-100: #dbeafe;
+  --color-gama-200: #bfdbfe;
+  --color-gama-300: #93c5fd;
+  --color-gama-400: #60a5fa;
+  --color-gama-500: #3b82f6;
+  --color-gama-600: #2563eb;
+  --color-gama-700: #1d4ed8;
+  --color-gama-800: #1e40af;
+  --color-gama-900: #1e3a8a;
+  --color-gama-950: #172554;
 }
 
 body {
@@ -35,7 +35,7 @@ body {
 
 /* klavye gezinmesi için görünür odak halkası (Kural 8) */
 :focus-visible {
-  outline: 2px solid #38bdf8;
+  outline: 2px solid #3b82f6;
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -200,7 +200,7 @@ html {
 
 /* marka gradienti — cyan/sky ailesi */
 .text-gradient {
-  background: linear-gradient(90deg, #38bdf8, #22d3ee 45%, #7dd3fc 80%, #38bdf8);
+  background: linear-gradient(90deg, #3b82f6, #60a5fa 45%, #93c5fd 80%, #3b82f6);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -238,7 +238,7 @@ html {
   right: 1.25rem;
   height: 2px;
   border-radius: 2px;
-  background: linear-gradient(90deg, #38bdf8, #22d3ee, transparent 85%);
+  background: linear-gradient(90deg, #3b82f6, #60a5fa, transparent 85%);
   opacity: 0.75;
 }
 .card-glass:hover {
@@ -248,24 +248,24 @@ html {
 
 /* panel içeriği (CTA zeminleri) */
 .panel-grad {
-  background: linear-gradient(135deg, #0a1526 0%, #0e1d33 45%, #0a1222 100%);
+  background: linear-gradient(135deg, #0c1a33 0%, #102348 45%, #0a1526 100%);
 }
 
 /* konik ışık halesi — cyan */
 .conic-glow {
   background: conic-gradient(
     from 90deg at 50% 50%,
-    #0ea5e9 0deg,
-    #22d3ee 90deg,
-    #7dd3fc 180deg,
-    #22d3ee 270deg,
-    #0ea5e9 360deg
+    #2563eb 0deg,
+    #60a5fa 90deg,
+    #93c5fd 180deg,
+    #60a5fa 270deg,
+    #2563eb 360deg
   );
 }
 
 /* hero başlık altına parlayan çizgi */
 .hero-glow-line {
-  background: linear-gradient(90deg, transparent, #38bdf8, #22d3ee, transparent);
+  background: linear-gradient(90deg, transparent, #3b82f6, #60a5fa, transparent);
   height: 1px;
 }
 
@@ -310,7 +310,7 @@ html {
   bottom: -4px;
   height: 2px;
   border-radius: 2px;
-  background: linear-gradient(90deg, #38bdf8, #22d3ee);
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);

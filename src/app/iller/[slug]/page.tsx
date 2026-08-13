@@ -91,7 +91,7 @@ export default async function IlDetayPage({ params }: Props) {
               {!il.atandi && (
                 <Link
                   href={`/temsilci?il=${encodeURIComponent(il.ad)}`}
-                  className="rounded-full bg-gradient-to-r from-gama-600 to-cyan-500 px-7 py-3 text-sm font-semibold text-white transition-all hover:shadow-[0_0_20px_rgba(34,211,238,0.5)]"
+                  className="rounded-full bg-gradient-to-r from-gama-600 to-gama-500 px-7 py-3 text-sm font-semibold text-white transition-all hover:shadow-[0_0_20px_rgba(96,165,250,0.5)]"
                 >
                   Temsilci Adayı Ol
                 </Link>

@@ -55,7 +55,7 @@ export default function EtkinliklerPage() {
               <Link
                 href="/katil"
                 transitionTypes={["nav-forward"]}
-                className="mt-8 rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(56,189,248,0.55)]"
+                className="mt-8 rounded-full bg-gradient-to-r from-gama-500 to-gama-400 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(96,165,250,0.55)]"
               >
                 Bize Katıl
               </Link>
@@ -105,7 +105,7 @@ export default function EtkinliklerPage() {
                               href={e.kayit}
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="rounded-full bg-gradient-to-r from-gama-600 to-cyan-500 px-5 py-2 text-xs text-white transition-all hover:shadow-[0_0_16px_rgba(34,211,238,0.5)]"
+                              className="rounded-full bg-gradient-to-r from-gama-600 to-gama-500 px-5 py-2 text-xs text-white transition-all hover:shadow-[0_0_16px_rgba(96,165,250,0.5)]"
                             >
                               Kayıt Ol
                             </a>

@@ -20,7 +20,7 @@ export function TurkeyMap() {
   const aktifSayisi = iller.filter((p) => koordinatorler[p.il]).length;
 
   return (
-    <div className="rounded-3xl border border-white/10 bg-[#070b14]/60 p-4 backdrop-blur md:p-6">
+    <div className="rounded-3xl border border-white/10 bg-[#060b18]/60 p-4 backdrop-blur md:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-lg font-bold text-white">Koordinatör Haritası</h2>
         <div className="flex items-center gap-4 text-xs text-zinc-300">
@@ -44,7 +44,7 @@ export function TurkeyMap() {
         <defs>
           <linearGradient id="koor-grad" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#34d399" />
-            <stop offset="100%" stopColor="#22d3ee" />
+            <stop offset="100%" stopColor="#60a5fa" />
           </linearGradient>
           <filter id="koor-glow" x="-30%" y="-30%" width="160%" height="160%">
             <feGaussianBlur stdDeviation="4" result="blur" />

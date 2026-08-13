@@ -14,7 +14,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-gama-500/20 bg-[#070b14]/85 backdrop-blur-xl"
+      className="sticky top-0 z-50 border-b border-gama-500/20 bg-[#060b18]/85 backdrop-blur-xl"
       style={{ viewTransitionName: "site-header" }}
     >
       <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gama-400/60 to-transparent" />
@@ -25,7 +25,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
           onClick={() => setAcik(false)}
           transitionTypes={["nav-back"]}
         >
-          <Logo className="h-9 w-9 drop-shadow-[0_0_12px_rgba(56,189,248,0.5)] transition-transform group-hover:scale-105" />
+          <Logo className="h-9 w-9 drop-shadow-[0_0_12px_rgba(96,165,250,0.5)] transition-transform group-hover:scale-105" />
           <span className="text-xl font-bold tracking-tight text-white">{siteConfig.name}</span>
         </Link>
 
@@ -43,7 +43,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
                 transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
                 className={`nav-link ${
                   aktifMi
-                    ? "text-gama-300 [text-shadow:0_0_16px_rgba(56,189,248,0.5)]"
+                    ? "text-gama-300 [text-shadow:0_0_16px_rgba(96,165,250,0.5)]"
                     : "text-zinc-200 transition-colors hover:text-white"
                 }`}
               >
@@ -60,7 +60,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
           <Link
             href="/katil"
             transitionTypes={["nav-forward"]}
-            className="hidden rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-5 py-2 text-sm font-semibold text-white shadow-[0_0_18px_rgba(56,189,248,0.4)] transition-all hover:shadow-[0_0_28px_rgba(56,189,248,0.65)] sm:block"
+            className="hidden rounded-full bg-gradient-to-r from-gama-500 to-gama-400 px-5 py-2 text-sm font-semibold text-white shadow-[0_0_18px_rgba(96,165,250,0.4)] transition-all hover:shadow-[0_0_28px_rgba(96,165,250,0.65)] sm:block"
           >
             Katıl
           </Link>
@@ -104,7 +104,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
         }`}
       >
         <div className="overflow-hidden">
-          <nav className="border-t border-white/10 bg-[#070b14]/95 px-4 py-4 backdrop-blur-xl">
+          <nav className="border-t border-white/10 bg-[#060b18]/95 px-4 py-4 backdrop-blur-xl">
             <div className="mb-3 md:hidden">
               <SiteArama veriler={veriler} />
             </div>
@@ -127,7 +127,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
                 href="/katil"
                 onClick={() => setAcik(false)}
                 transitionTypes={["nav-forward"]}
-                className="mt-2 rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-5 py-2.5 text-center text-sm font-semibold text-white"
+                className="mt-2 rounded-full bg-gradient-to-r from-gama-500 to-gama-400 px-5 py-2.5 text-center text-sm font-semibold text-white"
               >
                 Katıl
               </Link>

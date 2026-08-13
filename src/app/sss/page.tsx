@@ -146,14 +146,14 @@ export default function SssPage() {
       </Reveal>
 
       <Reveal delay={120}>
-        <div className="mt-10 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081426] via-[#0a1526] to-[#071120] p-8 text-center">
+        <div className="mt-10 rounded-3xl border border-white/10 bg-gradient-to-br from-[#0c1a33] via-[#102348] to-[#0a1526] p-8 text-center">
           <h2 className="text-lg font-bold text-white">Aradığını bulamadın mı?</h2>
           <p className="mt-2 text-sm text-zinc-300">
             Sorunu bize ilet, en kısa sürede cevaplayalım.
           </p>
           <a
             href="mailto:gamaturkiye@gmail.com"
-            className="mt-5 inline-block rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(56,189,248,0.55)]"
+            className="mt-5 inline-block rounded-full bg-gradient-to-r from-gama-500 to-gama-400 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(96,165,250,0.55)]"
           >
             Bize Yaz
           </a>

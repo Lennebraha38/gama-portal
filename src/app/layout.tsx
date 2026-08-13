@@ -9,7 +9,7 @@ import { Analytics } from "@/components/Analytics";
 import { aramaVerileri } from "@/lib/arama";
 
 export const viewport: Viewport = {
-  themeColor: "#070b14",
+  themeColor: "#060b18",
 };
 
 const spaceGrotesk = Space_Grotesk({
