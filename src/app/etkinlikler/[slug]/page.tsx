@@ -9,7 +9,9 @@ import { siteConfig } from "@/lib/site";
 type Props = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return tumEtkinlikler().map((e) => ({ slug: e.slug }));
+  const etkinlikler = tumEtkinlikler();
+  if (etkinlikler.length === 0) return [{ slug: "bos" }];
+  return etkinlikler.map((e) => ({ slug: e.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
