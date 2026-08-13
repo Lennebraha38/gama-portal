@@ -12,15 +12,15 @@ export function Reveal({
   className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [goruldu, setGoruldu] = useState(false);
+  const [goruldu, setGoruldu] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setGoruldu(true);
-      return;
-    }
     const io = new IntersectionObserver(
       ([g]) => {
         if (g.isIntersecting) {

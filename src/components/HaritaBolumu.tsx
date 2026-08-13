@@ -17,15 +17,15 @@ const TurkeyMap = dynamic(() =>
 
 export function HaritaBolumu() {
   const ref = useRef<HTMLDivElement>(null);
-  const [gorunur, setGorunur] = useState(false);
+  const [gorunur, setGorunur] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setGorunur(true);
-      return;
-    }
     const io = new IntersectionObserver(
       ([g]) => {
         if (g.isIntersecting) {
