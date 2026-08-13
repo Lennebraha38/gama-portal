@@ -30,7 +30,7 @@ jobs:
           fi
 
       - name: Domain geçişini uygula
-        if: steps.pr.outputs.merged == 'True'
+        if: "steps.pr.outputs.merged == True"
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -39,12 +39,12 @@ jobs:
           git diff --stat
 
       - name: Commit ve push
-        if: steps.pr.outputs.merged == 'True'
+        if: "steps.pr.outputs.merged == True"
         run: |
           git add -A
           git commit -m "gama.is-a.dev alan adına otomatik geçiş (is-a.dev PR merged)" || echo "değişiklik yok"
           git push origin main
 
       - name: Merge değilse açık durum etiketi
-        if: steps.pr.outputs.merged != 'True'
-        run: echo "Beklemede: gama.is-a.dev PR #46913 hâlâ açık. Merge olunca workflow otomatik geçişi yapar."
+        if: "steps.pr.outputs.merged != True"
+        run: 'echo "Merge değilse bekleme durumu: gama.is-a.dev PR #46913 hâlâ açık"'
