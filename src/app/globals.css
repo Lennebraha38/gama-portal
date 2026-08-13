@@ -270,6 +270,200 @@ html {
   background: linear-gradient(90deg, transparent, rgba(51, 100, 255, 0.5), rgba(34, 211, 238, 0.4), transparent);
 }
 
+/* ============ 3D & scroll-driven (2026 trendleri) ============ */
+
+/* 1) Üstte scroll ilerleme çubuğu — CSS scroll-timeline ile JS'siz */
+@keyframes scroll-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 200;
+  transform-origin: left center;
+  background: linear-gradient(90deg, #3364ff, #a78bfa, #22d3ee);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+  animation: scroll-progress linear both;
+  animation-timeline: scroll(root);
+}
+
+/* 2) Görünüm-tabanlı 3D açılış: kartlar viewport'a girerken perspective rotateX */
+@keyframes reveal-3d {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) rotateX(18deg) translateY(48px) scale(0.96);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+.reveal-3d {
+  animation: reveal-3d 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 45%;
+  will-change: transform, opacity, filter;
+}
+
+/* 3) Para-3D: section'lar scroll ederken hafif derinlik kayması */
+@keyframes depth-drift {
+  from { transform: perspective(1000px) translateZ(60px) scale(1.02); }
+  to { transform: perspective(1000px) translateZ(0) scale(1); }
+}
+.depth-drift {
+  animation: depth-drift linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 60%;
+}
+
+/* 4) preserve-3d alanı (3D sahne kabı) */
+.preserve-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* 5) Dönen 3D şekiller — hero için */
+@keyframes spin3d-y {
+  from { transform: rotateY(0deg); }
+  to { transform: rotateY(360deg); }
+}
+.spin3d-y {
+  animation: spin3d-y 14s linear infinite;
+  will-change: transform;
+}
+@keyframes spin3d-x {
+  from { transform: rotateX(55deg) rotateZ(0deg); }
+  to { transform: rotateX(55deg) rotateZ(360deg); }
+}
+.spin3d-x {
+  animation: spin3d-x 22s linear infinite;
+  will-change: transform;
+}
+
+/* 6) 3D kart hover — kaldırma efekti */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-3d > * {
+  transform: translateZ(24px);
+}
+@media (hover: hover) {
+  .card-3d:hover {
+    transform: rotateX(5deg) rotateY(-5deg) scale(1.02);
+  }
+}
+
+/* TiltCard spotlight — hover'da mouse takipli parlama */
+.tilt-spotlight:hover .tilt-spotlight-overlay {
+  opacity: 1;
+}
+
+/* 11) Hero 3D hologram halkaları */
+@keyframes ring-orbit {
+  from { transform: rotateX(72deg) rotateZ(0deg); }
+  to { transform: rotateX(72deg) rotateZ(360deg); }
+}
+@keyframes ring-orbit-rev {
+  from { transform: rotateX(72deg) rotateZ(360deg); }
+  to { transform: rotateX(72deg) rotateZ(0deg); }
+}
+.hero-ring {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  transform-style: preserve-3d;
+  border-radius: 9999px;
+  will-change: transform;
+}
+.hero-ring-a {
+  animation: ring-orbit 16s linear infinite;
+}
+.hero-ring-b {
+  animation: ring-orbit-rev 22s linear infinite;
+}
+
+/* 12) Hero scroll-out — hero scroll'da süzülerek kaybolur */
+@keyframes hero-out {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-70px); opacity: 0.3; }
+}
+.hero-parallax {
+  animation: hero-out linear both;
+  animation-timeline: scroll(root);
+  animation-range: 0 500px;
+}
+
+/* 7) Mikro-etkileşim: nav link altı çizgi animasyonu */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #3364ff, #22d3ee);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* 8) Text-reveal: kelime kelime gelen overlay başlıklar (hero için) */
+@keyframes word-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.6em) rotateX(60deg);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+.hero-word {
+  display: inline-block;
+  opacity: 0;
+  animation: word-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  will-change: transform, opacity, filter;
+  transform-style: preserve-3d;
+}
+
+/* 9) Scroll velocity ile hareket eden hero ışığı (hafif parallax) */
+
+/* 10) Cihaz/grafik şeridi — engellerin üstünde ışık süzülmesi */
+@keyframes light-sweep {
+  0% { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
+  25% { opacity: 0.7; }
+  100% { transform: translateX(220%) skewX(-18deg); opacity: 0; }
+}
+.light-sweep {
+  animation: light-sweep 5.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Bentu grid hücresi */
+.bento-cell {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+}
+.bento-cell:hover {
+  transform: translateY(-4px);
+}
+
 ::view-transition {
   pointer-events: none;
 }
@@ -342,11 +536,27 @@ html {
   .animate-twinkle,
   .animate-float-slow,
   .live-dot::after,
-  .btn-shine::after {
+  .btn-shine::after,
+  .hero-word,
+  .spin3d-y,
+  .spin3d-x,
+  .light-sweep,
+  .hero-ring-a,
+  .hero-ring-b {
     animation: none;
+    opacity: 1;
   }
 
   .card-glass:hover {
+    transform: none;
+  }
+
+  .reveal-3d,
+  .depth-drift,
+  .hero-parallax {
+    animation: none;
+    opacity: 1;
+    filter: none;
     transform: none;
   }
 

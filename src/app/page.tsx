@@ -8,6 +8,7 @@ import { SubmitForm } from "@/components/SubmitForm";
 import { PageTransition } from "@/components/PageTransition";
 import { Reveal } from "@/components/Reveal";
 import { TiltCard } from "@/components/TiltCard";
+import { Magnet } from "@/components/Magnet";
 
 const icons = {
   kaynak: (
@@ -47,40 +48,66 @@ export default function Home() {
   return (
     <PageTransition>
       <div className="flex flex-1 flex-col">
-      <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center overflow-visible px-4 pb-24 pt-28 text-center md:pt-36">
+      <section className="hero-parallax relative mx-auto flex w-full max-w-6xl flex-col items-center overflow-visible px-4 pb-24 pt-28 text-center md:pt-36">
         <div aria-hidden className="pointer-events-none absolute left-1/2 top-[-160px] -z-10 h-[560px] w-[560px] -translate-x-1/2 animate-float-slow rounded-full conic-glow opacity-25 blur-[110px]" />
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-[-260px] -z-10 h-[700px] w-[900px] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(51,100,255,0.25),transparent_65%)]"
         />
+        <div aria-hidden className="preserve-3d pointer-events-none absolute left-1/2 top-[70%] -z-10 h-[540px] w-[540px] -translate-x-1/2 -translate-y-1/2 opacity-60">
+          <div className="hero-ring hero-ring-a h-full w-full border border-gama-500/40 shadow-[inset_0_0_60px_rgba(139,92,246,0.18)]" />
+          <div className="hero-ring hero-ring-b h-[80%] w-[80%] border border-cyan-400/30 shadow-[inset_0_0_50px_rgba(34,211,238,0.12)]" />
+          <div className="hero-ring hero-ring-a h-[55%] w-[55%] border border-violet-400/25" />
+        </div>
         <div className="animate-fade-up flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-zinc-200 backdrop-blur">
           <Logo className="h-5 w-5" />
           <span className="live-dot h-2 w-2 rounded-full bg-emerald-400" />
           Türkiye&apos;nin gençlik araştırma-geliştirme birliği
         </div>
-        <h1 className="animate-fade-up delay-100 mt-8 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl lg:text-7xl">
-          Teknolojik ve bilimsel bağımsızlık için{" "}
-          <span className="glow-text text-gradient">gençler</span>{" "}
-          buluşuyor.
+        <h1 className="mt-8 max-w-5xl text-5xl font-extrabold leading-[1.12] tracking-tight md:text-7xl lg:text-8xl">
+          {"Teknolojik ve bilimsel bağımsızlık için".split(" ").map((w, i) => (
+            <span key={`a${i}`} className="hero-word" style={{ animationDelay: `${i * 70}ms` }}>
+              {w}{" "}
+            </span>
+          ))}
+          <span
+            className="hero-word glow-text text-gradient"
+            style={{ animationDelay: `${6 * 70}ms` }}
+          >
+            gençler{" "}
+          </span>
+          {"buluşuyor.".split(" ").map((w, i) => (
+            <span
+              key={`b${i}`}
+              className="hero-word"
+              style={{ animationDelay: `${(7 + i) * 70}ms` }}
+            >
+              {w}{" "}
+            </span>
+          ))}
         </h1>
         <p className="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-8 text-zinc-100">
           {siteConfig.mission}
         </p>
         <div className="animate-fade-up delay-300 mt-10 flex flex-col gap-3 sm:flex-row">
-          <Link
-            href="/katil"
-            transitionTypes={["nav-forward"]}
-            className="btn-shine rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-8 py-3.5 font-semibold text-white shadow-[0_0_28px_rgba(139,92,246,0.5)] transition-all hover:shadow-[0_0_44px_rgba(139,92,246,0.8)]"
-          >
-            Bize Katıl
-          </Link>
-          <Link
-            href="/iller"
-            transitionTypes={["nav-forward"]}
-            className="rounded-full border border-white/20 bg-white/5 px-8 py-3.5 font-semibold text-white backdrop-blur transition-colors hover:border-white/40 hover:bg-white/10"
-          >
-            İl Temsilcileri
-          </Link>
+          <Magnet>
+            <Link
+              href="/katil"
+              transitionTypes={["nav-forward"]}
+              className="btn-shine inline-block rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-8 py-3.5 font-semibold text-white shadow-[0_0_28px_rgba(139,92,246,0.5)] transition-all hover:shadow-[0_0_44px_rgba(139,92,246,0.8)]"
+            >
+              Bize Katıl
+            </Link>
+          </Magnet>
+          <Magnet>
+            <Link
+              href="/iller"
+              transitionTypes={["nav-forward"]}
+              className="inline-block rounded-full border border-white/20 bg-white/5 px-8 py-3.5 font-semibold text-white backdrop-blur transition-colors hover:border-white/40 hover:bg-white/10"
+            >
+              İl Temsilcileri
+            </Link>
+          </Magnet>
         </div>
         <Stats />
       </section>
@@ -207,22 +234,57 @@ export default function Home() {
             Sana ne sunuyoruz?
           </h2>
         </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 md:grid-cols-4 md:grid-rows-[repeat(2,minmax(0,1fr))]">
           {siteConfig.pillars.map((pillar, i) => (
-            <Reveal key={pillar.title} delay={i * 120}>
-              <TiltCard className="h-full">
-                <div className="card-glass group h-full rounded-2xl p-6 backdrop-blur">
+            <Reveal
+              key={pillar.title}
+              delay={i * 120}
+              className={i === 0 ? "md:col-span-2 md:row-span-2" : ""}
+            >
+              <TiltCard className="h-full" spotlight={i === 0}>
+                <div
+                  className={`card-glass bento-cell group h-full rounded-2xl p-6 backdrop-blur ${
+                    i === 0 ? "flex flex-col justify-between gap-8 p-8" : ""
+                  }`}
+                >
                   <span
                     className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${iconGradients[i]} text-white shadow-lg`}
                   >
                     {iconMap[i]}
                   </span>
-                  <h3 className="mt-4 text-lg font-semibold text-white">{pillar.title}</h3>
-                  <p className="mt-2 text-sm leading-6 text-zinc-200">{pillar.description}</p>
+                  <div>
+                    <h3 className="mt-4 text-lg font-semibold text-white">{pillar.title}</h3>
+                    <p className="mt-2 text-sm leading-6 text-zinc-200">
+                      {i === 0
+                        ? `${pillar.description} Kaynak havuzu, proje dosyaları ve öğrenme materyalleri her üyeye açık.`
+                        : pillar.description}
+                    </p>
+                  </div>
                 </div>
               </TiltCard>
             </Reveal>
           ))}
+          <Reveal delay={360}>
+            <Link
+              href="/iller"
+              transitionTypes={["nav-forward"]}
+              className="card-glass bento-cell group relative flex h-full items-center justify-between gap-4 overflow-hidden rounded-2xl p-6 backdrop-blur md:col-span-2"
+            >
+              <div
+                aria-hidden
+                className="light-sweep absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-transparent via-white/10 to-transparent"
+              />
+              <div>
+                <h3 className="text-lg font-semibold text-white">81 ilde temsilcilik ağı</h3>
+                <p className="mt-1 text-sm leading-6 text-zinc-200">
+                  Şehrindeki temsilciyi bul, yerel etkinliklere katıl.
+                </p>
+              </div>
+              <span className="text-gama-400 transition-transform group-hover:translate-x-1">
+                Keşfet →
+              </span>
+            </Link>
+          </Reveal>
         </div>
       </section>
 
@@ -240,7 +302,7 @@ export default function Home() {
               <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 {siteConfig.manifesto.map((m, i) => (
                   <Reveal key={m.baslik} delay={i * 100}>
-                    <TiltCard className="h-full">
+                    <TiltCard className="h-full" spotlight>
                       <div className="card-glass h-full rounded-2xl p-6 backdrop-blur">
                         <span className="text-gradient text-3xl font-extrabold">
                           {String(i + 1).padStart(2, "0")}

@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
+import { LenisSmooth } from "@/components/LenisSmooth";
 import { siteConfig } from "@/lib/site";
 import { Analytics } from "@/components/Analytics";
 import { aramaVerileri } from "@/lib/arama";
@@ -95,6 +96,8 @@ export default function RootLayout(props: LayoutProps<"/">) {
         }}
       />
         <Analytics />
+        <div className="scroll-progress" aria-hidden />
+        <LenisSmooth />
         <AnimatedBackground />
         <Header veriler={aramaVerileri()} />
         <main className="relative z-10 flex flex-1 flex-col">{props.children}</main>

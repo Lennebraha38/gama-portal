@@ -42,11 +42,11 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
                 href={item.href}
                 aria-current={aktif ? "page" : undefined}
                 transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
-                className={
+                className={`nav-link ${
                   aktif
                     ? "text-white [text-shadow:0_0_20px_rgba(139,92,246,0.6)]"
                     : "text-zinc-100 transition-colors hover:text-white"
-                }
+                }`}
               >
                 {item.label}
               </Link>

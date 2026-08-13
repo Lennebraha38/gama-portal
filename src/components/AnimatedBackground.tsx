@@ -34,9 +34,9 @@ export function AnimatedBackground() {
           )}px, 0)`;
         }
         if (izgara.current) {
-          izgara.current.style.transform = `translate3d(${(-x * 10).toFixed(2)}px, ${(-y * 8).toFixed(
+          izgara.current.style.transform = `perspective(1200px) rotateX(12deg) translate3d(${(-x * 10).toFixed(
             2
-          )}px, 0)`;
+          )}px, ${(-y * 8).toFixed(2)}px, 0)`;
         }
       });
     }
@@ -65,7 +65,7 @@ export function AnimatedBackground() {
       <div
         ref={izgara}
         className="bg-grid absolute inset-0"
-        style={{ willChange: "transform" }}
+        style={{ willChange: "transform", transformOrigin: "center 110%" }}
       />
       {particles.map((p, i) => (
         <span
