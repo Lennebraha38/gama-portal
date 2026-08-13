@@ -20,7 +20,7 @@ export default function GlobalError({
       <h1 className="mt-4 text-xl font-bold text-white md:text-2xl">
         Bir şeyler ters gitti
       </h1>
-      <p className="mt-3 max-w-md text-zinc-200">
+      <p className="mt-3 max-w-md text-zinc-300">
         Beklenmedik bir hata oluştu. Sayfayı yeniden yüklemeyi deneyebilir veya
         iletişime geçebilirsin.
       </p>
@@ -28,7 +28,7 @@ export default function GlobalError({
         <button
           type="button"
           onClick={reset}
-          className="rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
+          className="rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(56,189,248,0.55)]"
         >
           Tekrar Dene
         </button>

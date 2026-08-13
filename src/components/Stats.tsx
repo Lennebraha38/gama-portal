@@ -40,7 +40,7 @@ function Sayac({ hedef }: { hedef: number }) {
   }, [goruldu, hedef]);
 
   return (
-    <p ref={ref} className="text-2xl font-extrabold text-white md:text-3xl">
+    <p ref={ref} className="text-xl font-extrabold text-white md:text-2xl">
       {deger.toLocaleString("tr-TR")}
     </p>
   );
@@ -48,18 +48,18 @@ function Sayac({ hedef }: { hedef: number }) {
 
 export function Stats() {
   return (
-    <div className="animate-fade-up delay-400 mt-16 grid w-full max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4">
+    <div className="grid w-full grid-cols-2 gap-3">
       {siteConfig.stats.map((s) => (
         <div
           key={s.etiket}
-          className="card-glass rounded-2xl px-4 py-5 backdrop-blur"
+          className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-4"
         >
           {"hedef" in s && s.hedef ? (
             <Sayac hedef={s.hedef} />
           ) : (
-            <p className="text-2xl font-extrabold text-white md:text-3xl">{s.deger}</p>
+            <p className="text-xl font-extrabold text-white md:text-2xl">{s.deger}</p>
           )}
-          <p className="mt-1 text-xs font-medium text-zinc-200 md:text-sm">{s.etiket}</p>
+          <p className="mt-1 text-xs font-medium text-zinc-400 md:text-sm">{s.etiket}</p>
         </div>
       ))}
     </div>

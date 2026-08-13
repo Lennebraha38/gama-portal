@@ -17,8 +17,11 @@ export default function HakkimizdaPage() {
     <PageTransition>
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
         <Reveal>
-          <div className="flex items-center gap-4">
-            <Logo className="h-12 w-12 drop-shadow-[0_0_16px_rgba(51,100,255,0.6)]" />
+          <p className="sys-label">
+            Sistem 01 <span className="text-zinc-500">/</span> Gama
+          </p>
+          <div className="mt-4 flex items-center gap-4">
+            <Logo className="h-12 w-12 drop-shadow-[0_0_16px_rgba(56,189,248,0.6)]" />
             <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
               Hakkımızda
             </h1>
@@ -34,17 +37,25 @@ export default function HakkimizdaPage() {
           </p>
         </Reveal>
         <Reveal delay={150}>
-          <p className="mt-8 rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-4 text-sm text-zinc-300 backdrop-blur">
-            Detaylı vizyon, misyon ve kurumsal bilgiler yakında eklenecek.
+          <p className="mt-8 rounded-2xl border border-gama-500/20 bg-gama-500/[0.06] px-5 py-4 font-mono text-sm text-zinc-300 backdrop-blur">
+            &gt; Detaylı vizyon, misyon ve kurumsal bilgiler yakında eklenecek.
           </p>
         </Reveal>
 
       <Reveal delay={120}>
         <div className="mt-16">
-        <h2 className="text-2xl font-bold tracking-tight md:text-3xl">Mentor Kadromuz</h2>
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <p className="sys-label">
+              Sistem 02 <span className="text-zinc-500">/</span> Gama
+            </p>
+            <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">Mentor Kadromuz</h2>
+          </div>
+        </div>
         <p className="mt-2 text-sm leading-6 text-zinc-200">
           Alanında uzman mentorlarla gençlerimizi birebir buluşturuyoruz.
         </p>
+        <div aria-hidden className="section-line mt-5" />
 
         {mentors.length === 0 ? (
           <div className="mt-8 flex flex-col items-center rounded-3xl border border-dashed border-white/20 bg-white/[0.03] p-12 text-center backdrop-blur">
@@ -59,7 +70,7 @@ export default function HakkimizdaPage() {
             <Link
               href="/temsilci"
               transitionTypes={["nav-forward"]}
-              className="mt-7 rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
+              className="mt-7 rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-6 py-2.5 text-sm font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(56,189,248,0.55)]"
             >
               Mentor Olmak İstiyorum
             </Link>

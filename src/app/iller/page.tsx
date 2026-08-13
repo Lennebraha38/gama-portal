@@ -19,10 +19,13 @@ export default function IllerPage() {
         <Reveal>
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-              <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+              <p className="sys-label">
+                Sistem 01 <span className="text-zinc-500">/</span> Gama
+              </p>
+              <h1 className="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">
                 İl Temsilcileri
               </h1>
-              <p className="mt-3 max-w-2xl text-zinc-200">
+              <p className="mt-3 max-w-2xl text-zinc-300">
                 Türkiye&apos;nin <span className="font-semibold text-white">{toplamIl} ili</span>{" "}
                 ve 7 bölgesinde Gama&apos;yı temsil eden koordinatörlerimiz seni
                 bekliyor. Atanmamış illere tıklayarak başvur!

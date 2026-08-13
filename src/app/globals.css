@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #050816;
-  --foreground: #e2e8f0;
+  --background: #070b14;
+  --foreground: #dbe3f0;
 }
 
 @theme inline {
@@ -13,17 +13,17 @@
 }
 
 @theme {
-  --color-gama-50: #eef4ff;
-  --color-gama-100: #d9e6ff;
-  --color-gama-200: #bcd3ff;
-  --color-gama-300: #8eb6ff;
-  --color-gama-400: #598dff;
-  --color-gama-500: #3364ff;
-  --color-gama-600: #1e3ff2;
-  --color-gama-700: #1a30d9;
-  --color-gama-800: #1d2db0;
-  --color-gama-900: #1d2d8a;
-  --color-gama-950: #172054;
+  --color-gama-50: #f0f9ff;
+  --color-gama-100: #e0f2fe;
+  --color-gama-200: #bae6fd;
+  --color-gama-300: #7dd3fc;
+  --color-gama-400: #38bdf8;
+  --color-gama-500: #0ea5e9;
+  --color-gama-600: #0284c7;
+  --color-gama-700: #0369a1;
+  --color-gama-800: #075985;
+  --color-gama-900: #0c4a6e;
+  --color-gama-950: #082f49;
 }
 
 body {
@@ -164,9 +164,44 @@ html {
   animation-delay: 0.5s;
 }
 
+/* ============ Yeni tasarım sistemi: "Sistem/Gama" ============ */
+
+/* sistem etiketi — monospace mikro başlık */
+.sys-label {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-gama-400);
+}
+
+/* bölüm numarası (01, 02…) */
+.section-num {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--color-gama-400);
+}
+
+/* bölüm başlığı çizgisi */
+.section-line {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(56, 189, 248, 0.4), rgba(56, 189, 248, 0.05) 70%, transparent);
+}
+
+/* marka gradienti — cyan/sky ailesi */
 .text-gradient {
-  background: linear-gradient(90deg, #3364ff, #a78bfa, #22d3ee, #3364ff);
-  background-size: 300% 100%;
+  background: linear-gradient(90deg, #38bdf8, #22d3ee 45%, #7dd3fc 80%, #38bdf8);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-amber {
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -179,38 +214,55 @@ html {
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
 }
 
-/* gradient kenarlık + cam efektli kartlar */
+/* panel kart — üst aksan çizgili koyu yüzey (glass yerine) */
 .card-glass {
+  position: relative;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)) padding-box,
-    linear-gradient(160deg, rgba(51, 100, 255, 0.45), rgba(139, 92, 246, 0.2) 40%, rgba(34, 211, 238, 0.4)) border-box;
+    linear-gradient(180deg, rgba(56, 189, 248, 0.05), rgba(56, 189, 248, 0.012)) padding-box,
+    linear-gradient(165deg, rgba(56, 189, 248, 0.35), rgba(13, 19, 34, 0.9) 45%, rgba(34, 211, 238, 0.22)) border-box;
   border: 1px solid transparent;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-glass::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #38bdf8, #22d3ee, transparent 85%);
+  opacity: 0.75;
 }
 .card-glass:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 48px -12px rgba(51, 100, 255, 0.35), 0 0 24px -6px rgba(34, 211, 238, 0.15);
+  box-shadow: 0 16px 48px -14px rgba(14, 165, 233, 0.35);
 }
 
-/* konik ışık halesi (hero için) */
+/* panel içeriği (CTA zeminleri) */
+.panel-grad {
+  background: linear-gradient(135deg, #0a1526 0%, #0e1d33 45%, #0a1222 100%);
+}
+
+/* konik ışık halesi — cyan */
 .conic-glow {
   background: conic-gradient(
     from 90deg at 50% 50%,
-    #3364ff 0deg,
-    #a78bfa 90deg,
-    #22d3ee 180deg,
-    #a78bfa 270deg,
-    #3364ff 360deg
+    #0ea5e9 0deg,
+    #22d3ee 90deg,
+    #7dd3fc 180deg,
+    #22d3ee 270deg,
+    #0ea5e9 360deg
   );
 }
 
 /* hero başlık altına parlayan çizgi */
 .hero-glow-line {
-  background: linear-gradient(90deg, transparent, #3364ff, #a78bfa, #22d3ee, transparent);
+  background: linear-gradient(90deg, transparent, #38bdf8, #22d3ee, transparent);
   height: 1px;
 }
 
-/* yumuşak vurgu noktası (live dot) */
+/* yumuşak vurgu noktası (canlı göstergesi — amber) */
 .live-dot {
   position: relative;
   display: inline-flex;
@@ -220,7 +272,7 @@ html {
   position: absolute;
   inset: -4px;
   border-radius: 9999px;
-  background: rgba(52, 211, 153, 0.5);
+  background: rgba(251, 191, 36, 0.45);
   animation: live-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 @keyframes live-ping {
@@ -234,173 +286,12 @@ html {
   }
 }
 
-/* metin parıltısı (hero başlığındaki span'ler için) */
+/* metin parıltısı */
 .glow-text {
-  text-shadow: 0 0 32px rgba(139, 92, 246, 0.45), 0 0 64px rgba(34, 211, 238, 0.2);
+  text-shadow: 0 0 28px rgba(56, 189, 248, 0.4), 0 0 60px rgba(34, 211, 238, 0.18);
 }
 
-/* buton parıltısı */
-.btn-shine {
-  position: relative;
-  overflow: hidden;
-}
-.btn-shine::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150%;
-  height: 100%;
-  width: 60%;
-  transform: skewX(-20deg);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
-  animation: btn-shine 3.2s ease-in-out infinite;
-}
-@keyframes btn-shine {
-  0% {
-    left: -150%;
-  }
-  55%, 100% {
-    left: 200%;
-  }
-}
-
-/* üst çizgili section ayracı */
-.section-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(51, 100, 255, 0.5), rgba(34, 211, 238, 0.4), transparent);
-}
-
-/* ============ 3D & scroll-driven (2026 trendleri) ============ */
-
-/* 1) Üstte scroll ilerleme çubuğu — CSS scroll-timeline ile JS'siz */
-@keyframes scroll-progress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-.scroll-progress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  z-index: 200;
-  transform-origin: left center;
-  background: linear-gradient(90deg, #3364ff, #a78bfa, #22d3ee);
-  box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
-  animation: scroll-progress linear both;
-  animation-timeline: scroll(root);
-}
-
-/* 2) Görünüm-tabanlı 3D açılış: kartlar viewport'a girerken perspective rotateX */
-@keyframes reveal-3d {
-  from {
-    opacity: 0;
-    transform: perspective(1200px) rotateX(18deg) translateY(48px) scale(0.96);
-    filter: blur(4px);
-  }
-  to {
-    opacity: 1;
-    transform: perspective(1200px) rotateX(0deg) translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-.reveal-3d {
-  animation: reveal-3d 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 45%;
-  will-change: transform, opacity, filter;
-}
-
-/* 3) Para-3D: section'lar scroll ederken hafif derinlik kayması */
-@keyframes depth-drift {
-  from { transform: perspective(1000px) translateZ(60px) scale(1.02); }
-  to { transform: perspective(1000px) translateZ(0) scale(1); }
-}
-.depth-drift {
-  animation: depth-drift linear both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 60%;
-}
-
-/* 4) preserve-3d alanı (3D sahne kabı) */
-.preserve-3d {
-  transform-style: preserve-3d;
-  perspective: 1000px;
-}
-
-/* 5) Dönen 3D şekiller — hero için */
-@keyframes spin3d-y {
-  from { transform: rotateY(0deg); }
-  to { transform: rotateY(360deg); }
-}
-.spin3d-y {
-  animation: spin3d-y 14s linear infinite;
-  will-change: transform;
-}
-@keyframes spin3d-x {
-  from { transform: rotateX(55deg) rotateZ(0deg); }
-  to { transform: rotateX(55deg) rotateZ(360deg); }
-}
-.spin3d-x {
-  animation: spin3d-x 22s linear infinite;
-  will-change: transform;
-}
-
-/* 6) 3D kart hover — kaldırma efekti */
-.card-3d {
-  transform-style: preserve-3d;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.card-3d > * {
-  transform: translateZ(24px);
-}
-@media (hover: hover) {
-  .card-3d:hover {
-    transform: rotateX(5deg) rotateY(-5deg) scale(1.02);
-  }
-}
-
-/* TiltCard spotlight — hover'da mouse takipli parlama */
-.tilt-spotlight:hover .tilt-spotlight-overlay {
-  opacity: 1;
-}
-
-/* 11) Hero 3D hologram halkaları */
-@keyframes ring-orbit {
-  from { transform: rotateX(72deg) rotateZ(0deg); }
-  to { transform: rotateX(72deg) rotateZ(360deg); }
-}
-@keyframes ring-orbit-rev {
-  from { transform: rotateX(72deg) rotateZ(360deg); }
-  to { transform: rotateX(72deg) rotateZ(0deg); }
-}
-.hero-ring {
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  transform-style: preserve-3d;
-  border-radius: 9999px;
-  will-change: transform;
-}
-.hero-ring-a {
-  animation: ring-orbit 16s linear infinite;
-}
-.hero-ring-b {
-  animation: ring-orbit-rev 22s linear infinite;
-}
-
-/* 12) Hero scroll-out — hero scroll'da süzülerek kaybolur */
-@keyframes hero-out {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-70px); opacity: 0.3; }
-}
-.hero-parallax {
-  animation: hero-out linear both;
-  animation-timeline: scroll(root);
-  animation-range: 0 500px;
-}
-
-/* 7) Mikro-etkileşim: nav link altı çizgi animasyonu */
+/* nav link altı çizgi animasyonu */
 .nav-link {
   position: relative;
 }
@@ -412,7 +303,7 @@ html {
   bottom: -4px;
   height: 2px;
   border-radius: 2px;
-  background: linear-gradient(90deg, #3364ff, #22d3ee);
+  background: linear-gradient(90deg, #38bdf8, #22d3ee);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
@@ -422,46 +313,18 @@ html {
   transform: scaleX(1);
 }
 
-/* 8) Text-reveal: kelime kelime gelen overlay başlıklar (hero için) */
-@keyframes word-up {
-  from {
-    opacity: 0;
-    transform: translateY(0.6em) rotateX(60deg);
-    filter: blur(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) rotateX(0);
-    filter: blur(0);
-  }
-}
-.hero-word {
-  display: inline-block;
-  opacity: 0;
-  animation: word-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  will-change: transform, opacity, filter;
-  transform-style: preserve-3d;
-}
-
-/* 9) Scroll velocity ile hareket eden hero ışığı (hafif parallax) */
-
-/* 10) Cihaz/grafik şeridi — engellerin üstünde ışık süzülmesi */
-@keyframes light-sweep {
-  0% { transform: translateX(-120%) skewX(-18deg); opacity: 0; }
-  25% { opacity: 0.7; }
-  100% { transform: translateX(220%) skewX(-18deg); opacity: 0; }
-}
-.light-sweep {
-  animation: light-sweep 5.5s ease-in-out infinite;
-  will-change: transform, opacity;
-}
-
-/* Bentu grid hücresi */
+/* bento hücresi */
 .bento-cell {
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
 }
 .bento-cell:hover {
   transform: translateY(-4px);
+}
+
+/* üst çizgili section ayracı */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.45), rgba(34, 211, 238, 0.3), transparent);
 }
 
 ::view-transition {
@@ -535,28 +398,12 @@ html {
   .animate-drift-3,
   .animate-twinkle,
   .animate-float-slow,
-  .live-dot::after,
-  .btn-shine::after,
-  .hero-word,
-  .spin3d-y,
-  .spin3d-x,
-  .light-sweep,
-  .hero-ring-a,
-  .hero-ring-b {
+  .live-dot::after {
     animation: none;
     opacity: 1;
   }
 
   .card-glass:hover {
-    transform: none;
-  }
-
-  .reveal-3d,
-  .depth-drift,
-  .hero-parallax {
-    animation: none;
-    opacity: 1;
-    filter: none;
     transform: none;
   }
 

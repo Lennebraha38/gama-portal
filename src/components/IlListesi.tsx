@@ -71,7 +71,7 @@ export function IlListesi() {
                     <span
                       className={`h-2 w-2 shrink-0 rounded-full ${
                         atanmis
-                          ? "bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]"
+                          ? "bg-amber-400 shadow-[0_0_8px_rgba(251,191,36,0.8)]"
                           : "bg-zinc-600"
                       }`}
                     />

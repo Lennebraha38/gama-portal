@@ -20,7 +20,7 @@ export function TurkeyMap() {
   const aktifSayisi = iller.filter((p) => koordinatorler[p.il]).length;
 
   return (
-    <div className="rounded-3xl border border-white/10 bg-[#050816]/60 p-4 backdrop-blur md:p-6">
+    <div className="rounded-3xl border border-white/10 bg-[#070b14]/60 p-4 backdrop-blur md:p-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-lg font-bold text-white">Koordinatör Haritası</h2>
         <div className="flex items-center gap-4 text-xs text-zinc-300">

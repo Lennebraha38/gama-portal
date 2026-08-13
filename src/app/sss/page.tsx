@@ -88,10 +88,13 @@ export default function SssPage() {
       />
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
         <Reveal>
-          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+          <p className="sys-label">
+            Sistem 01 <span className="text-zinc-500">/</span> Gama
+          </p>
+          <h1 className="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">
             Sıkça Sorulan Sorular
           </h1>
-          <p className="mt-3 text-zinc-200">
+          <p className="mt-3 text-zinc-300">
             Aklına takılan soru burada yoksa bize yazmaktan çekinme.
           </p>
         </Reveal>
@@ -143,14 +146,14 @@ export default function SssPage() {
       </Reveal>
 
       <Reveal delay={120}>
-        <div className="mt-10 rounded-3xl border border-white/10 bg-gradient-to-br from-gama-950 via-indigo-950 to-violet-950 p-8 text-center">
+        <div className="mt-10 rounded-3xl border border-white/10 bg-gradient-to-br from-[#081426] via-[#0a1526] to-[#071120] p-8 text-center">
           <h2 className="text-lg font-bold text-white">Aradığını bulamadın mı?</h2>
           <p className="mt-2 text-sm text-zinc-300">
             Sorunu bize ilet, en kısa sürede cevaplayalım.
           </p>
           <a
             href="mailto:gamaturkiye@gmail.com"
-            className="mt-5 inline-block rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
+            className="mt-5 inline-block rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(56,189,248,0.55)]"
           >
             Bize Yaz
           </a>

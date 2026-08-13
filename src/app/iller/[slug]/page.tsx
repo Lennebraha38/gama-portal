@@ -48,7 +48,7 @@ export default async function IlDetayPage({ params }: Props) {
           <h1 className="mt-6 text-3xl font-extrabold tracking-tight md:text-4xl">
             {il.ad} İl Temsilciliği
           </h1>
-          <p className="mt-3 max-w-2xl text-zinc-200">
+          <p className="mt-3 max-w-2xl text-zinc-300">
             Gama Topluluğu&apos;nun {il.ad} koordinasyonu hakkında bilgi ve başvuru
             detayları.
           </p>

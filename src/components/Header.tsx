@@ -14,9 +14,10 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
 
   return (
     <header
-      className="sticky top-0 z-50 border-b border-white/10 bg-[#050816]/70 backdrop-blur-xl"
+      className="sticky top-0 z-50 border-b border-gama-500/20 bg-[#070b14]/85 backdrop-blur-xl"
       style={{ viewTransitionName: "site-header" }}
     >
+      <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gama-400/60 to-transparent" />
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link
           href="/"
@@ -24,15 +25,13 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
           onClick={() => setAcik(false)}
           transitionTypes={["nav-back"]}
         >
-          <Logo className="h-9 w-9 drop-shadow-[0_0_12px_rgba(51,100,255,0.6)] transition-transform group-hover:scale-105" />
-          <span className="text-xl font-bold tracking-tight drop-shadow-[0_0_16px_rgba(139,92,246,0.4)]">
-            {siteConfig.name}
-          </span>
+          <Logo className="h-9 w-9 drop-shadow-[0_0_12px_rgba(56,189,248,0.5)] transition-transform group-hover:scale-105" />
+          <span className="text-xl font-bold tracking-tight text-white">{siteConfig.name}</span>
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm font-medium md:flex" aria-label="Ana menü">
           {siteConfig.nav.map((item) => {
-            const aktif =
+            const aktifMi =
               item.href === "/"
                 ? pathname === "/"
                 : pathname === item.href || pathname.startsWith(item.href);
@@ -40,12 +39,12 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
               <Link
                 key={item.href}
                 href={item.href}
-                aria-current={aktif ? "page" : undefined}
+                aria-current={aktifMi ? "page" : undefined}
                 transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
                 className={`nav-link ${
-                  aktif
-                    ? "text-white [text-shadow:0_0_20px_rgba(139,92,246,0.6)]"
-                    : "text-zinc-100 transition-colors hover:text-white"
+                  aktifMi
+                    ? "text-gama-300 [text-shadow:0_0_16px_rgba(56,189,248,0.5)]"
+                    : "text-zinc-200 transition-colors hover:text-white"
                 }`}
               >
                 {item.label}
@@ -61,7 +60,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
           <Link
             href="/katil"
             transitionTypes={["nav-forward"]}
-            className="hidden rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-5 py-2 text-sm font-semibold text-white transition-all hover:shadow-[0_0_20px_rgba(139,92,246,0.6)] sm:block"
+            className="hidden rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-5 py-2 text-sm font-semibold text-white shadow-[0_0_18px_rgba(56,189,248,0.4)] transition-all hover:shadow-[0_0_28px_rgba(56,189,248,0.65)] sm:block"
           >
             Katıl
           </Link>
@@ -105,7 +104,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
         }`}
       >
         <div className="overflow-hidden">
-          <nav className="border-t border-white/10 bg-[#050816]/95 px-4 py-4 backdrop-blur-xl">
+          <nav className="border-t border-white/10 bg-[#070b14]/95 px-4 py-4 backdrop-blur-xl">
             <div className="mb-3 md:hidden">
               <SiteArama veriler={veriler} />
             </div>
@@ -118,7 +117,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
                   aria-current={aktif(item.href) ? "page" : undefined}
                   transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
                   className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-white/10 ${
-                    aktif(item.href) ? "bg-white/10 text-white" : "text-zinc-100"
+                    aktif(item.href) ? "bg-gama-500/10 text-gama-300" : "text-zinc-200"
                   }`}
                 >
                   {item.label}
@@ -128,7 +127,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
                 href="/katil"
                 onClick={() => setAcik(false)}
                 transitionTypes={["nav-forward"]}
-                className="mt-2 rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-5 py-2.5 text-center text-sm font-semibold text-white"
+                className="mt-2 rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-5 py-2.5 text-center text-sm font-semibold text-white"
               >
                 Katıl
               </Link>

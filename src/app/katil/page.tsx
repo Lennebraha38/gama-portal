@@ -18,10 +18,13 @@ export default function KatilPage() {
     <PageTransition>
       <div className="mx-auto flex w-full max-w-2xl flex-1 flex-col px-4 py-16">
         <Reveal>
-          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+          <p className="sys-label">
+            Sistem 01 <span className="text-zinc-500">/</span> Gama
+          </p>
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">
             Bize Katıl
           </h1>
-          <p className="mt-3 text-zinc-200">
+          <p className="mt-3 text-zinc-300">
             Formu doldur; yazılım, donanım veya mentorluk yolculuğuna ilk adımı
             atalım.
           </p>

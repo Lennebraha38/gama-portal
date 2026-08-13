@@ -34,9 +34,9 @@ export function AnimatedBackground() {
           )}px, 0)`;
         }
         if (izgara.current) {
-          izgara.current.style.transform = `perspective(1200px) rotateX(12deg) translate3d(${(-x * 10).toFixed(
+          izgara.current.style.transform = `translate3d(${(-x * 10).toFixed(2)}px, ${(-y * 8).toFixed(
             2
-          )}px, ${(-y * 8).toFixed(2)}px, 0)`;
+          )}px, 0)`;
         }
       });
     }
@@ -48,24 +48,24 @@ export function AnimatedBackground() {
   }, []);
 
   return (
-    <div aria-hidden className="fixed inset-0 -z-10 overflow-hidden bg-[#050816]">
+    <div aria-hidden className="fixed inset-0 -z-10 overflow-hidden bg-[#070b14]">
       <div
         ref={ust}
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(51,100,255,0.16),transparent_60%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(14,165,233,0.15),transparent_60%)]"
         style={{ willChange: "transform" }}
       />
       <div
         ref={alt}
-        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(139,92,246,0.12),transparent_60%)]"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(251,191,36,0.07),transparent_60%)]"
         style={{ willChange: "transform" }}
       />
-      <div className="absolute -left-32 top-[-10%] h-[500px] w-[500px] animate-drift-1 rounded-full bg-gama-600/30 blur-[120px]" />
-      <div className="absolute right-[-10%] top-[25%] h-[420px] w-[420px] animate-drift-2 rounded-full bg-violet-600/25 blur-[120px]" />
-      <div className="absolute bottom-[-20%] left-[28%] h-[460px] w-[460px] animate-drift-3 rounded-full bg-cyan-500/20 blur-[120px]" />
+      <div className="absolute -left-32 top-[-10%] h-[500px] w-[500px] animate-drift-1 rounded-full bg-gama-600/25 blur-[120px]" />
+      <div className="absolute right-[-10%] top-[25%] h-[420px] w-[420px] animate-drift-2 rounded-full bg-cyan-500/20 blur-[120px]" />
+      <div className="absolute bottom-[-20%] left-[28%] h-[460px] w-[460px] animate-drift-3 rounded-full bg-sky-800/30 blur-[120px]" />
       <div
         ref={izgara}
         className="bg-grid absolute inset-0"
-        style={{ willChange: "transform", transformOrigin: "center 110%" }}
+        style={{ willChange: "transform" }}
       />
       {particles.map((p, i) => (
         <span

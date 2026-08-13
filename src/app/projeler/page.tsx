@@ -15,10 +15,13 @@ export default function ProjectsPage() {
     <PageTransition>
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-16">
         <Reveal>
-          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+          <p className="sys-label">
+            Sistem 01 <span className="text-zinc-500">/</span> Gama
+          </p>
+          <h1 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">
             Projeler
           </h1>
-          <p className="mt-3 max-w-2xl text-zinc-200">
+          <p className="mt-3 max-w-2xl text-zinc-300">
             Gama çatısı altında yürütülecek projeler burada duyurulacak.
           </p>
         </Reveal>
@@ -36,7 +39,7 @@ export default function ProjectsPage() {
         <Link
           href="/katil"
           transitionTypes={["nav-forward"]}
-          className="mt-8 rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(139,92,246,0.6)]"
+          className="mt-8 rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(56,189,248,0.55)]"
         >
           İlk Projede Sen Ol
         </Link>
