@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 import { Logo } from "@/components/Logo";
 import { SocialIcon } from "@/components/SocialIcon";
@@ -5,12 +6,25 @@ import { SocialIcon } from "@/components/SocialIcon";
 export function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10 bg-[#050816]/70 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-10 text-sm text-zinc-300 md:flex-row md:items-center md:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 text-sm text-zinc-300 md:flex-row md:items-start md:justify-between">
         <div className="flex items-center gap-3">
           <Logo className="h-7 w-7" />
-          <span className="font-semibold text-zinc-100">{siteConfig.name}</span>
-          <span>· {siteConfig.tagline}</span>
+          <div>
+            <span className="font-semibold text-zinc-100">{siteConfig.name}</span>
+            <span> · {siteConfig.tagline}</span>
+          </div>
         </div>
+        <nav className="grid grid-cols-2 gap-x-12 gap-y-2 sm:grid-cols-3" aria-label="Hızlı bağlantılar">
+          {siteConfig.nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-zinc-300 transition-colors hover:text-white"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
         <div className="flex flex-col gap-3 md:items-end">
           <div className="flex items-center gap-2">
             {siteConfig.socials.map((s) => (

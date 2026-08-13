@@ -2,11 +2,14 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site";
 import { Logo } from "@/components/Logo";
 
 export function Header() {
   const [acik, setAcik] = useState(false);
+  const pathname = usePathname();
+  const aktif = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
 
   return (
     <header
@@ -24,17 +27,28 @@ export function Header() {
           <span className="text-xl font-bold tracking-tight">{siteConfig.name}</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 text-sm font-medium md:flex">
-          {siteConfig.nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
-              className="text-zinc-100 transition-colors hover:text-white"
-            >
-              {item.label}
-            </Link>
-          ))}
+        <nav className="hidden items-center gap-7 text-sm font-medium md:flex" aria-label="Ana menü">
+          {siteConfig.nav.map((item) => {
+            const aktif =
+              item.href === "/"
+                ? pathname === "/"
+                : pathname === item.href || pathname.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={aktif ? "page" : undefined}
+                transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
+                className={
+                  aktif
+                    ? "text-white"
+                    : "text-zinc-100 transition-colors hover:text-white"
+                }
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-3">
@@ -49,7 +63,9 @@ export function Header() {
             type="button"
             onClick={() => setAcik((v) => !v)}
             className="rounded-lg border border-white/15 bg-white/5 p-2 text-white transition-colors hover:bg-white/10 md:hidden"
-            aria-label="Menüyü aç/kapat"
+            aria-label={acik ? "Menüyü kapat" : "Menüyü aç"}
+            aria-expanded={acik}
+            aria-controls="mobil-menu"
           >
             <svg
               viewBox="0 0 24 24"
@@ -77,6 +93,7 @@ export function Header() {
       </div>
 
       <div
+        id="mobil-menu"
         className={`grid transition-[grid-template-rows] duration-300 ease-out md:hidden ${
           acik ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
@@ -89,8 +106,11 @@ export function Header() {
                   key={item.href}
                   href={item.href}
                   onClick={() => setAcik(false)}
+                  aria-current={aktif(item.href) ? "page" : undefined}
                   transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
-                  className="rounded-lg px-3 py-2.5 text-sm font-medium text-zinc-100 transition-colors hover:bg-white/10"
+                  className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-white/10 ${
+                    aktif(item.href) ? "bg-white/10 text-white" : "text-zinc-100"
+                  }`}
                 >
                   {item.label}
                 </Link>
