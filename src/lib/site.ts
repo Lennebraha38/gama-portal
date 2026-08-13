@@ -26,6 +26,7 @@ export const siteConfig = {
     { href: "/projeler", label: "Projeler" },
     { href: "/etkinlikler", label: "Etkinlikler" },
     { href: "/duyurular", label: "Duyurular" },
+    { href: "/gunluk", label: "Günlük" },
     { href: "/iller", label: "İl Temsilcileri" },
     { href: "/hakkimizda", label: "Hakkımızda" },
     { href: "/sss", label: "SSS" },

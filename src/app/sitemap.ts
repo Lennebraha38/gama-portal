@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 import { tumDuyurular } from "@/lib/duyurular";
 import { tumEtkinlikler } from "@/lib/etkinlikler";
+import { tumProjeler } from "@/lib/projeler";
+import { tumYazilar } from "@/lib/gunluk";
 import { ilBul, tumIller } from "@/lib/provinces";
 
 export const dynamic = "force-static";
@@ -12,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/projeler",
     "/etkinlikler",
     "/duyurular",
+    "/gunluk",
     "/iller",
     "/hakkimizda",
     "/sss",
@@ -34,6 +37,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
+  const projeler = tumProjeler().map((p) => ({
+    url: `${siteConfig.siteUrl}/projeler/${p.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  const yazilar = tumYazilar().map((y) => ({
+    url: `${siteConfig.siteUrl}/gunluk/${y.slug}`,
+    lastModified: new Date(`${y.tarih}T00:00:00Z`),
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
   const iller = tumIller.map((ad) => {
     const il = ilBul(ad)!;
     return {
@@ -53,6 +70,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
     ...duyurular,
     ...etkinlikler,
+    ...projeler,
+    ...yazilar,
     ...iller,
   ];
 }

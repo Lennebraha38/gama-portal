@@ -4,6 +4,7 @@ import { tumDuyurular } from "@/lib/duyurular";
 import { yaklasanEtkinlikler } from "@/lib/etkinlikler";
 import { Logo } from "@/components/Logo";
 import { Stats } from "@/components/Stats";
+import { GeriSayim } from "@/components/GeriSayim";
 import { SubmitForm } from "@/components/SubmitForm";
 import { PageTransition } from "@/components/PageTransition";
 import { Reveal } from "@/components/Reveal";
@@ -163,6 +164,7 @@ export default function Home() {
                     </p>
                   </Link>
                 )}
+                {ilkEtkinlik && <GeriSayim hedefISO={ilkEtkinlik.baslangicISO} />}
               </div>
             </div>
           </div>

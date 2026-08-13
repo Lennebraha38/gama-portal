@@ -4,6 +4,7 @@ import { Logo } from "@/components/Logo";
 import { PageTransition } from "@/components/PageTransition";
 import { Reveal } from "@/components/Reveal";
 import { etkinlikDetayi, tumEtkinlikler } from "@/lib/etkinlikler";
+import { GunKaldi } from "@/components/GunKaldi";
 
 export const metadata: Metadata = {
   title: "Etkinlikler",
@@ -77,6 +78,7 @@ export default function EtkinliklerPage() {
                           <span className="rounded-full bg-gama-500/20 px-3 py-1 text-xs font-semibold text-gama-300">
                             {e.tur}
                           </span>
+                          <GunKaldi baslangicISO={e.baslangicISO} />
                           <span className="text-sm text-zinc-300">
                             {e.saat} · {e.sehir}
                           </span>

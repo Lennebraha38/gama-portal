@@ -1,4 +1,5 @@
 import { tumDuyurular } from "@/lib/duyurular";
+import { tumYazilar } from "@/lib/gunluk";
 import { siteConfig } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -14,17 +15,21 @@ function xmlEsc(s: string) {
 
 export function GET() {
   const duyurular = tumDuyurular();
+  const yazilar = tumYazilar();
 
-  const items = duyurular
-    .map((d) => {
-      const url = `${siteConfig.siteUrl}/duyurular/${d.slug}`;
+  const items = [...duyurular, ...yazilar]
+    .sort((a, b) => b.tarih.localeCompare(a.tarih))
+    .map((kayit) => {
+      const url = "tur" in kayit
+        ? `${siteConfig.siteUrl}/duyurular/${kayit.slug}`
+        : `${siteConfig.siteUrl}/gunluk/${kayit.slug}`;
       return `    <item>
-      <title>${xmlEsc(d.baslik)}</title>
+      <title>${xmlEsc(kayit.baslik)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
-      <pubDate>${new Date(d.tarih + "T00:00:00Z").toUTCString()}</pubDate>
-      <category>${xmlEsc(d.tur)}</category>
-      <description>${xmlEsc(d.ozet)}</description>
+      <pubDate>${new Date(kayit.tarih + "T00:00:00Z").toUTCString()}</pubDate>
+      <category>${xmlEsc("tur" in kayit ? kayit.tur : "Bilim Günlüğü")}</category>
+      <description>${xmlEsc(kayit.ozet)}</description>
     </item>`;
     })
     .join("\n");
@@ -32,7 +37,7 @@ export function GET() {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${xmlEsc(siteConfig.name)} — Duyurular</title>
+    <title>${xmlEsc(siteConfig.name)} — Duyurular ve Bilim Günlüğü</title>
     <link>${siteConfig.siteUrl}/duyurular</link>
     <description>${xmlEsc(siteConfig.mission)}</description>
     <language>tr-TR</language>
