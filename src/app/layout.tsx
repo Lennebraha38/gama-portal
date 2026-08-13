@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { siteConfig } from "@/lib/site";
 import { Analytics } from "@/components/Analytics";
+import { aramaVerileri } from "@/lib/arama";
 
 export const viewport: Viewport = {
   themeColor: "#050816",
@@ -23,6 +24,9 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
+  icons: {
+    apple: "/apple-touch-icon.png",
+  },
   verification: {
     google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION || "",
     yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION || "",
@@ -92,7 +96,7 @@ export default function RootLayout(props: LayoutProps<"/">) {
       />
         <Analytics />
         <AnimatedBackground />
-        <Header />
+        <Header veriler={aramaVerileri()} />
         <main className="relative z-10 flex flex-1 flex-col">{props.children}</main>
         <Footer />
       </body>

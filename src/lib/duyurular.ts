@@ -13,8 +13,11 @@ export type Duyuru = {
 const duyurularDizini = path.join(process.cwd(), "src", "content", "duyurular");
 
 function frontmatterAlan(frontmatter: string, anahtar: string): string {
-  const eslesme = frontmatter.match(new RegExp(`^${anahtar}:"?(.*?)"?$`, "m"));
-  return eslesme ? eslesme[1].trim() : "";
+  const eslesme = frontmatter.match(
+    new RegExp(`^${anahtar}:\\s*(?:"([^"]*)"|(.+))$`, "m"),
+  );
+  if (!eslesme) return "";
+  return (eslesme[1] ?? eslesme[2]).trim();
 }
 
 export function tumDuyurular(): Duyuru[] {

@@ -136,3 +136,33 @@ export const regions = bolgeler.map((bolge) => ({
 export const toplamIl = 81;
 
 export const tumIller = regions.flatMap((bolge) => bolge.iller.map((il) => il.il));
+
+const slugHaritasi: Record<string, string> = {
+  "ç": "c", "ğ": "g", "ı": "i", "ö": "o", "ş": "s", "ü": "u",
+  "Ç": "c", "Ğ": "g", "İ": "i", "I": "i", "Ö": "o", "Ş": "s", "Ü": "u",
+};
+
+export function ilSlug(il: string): string {
+  return il
+    .split("")
+    .map((k) => slugHaritasi[k] ?? k)
+    .join("")
+    .toLowerCase();
+}
+
+export function ilDetayi(ad: string) {
+  const bolge = regions.find((b) => b.iller.some((i) => i.il === ad));
+  const kayit = bolge?.iller.find((i) => i.il === ad);
+  return {
+    ad,
+    bolge: bolge?.bolge ?? "Bilinmiyor",
+    temsilci: kayit?.temsilci ?? "Belirleniyor",
+    atandi: (kayit?.temsilci ?? "Belirleniyor") !== "Belirleniyor",
+  };
+}
+
+export function ilBul(slug: string) {
+  const il = tumIller.find((i) => ilSlug(i) === ilSlug(slug));
+  if (!il) return null;
+  return { slug: ilSlug(il), ...ilDetayi(il) };
+}

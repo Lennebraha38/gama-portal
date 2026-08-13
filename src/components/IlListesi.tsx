@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { regions } from "@/lib/provinces";
+import { ilSlug, regions } from "@/lib/provinces";
 
 export function IlListesi() {
   const [sorgu, setSorgu] = useState("");
@@ -77,17 +77,10 @@ export function IlListesi() {
                     />
                   </>
                 );
-                return atanmis ? (
-                  <div
-                    key={il.il}
-                    className={`flex items-center justify-between gap-3 rounded-xl border px-4 py-3 transition-colors border-white/10 bg-white/[0.03]`}
-                  >
-                    {icerik}
-                  </div>
-                ) : (
+                return (
                   <Link
                     key={il.il}
-                    href={`/temsilci?il=${encodeURIComponent(il.il)}`}
+                    href={`/iller/${ilSlug(il.il)}`}
                     transitionTypes={["nav-forward"]}
                     className="flex items-center justify-between gap-3 rounded-xl border border-white/5 bg-white/[0.02] px-4 py-3 transition-colors hover:border-gama-400/40 hover:bg-white/[0.06]"
                   >

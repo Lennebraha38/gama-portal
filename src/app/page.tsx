@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 import { tumDuyurular } from "@/lib/duyurular";
+import { yaklasanEtkinlikler } from "@/lib/etkinlikler";
 import { Logo } from "@/components/Logo";
 import { Stats } from "@/components/Stats";
 import { SubmitForm } from "@/components/SubmitForm";
@@ -41,6 +42,7 @@ const iconGradients = [
 
 export default function Home() {
   const sonDuyurular = tumDuyurular().slice(0, 3);
+  const sonEtkinlikler = yaklasanEtkinlikler(3);
 
   return (
     <PageTransition>
@@ -90,6 +92,60 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      {sonEtkinlikler.length > 0 && (
+        <section className="border-t border-white/10 bg-white/[0.02]">
+          <div className="mx-auto w-full max-w-6xl px-4 py-20">
+            <Reveal>
+              <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+                <div>
+                  <p className="text-sm font-semibold uppercase tracking-widest text-gama-400">
+                    Etkinlikler
+                  </p>
+                  <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
+                    Yaklaşan etkinlikler
+                  </h2>
+                </div>
+                <Link
+                  href="/etkinlikler"
+                  transitionTypes={["nav-forward"]}
+                  className="text-sm font-semibold text-gama-400 transition-colors hover:text-gama-300"
+                >
+                  Tüm etkinlikler →
+                </Link>
+              </div>
+            </Reveal>
+            <div className="mt-8 grid gap-5 md:grid-cols-3">
+              {sonEtkinlikler.map((e, i) => (
+                <Reveal key={e.slug} delay={i * 100}>
+                  <Link
+                    href={`/etkinlikler/${e.slug}`}
+                    transitionTypes={["nav-forward"]}
+                    className="block h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition-colors hover:border-gama-400/40 hover:bg-white/[0.06]"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="rounded-full bg-gama-500/20 px-3 py-1 text-xs font-semibold text-gama-300">
+                        {e.tur}
+                      </span>
+                      <span className="text-xs text-zinc-300">
+                        {new Date(`${e.tarih}T12:00:00`).toLocaleDateString("tr-TR", {
+                          day: "numeric",
+                          month: "long",
+                        })}
+                      </span>
+                    </div>
+                    <h3 className="mt-3 font-semibold text-white">{e.baslik}</h3>
+                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-200">{e.ozet}</p>
+                    <p className="mt-3 text-xs font-medium text-zinc-400">
+                      {e.saat} · {e.sehir}
+                    </p>
+                  </Link>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       <section className="mx-auto w-full max-w-6xl px-4 py-20">
         <Reveal>
