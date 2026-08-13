@@ -66,7 +66,7 @@ export default function EtkinliklerPage() {
                   {yaklasan.map((e) => (
                     <article
                       key={e.slug}
-                      className="flex flex-col gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition-colors hover:border-gama-400/40 sm:flex-row sm:items-start"
+                      className="card-glass flex flex-col gap-4 rounded-2xl p-6 backdrop-blur sm:flex-row sm:items-start"
                     >
                       <TarihRozeti tarih={e.tarih} />
                       <div className="flex-1">

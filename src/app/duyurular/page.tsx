@@ -53,7 +53,7 @@ export default function DuyurularPage() {
                 <Link
                   href={`/duyurular/${d.slug}`}
                   transitionTypes={["nav-forward"]}
-                  className="block rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition-colors hover:border-gama-400/40 hover:bg-white/[0.06]"
+                  className="card-glass block rounded-2xl p-6 backdrop-blur"
                 >
                   <div className="flex flex-wrap items-center gap-3">
                     <span className="rounded-full bg-gama-500/20 px-3 py-1 text-xs font-semibold text-gama-300">

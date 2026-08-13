@@ -47,14 +47,20 @@ export default function Home() {
   return (
     <PageTransition>
       <div className="flex flex-1 flex-col">
-      <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center px-4 pb-20 pt-24 text-center md:pt-32">
+      <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center overflow-visible px-4 pb-24 pt-28 text-center md:pt-36">
+        <div aria-hidden className="pointer-events-none absolute left-1/2 top-[-160px] -z-10 h-[560px] w-[560px] -translate-x-1/2 animate-float-slow rounded-full conic-glow opacity-25 blur-[110px]" />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-[-260px] -z-10 h-[700px] w-[900px] -translate-x-1/2 rounded-[50%] bg-[radial-gradient(ellipse_at_center,rgba(51,100,255,0.25),transparent_65%)]"
+        />
         <div className="animate-fade-up flex items-center gap-3 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-zinc-200 backdrop-blur">
           <Logo className="h-5 w-5" />
+          <span className="live-dot h-2 w-2 rounded-full bg-emerald-400" />
           Türkiye&apos;nin gençlik araştırma-geliştirme birliği
         </div>
-        <h1 className="animate-fade-up delay-100 mt-8 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+        <h1 className="animate-fade-up delay-100 mt-8 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl lg:text-7xl">
           Teknolojik ve bilimsel bağımsızlık için{" "}
-          <span className="text-gradient">gençler</span>{" "}
+          <span className="glow-text text-gradient">gençler</span>{" "}
           buluşuyor.
         </h1>
         <p className="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-8 text-zinc-100">
@@ -64,7 +70,7 @@ export default function Home() {
           <Link
             href="/katil"
             transitionTypes={["nav-forward"]}
-            className="rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-8 py-3.5 font-semibold text-white transition-all hover:shadow-[0_0_30px_rgba(139,92,246,0.7)]"
+            className="btn-shine rounded-full bg-gradient-to-r from-gama-600 via-violet-600 to-cyan-500 px-8 py-3.5 font-semibold text-white shadow-[0_0_28px_rgba(139,92,246,0.5)] transition-all hover:shadow-[0_0_44px_rgba(139,92,246,0.8)]"
           >
             Bize Katıl
           </Link>
@@ -80,6 +86,8 @@ export default function Home() {
       </section>
 
       <section className="relative overflow-hidden border-y border-white/10 bg-white/[0.03] py-6 backdrop-blur">
+        <div aria-hidden className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-[#050816] to-transparent z-10" />
+        <div aria-hidden className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-[#050816] to-transparent z-10" />
         <div className="flex w-max animate-marquee gap-8 whitespace-nowrap">
           {[...siteConfig.marquee, ...siteConfig.marquee].map((k, i) => (
             <span
@@ -99,8 +107,9 @@ export default function Home() {
             <Reveal>
               <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
                 <div>
-                  <p className="text-sm font-semibold uppercase tracking-widest text-gama-400">
+                  <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-gama-400">
                     Etkinlikler
+                    <span className="h-px w-8 bg-gradient-to-r from-gama-400 to-transparent" />
                   </p>
                   <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
                     Yaklaşan etkinlikler
@@ -121,7 +130,7 @@ export default function Home() {
                   <Link
                     href={`/etkinlikler/${e.slug}`}
                     transitionTypes={["nav-forward"]}
-                    className="block h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition-colors hover:border-gama-400/40 hover:bg-white/[0.06]"
+                    className="card-glass block h-full rounded-2xl p-6 backdrop-blur"
                   >
                     <div className="flex items-center gap-3">
                       <span className="rounded-full bg-gama-500/20 px-3 py-1 text-xs font-semibold text-gama-300">
@@ -151,8 +160,9 @@ export default function Home() {
         <Reveal>
           <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-widest text-gama-400">
+              <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest text-gama-400">
                 Duyurular
+                <span className="h-px w-8 bg-gradient-to-r from-gama-400 to-transparent" />
               </p>
               <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
                 Son gelişmeler
@@ -171,11 +181,11 @@ export default function Home() {
           <div className="mt-8 grid gap-5 md:grid-cols-3">
             {sonDuyurular.map((d, i) => (
               <Reveal key={d.slug} delay={i * 100}>
-                <Link
-                  href={`/duyurular/${d.slug}`}
-                  transitionTypes={["nav-forward"]}
-                  className="block h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition-colors hover:border-gama-400/40 hover:bg-white/[0.06]"
-                >
+<Link
+                    href={`/duyurular/${d.slug}`}
+                    transitionTypes={["nav-forward"]}
+                    className="card-glass block h-full rounded-2xl p-6 backdrop-blur"
+                  >
                   <div className="flex items-center gap-3">
                     <span className="rounded-full bg-gama-500/20 px-3 py-1 text-xs font-semibold text-gama-300">
                       {d.tur}
@@ -201,7 +211,7 @@ export default function Home() {
           {siteConfig.pillars.map((pillar, i) => (
             <Reveal key={pillar.title} delay={i * 120}>
               <TiltCard className="h-full">
-                <div className="group h-full rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur transition-all duration-300 hover:border-white/25 hover:bg-white/[0.08]">
+                <div className="card-glass group h-full rounded-2xl p-6 backdrop-blur">
                   <span
                     className={`inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${iconGradients[i]} text-white shadow-lg`}
                   >
@@ -218,7 +228,7 @@ export default function Home() {
 
       <section className="mx-auto w-full max-w-6xl px-4 pb-20">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-10 backdrop-blur md:p-14">
+          <div className="card-glass relative overflow-hidden rounded-3xl p-10 backdrop-blur md:p-14">
             <div className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-600/10 via-violet-600/10 to-cyan-500/10" />
             <div className="relative">
               <p className="text-center text-sm font-semibold uppercase tracking-widest text-gama-400">
@@ -231,7 +241,7 @@ export default function Home() {
                 {siteConfig.manifesto.map((m, i) => (
                   <Reveal key={m.baslik} delay={i * 100}>
                     <TiltCard className="h-full">
-                      <div className="h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:border-gama-400/40">
+                      <div className="card-glass h-full rounded-2xl p-6 backdrop-blur">
                         <span className="text-gradient text-3xl font-extrabold">
                           {String(i + 1).padStart(2, "0")}
                         </span>
@@ -249,37 +259,48 @@ export default function Home() {
 
       <section className="mx-auto w-full max-w-4xl px-4 pb-20">
         <Reveal>
-          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur md:p-12">
-            <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-              Vizyonu takip et
-            </h2>
-          <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-zinc-200">
-            Atölyeler, duyurular ve projelerden ilk senin haberin olsun. Ayda
-            bir özet — spam yok.
-          </p>
-          <SubmitForm
-            subject="Bülten aboneliği"
-            buttonText="Abone Ol"
-            successTitle="Aboneliğin alındı!"
-            successText="Bültenimize aramıza hoş geldin. İlk duyuru geldiğinde haberin olacak."
-            fields={[
-              {
-                name: "email",
-                label: "E-posta adresin",
-                type: "email",
-                required: true,
-                placeholder: "sen@ornek.com",
-              },
-            ]}
-          />
+          <div className="card-glass relative overflow-hidden rounded-3xl p-8 text-center backdrop-blur md:p-12">
+            <div
+              aria-hidden
+              className="absolute -right-24 -top-24 h-64 w-64 rounded-full bg-gama-600/20 blur-[90px]"
+            />
+            <div
+              aria-hidden
+              className="absolute -bottom-24 -left-24 h-64 w-64 rounded-full bg-cyan-500/15 blur-[90px]"
+            />
+            <div className="relative">
+              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
+                Vizyonu takip et
+              </h2>
+            <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-zinc-200">
+              Atölyeler, duyurular ve projelerden ilk senin haberin olsun. Ayda
+              bir özet — spam yok.
+            </p>
+            <SubmitForm
+              subject="Bülten aboneliği"
+              buttonText="Abone Ol"
+              successTitle="Aboneliğin alındı!"
+              successText="Bültenimize aramıza hoş geldin. İlk duyuru geldiğinde haberin olacak."
+              fields={[
+                {
+                  name: "email",
+                  label: "E-posta adresin",
+                  type: "email",
+                  required: true,
+                  placeholder: "sen@ornek.com",
+                },
+              ]}
+            />
+            </div>
           </div>
         </Reveal>
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-4 pb-20">
         <Reveal>
-          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-gama-950 via-indigo-950 to-violet-950 p-10 text-center md:p-16">
+          <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-gama-950 via-indigo-950 to-violet-950 p-10 text-center shadow-[0_0_80px_-20px_rgba(139,92,246,0.5)] md:p-16">
           <div className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-600/30 via-violet-600/30 to-cyan-500/30" />
+          <div className="absolute inset-0 bg-grid opacity-60" />
           <div className="relative">
             <h2 className="text-2xl font-bold tracking-tight text-white md:text-4xl">
               Türkiye&apos;nin geleceğine imza at.
@@ -291,7 +312,7 @@ export default function Home() {
             <Link
               href="/katil"
               transitionTypes={["nav-forward"]}
-              className="mt-8 inline-block rounded-full bg-white px-8 py-3.5 font-semibold text-gama-950 transition-colors hover:bg-gama-100"
+              className="btn-shine mt-8 inline-block rounded-full bg-white px-8 py-3.5 font-semibold text-gama-950 transition-colors hover:bg-gama-100"
             >
               Bize Katıl
             </Link>

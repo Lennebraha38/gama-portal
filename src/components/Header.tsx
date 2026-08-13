@@ -24,8 +24,10 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
           onClick={() => setAcik(false)}
           transitionTypes={["nav-back"]}
         >
-          <Logo className="h-9 w-9 transition-transform group-hover:scale-105" />
-          <span className="text-xl font-bold tracking-tight">{siteConfig.name}</span>
+          <Logo className="h-9 w-9 drop-shadow-[0_0_12px_rgba(51,100,255,0.6)] transition-transform group-hover:scale-105" />
+          <span className="text-xl font-bold tracking-tight drop-shadow-[0_0_16px_rgba(139,92,246,0.4)]">
+            {siteConfig.name}
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm font-medium md:flex" aria-label="Ana menü">
@@ -42,7 +44,7 @@ export function Header({ veriler }: { veriler: AramaVerisi[] }) {
                 transitionTypes={item.href === "/" ? ["nav-back"] : ["nav-forward"]}
                 className={
                   aktif
-                    ? "text-white"
+                    ? "text-white [text-shadow:0_0_20px_rgba(139,92,246,0.6)]"
                     : "text-zinc-100 transition-colors hover:text-white"
                 }
               >

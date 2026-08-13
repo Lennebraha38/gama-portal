@@ -6,9 +6,10 @@ import { SocialIcon } from "@/components/SocialIcon";
 export function Footer() {
   return (
     <footer className="relative z-10 border-t border-white/10 bg-[#050816]/70 backdrop-blur-xl">
+      <div aria-hidden className="section-divider absolute inset-x-0 top-0" />
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-10 text-sm text-zinc-300 md:flex-row md:items-start md:justify-between">
         <div className="flex items-center gap-3">
-          <Logo className="h-7 w-7" />
+          <Logo className="h-7 w-7 drop-shadow-[0_0_10px_rgba(51,100,255,0.5)]" />
           <div>
             <span className="font-semibold text-zinc-100">{siteConfig.name}</span>
             <span> · {siteConfig.tagline}</span>

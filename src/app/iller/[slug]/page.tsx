@@ -55,7 +55,7 @@ export default async function IlDetayPage({ params }: Props) {
         </Reveal>
 
         <Reveal delay={100}>
-          <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur">
+          <div className="card-glass mt-10 rounded-3xl p-8 backdrop-blur">
             <div className="grid gap-6 sm:grid-cols-2">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-zinc-400">

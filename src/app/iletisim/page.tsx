@@ -45,7 +45,7 @@ export default function IletisimPage() {
       </Reveal>
 
       <Reveal delay={150}>
-        <div className="mt-6 rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur">
+        <div className="card-glass mt-6 rounded-3xl p-8 text-center backdrop-blur">
         <h2 className="text-lg font-semibold text-white">Sosyal Medya</h2>
         <p className="mt-1 text-sm text-zinc-300">
           Gelişmeleri ve duyuruları takip etmek için bizi takip et.

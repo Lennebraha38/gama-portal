@@ -52,7 +52,7 @@ export function Stats() {
       {siteConfig.stats.map((s) => (
         <div
           key={s.etiket}
-          className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 backdrop-blur transition-all hover:-translate-y-1 hover:border-gama-400/40 hover:shadow-[0_0_24px_rgba(51,100,255,0.25)]"
+          className="card-glass rounded-2xl px-4 py-5 backdrop-blur"
         >
           {"hedef" in s && s.hedef ? (
             <Sayac hedef={s.hedef} />
