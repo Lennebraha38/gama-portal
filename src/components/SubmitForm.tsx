@@ -21,12 +21,14 @@ export function SubmitForm({
   buttonText = "Gönder",
   successTitle = "Başvurun alındı!",
   successText = "Ekibimiz en kısa sürede seninle iletişime geçecek.",
+  initialValues = {},
 }: {
   subject: string;
   fields: Field[];
   buttonText?: string;
   successTitle?: string;
   successText?: string;
+  initialValues?: Record<string, string>;
 }) {
   const [durum, setDurum] = useState<"bekle" | "gonderen" | "basarili" | "hata">("bekle");
   const [hata, setHata] = useState("");
@@ -35,6 +37,11 @@ export function SubmitForm({
     e.preventDefault();
     const form = e.currentTarget;
     const veri = Object.fromEntries(new FormData(form).entries());
+    if (veri.honeypot) {
+      setDurum("basarili");
+      form.reset();
+      return;
+    }
     setDurum("gonderen");
     setHata("");
     try {
@@ -78,8 +85,12 @@ export function SubmitForm({
         <label key={f.name} className="grid gap-2 text-sm font-medium text-zinc-200">
           {f.label}
           {f.type === "select" ? (
-            <select required={f.required} className={inputClass} name={f.name} defaultValue="">
-              <option value="" disabled>
+            <select
+              required={f.required}
+              className={inputClass}
+              name={f.name}
+              defaultValue={initialValues[f.name] ?? ""}
+            >              <option value="" disabled>
                 Seç
               </option>
               {f.options?.map((o) => (
@@ -95,6 +106,7 @@ export function SubmitForm({
               name={f.name}
               rows={4}
               placeholder={f.placeholder}
+              defaultValue={initialValues[f.name] ?? ""}
             />
           ) : (
             <input
@@ -103,6 +115,7 @@ export function SubmitForm({
               type={f.type ?? "text"}
               name={f.name}
               placeholder={f.placeholder}
+              defaultValue={initialValues[f.name] ?? ""}
             />
           )}
         </label>

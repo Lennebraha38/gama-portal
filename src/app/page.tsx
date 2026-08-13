@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
+import { tumDuyurular } from "@/lib/duyurular";
 import { Logo } from "@/components/Logo";
 import { Stats } from "@/components/Stats";
 import { SubmitForm } from "@/components/SubmitForm";
@@ -39,6 +40,8 @@ const iconGradients = [
 ];
 
 export default function Home() {
+  const sonDuyurular = tumDuyurular().slice(0, 3);
+
   return (
     <PageTransition>
       <div className="flex flex-1 flex-col">
@@ -86,6 +89,50 @@ export default function Home() {
             </span>
           ))}
         </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-6xl px-4 py-20">
+        <Reveal>
+          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+            <div>
+              <p className="text-sm font-semibold uppercase tracking-widest text-gama-400">
+                Duyurular
+              </p>
+              <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
+                Son gelişmeler
+              </h2>
+            </div>
+            <Link
+              href="/duyurular"
+              transitionTypes={["nav-forward"]}
+              className="text-sm font-semibold text-gama-400 transition-colors hover:text-gama-300"
+            >
+              Tüm duyurular →
+            </Link>
+          </div>
+        </Reveal>
+        {sonDuyurular.length > 0 && (
+          <div className="mt-8 grid gap-5 md:grid-cols-3">
+            {sonDuyurular.map((d, i) => (
+              <Reveal key={d.slug} delay={i * 100}>
+                <Link
+                  href={`/duyurular/${d.slug}`}
+                  transitionTypes={["nav-forward"]}
+                  className="block h-full rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur transition-colors hover:border-gama-400/40 hover:bg-white/[0.06]"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="rounded-full bg-gama-500/20 px-3 py-1 text-xs font-semibold text-gama-300">
+                      {d.tur}
+                    </span>
+                    <span className="text-xs text-zinc-300">{d.tarih}</span>
+                  </div>
+                  <h3 className="mt-3 font-semibold text-white">{d.baslik}</h3>
+                  <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-200">{d.ozet}</p>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        )}
       </section>
 
       <section className="mx-auto w-full max-w-6xl px-4 py-20">

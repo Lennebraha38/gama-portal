@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
+import { tumDuyurular } from "@/lib/duyurular";
 
 export const dynamic = "force-static";
 
@@ -8,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/projeler",
     "/etkinlikler",
+    "/duyurular",
     "/iller",
     "/hakkimizda",
     "/sss",
@@ -16,10 +18,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/temsilci",
   ];
 
-  return routes.map((route) => ({
-    url: `${siteConfig.siteUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: "weekly",
-    priority: route === "/" ? 1 : 0.7,
+  const duyurular = tumDuyurular().map((d) => ({
+    url: `${siteConfig.siteUrl}/duyurular/${d.slug}`,
+    lastModified: new Date(d.tarih),
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
   }));
+
+  return [
+    ...routes.map((route) => ({
+      url: `${siteConfig.siteUrl}${route}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: route === "/" ? 1 : 0.7,
+    })),
+    ...duyurular,
+  ];
 }

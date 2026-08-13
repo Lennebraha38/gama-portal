@@ -25,6 +25,7 @@ export const siteConfig = {
     { href: "/", label: "Anasayfa" },
     { href: "/projeler", label: "Projeler" },
     { href: "/etkinlikler", label: "Etkinlikler" },
+    { href: "/duyurular", label: "Duyurular" },
     { href: "/iller", label: "İl Temsilcileri" },
     { href: "/hakkimizda", label: "Hakkımızda" },
     { href: "/sss", label: "SSS" },
