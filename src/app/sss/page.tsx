@@ -89,9 +89,9 @@ export default function SssPage() {
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
         <Reveal>
           <p className="sys-label">
-            Sistem 01 <span className="text-zinc-500">/</span> Gama
+            Sistem 01 <span className="text-zinc-400">/</span> Gama
           </p>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">
+          <h1 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
             Sıkça Sorulan Sorular
           </h1>
           <p className="mt-3 text-zinc-300">

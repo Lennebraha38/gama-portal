@@ -71,9 +71,9 @@ export function SubmitForm({
 
   if (durum === "basarili") {
     return (
-      <div className="mt-10 rounded-2xl border border-emerald-400/30 bg-emerald-500/10 p-6 backdrop-blur">
-        <p className="font-semibold text-emerald-300">{successTitle}</p>
-        <p className="mt-1 text-sm text-emerald-400">{successText}</p>
+      <div className="mt-10 rounded-2xl border border-amber-400/30 bg-amber-500/10 p-6 backdrop-blur">
+        <p className="font-semibold text-amber-300">{successTitle}</p>
+        <p className="mt-1 text-sm text-amber-400">{successText}</p>
       </div>
     );
   }

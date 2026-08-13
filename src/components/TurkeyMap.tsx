@@ -29,7 +29,7 @@ export function TurkeyMap() {
             Koordinatör yok
           </span>
           <span className="flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-sm bg-gradient-to-br from-emerald-400 to-cyan-500 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
+            <span className="h-2.5 w-2.5 rounded-sm bg-gradient-to-br from-amber-400 to-amber-500 shadow-[0_0_8px_rgba(251,191,36,0.9)]" />
             Koordinatör atandı ({aktifSayisi})
           </span>
         </div>
@@ -85,7 +85,7 @@ export function TurkeyMap() {
           .map((p) => (
             <span
               key={p.il}
-              className="rounded-full border border-emerald-400/40 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-300"
+              className="rounded-full border border-amber-400/40 bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-300"
             >
               {p.il} · {koordinatorler[p.il]}
             </span>

@@ -45,7 +45,7 @@ export default async function IlDetayPage({ params }: Props) {
               ← İl Temsilcileri
             </Link>
           </nav>
-          <h1 className="mt-6 text-3xl font-extrabold tracking-tight md:text-4xl">
+          <h1 className="mt-6 text-3xl font-bold tracking-tight md:text-4xl">
             {il.ad} İl Temsilciliği
           </h1>
           <p className="mt-3 max-w-2xl text-zinc-300">
@@ -76,7 +76,7 @@ export default async function IlDetayPage({ params }: Props) {
             </div>
 
             {il.atandi ? (
-              <p className="mt-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/10 px-5 py-4 text-sm leading-6 text-emerald-100">
+              <p className="mt-6 rounded-2xl border border-amber-500/20 bg-amber-500/10 px-5 py-4 text-sm leading-6 text-amber-100">
                 {il.ad} ilinin temsilcisi <strong>{il.temsilci}</strong>. Etkinlikler ve
                 projeler hakkında görüşmek için topluluk ile iletişime geçebilirsin.
               </p>

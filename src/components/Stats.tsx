@@ -40,7 +40,7 @@ function Sayac({ hedef }: { hedef: number }) {
   }, [goruldu, hedef]);
 
   return (
-    <p ref={ref} className="text-xl font-extrabold text-white md:text-2xl">
+    <p ref={ref} className="text-xl font-bold text-white md:text-2xl">
       {deger.toLocaleString("tr-TR")}
     </p>
   );
@@ -57,7 +57,7 @@ export function Stats() {
           {"hedef" in s && s.hedef ? (
             <Sayac hedef={s.hedef} />
           ) : (
-            <p className="text-xl font-extrabold text-white md:text-2xl">{s.deger}</p>
+            <p className="text-xl font-bold text-white md:text-2xl">{s.deger}</p>
           )}
           <p className="mt-1 text-xs font-medium text-zinc-400 md:text-sm">{s.etiket}</p>
         </div>

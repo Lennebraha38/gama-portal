@@ -35,8 +35,8 @@ const icons = {
 const iconMap = [icons.kaynak, icons.takim, icons.mentorluk];
 const iconGradients = [
   "from-gama-500 to-cyan-400",
-  "from-sky-600 to-cyan-500",
-  "from-cyan-500 to-teal-400",
+  "from-gama-600 to-gama-400",
+  "from-cyan-500 to-gama-500",
 ];
 
 function BolumBaslik({
@@ -55,9 +55,9 @@ function BolumBaslik({
       <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
         <div>
           <p className="sys-label">
-            Sistem {numara} <span className="text-zinc-500">/</span> Gama
+            Sistem {numara} <span className="text-zinc-400">/</span> Gama
           </p>
-          <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">{baslik}</h2>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">{baslik}</h2>
         </div>
         {baglantiHref && (
           <Link
@@ -99,7 +99,7 @@ export default function Home() {
                 Türkiye&apos;nin gençlik araştırma-geliştirme birliği
               </span>
             </div>
-            <h1 className="animate-fade-up delay-100 mt-8 max-w-3xl text-4xl font-extrabold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
+            <h1 className="animate-fade-up delay-100 mt-8 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-7xl lg:text-8xl">
               Teknolojik ve bilimsel bağımsızlık için{" "}
               <span className="glow-text text-gradient">gençler</span>{" "}
               buluşuyor.
@@ -111,14 +111,14 @@ export default function Home() {
               <Link
                 href="/katil"
                 transitionTypes={["nav-forward"]}
-                className="rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-8 py-3.5 text-center font-semibold text-white shadow-[0_0_26px_rgba(56,189,248,0.45)] transition-all hover:shadow-[0_0_40px_rgba(56,189,248,0.7)]"
+                className="rounded-full bg-gradient-to-r from-gama-500 to-cyan-400 px-8 py-3.5 w-full text-center font-semibold text-white shadow-[0_0_26px_rgba(56,189,248,0.45)] transition-all hover:shadow-[0_0_40px_rgba(56,189,248,0.7)] sm:w-auto"
               >
                 Bize Katıl
               </Link>
               <Link
                 href="/iller"
                 transitionTypes={["nav-forward"]}
-                className="rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-center font-semibold text-white backdrop-blur transition-colors hover:border-gama-400/50 hover:bg-gama-500/10"
+                className="rounded-full border border-white/20 bg-white/5 px-8 py-3.5 w-full text-center font-semibold text-white backdrop-blur transition-colors hover:border-gama-400/50 hover:bg-gama-500/10 sm:w-auto"
               >
                 İl Temsilcileri
               </Link>
@@ -134,8 +134,8 @@ export default function Home() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="animate-fade-up delay-300">
-              <div className="card-glass rounded-2xl p-6 backdrop-blur">
+              <div className="animate-fade-up delay-300">
+              <div className="card-glass rounded-2xl p-5 backdrop-blur md:p-6">
                 <div className="flex items-center justify-between">
                   <p className="sys-label">Canlı Gösterge</p>
                   <span className="live-dot h-2 w-2 rounded-full bg-amber-400" />
@@ -215,7 +215,7 @@ export default function Home() {
                     </div>
                     <h3 className="mt-3 font-semibold text-white">{e.baslik}</h3>
                     <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-300">{e.ozet}</p>
-                    <p className="mt-3 font-mono text-xs text-zinc-500">
+                    <p className="mt-3 font-mono text-xs text-zinc-400">
                       {e.saat} · {e.sehir}
                     </p>
                   </Link>
@@ -318,20 +318,20 @@ export default function Home() {
                 <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
                   <div>
                     <p className="sys-label">
-                      Sistem 04 <span className="text-zinc-500">/</span> Gama
+                      Sistem 04 <span className="text-zinc-400">/</span> Gama
                     </p>
-                    <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
+                    <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
                       Gama Manifestosu
                     </h2>
                   </div>
-                  <p className="sys-label text-zinc-500">Neden varız?</p>
+                  <p className="sys-label text-zinc-400">Neden varız?</p>
                 </div>
                 <div aria-hidden className="section-line mt-5" />
                 <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
                   {siteConfig.manifesto.map((m, i) => (
                     <Reveal key={m.baslik} delay={i * 100}>
                       <div className="card-glass h-full rounded-2xl p-6 backdrop-blur">
-                        <span className="text-gradient-amber font-mono text-3xl font-extrabold">
+                        <span className="text-gradient-amber font-mono text-3xl font-bold">
                           {String(i + 1).padStart(2, "0")}
                         </span>
                         <h3 className="mt-3 text-base font-semibold text-white">{m.baslik}</h3>
@@ -358,9 +358,9 @@ export default function Home() {
               />
               <div className="relative">
                 <p className="sys-label">
-                  Sistem 05 <span className="text-zinc-500">/</span> Gama
+                  Sistem 05 <span className="text-zinc-400">/</span> Gama
                 </p>
-                <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">
+                <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">
                   Vizyonu takip et
                 </h2>
                 <p className="mx-auto mt-3 max-w-lg text-sm leading-6 text-zinc-300">
@@ -394,9 +394,9 @@ export default function Home() {
               <div className="absolute inset-0 bg-grid opacity-60" />
               <div className="relative">
                 <p className="sys-label">
-                  Sistem 06 <span className="text-zinc-500">/</span> Gama
+                  Sistem 06 <span className="text-zinc-400">/</span> Gama
                 </p>
-                <h2 className="mt-3 text-2xl font-bold tracking-tight text-white md:text-4xl">
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-white md:text-4xl">
                   Türkiye&apos;nin geleceğine imza at.
                 </h2>
                 <p className="mx-auto mt-3 max-w-xl text-zinc-300">

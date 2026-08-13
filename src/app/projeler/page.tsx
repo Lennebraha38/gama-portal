@@ -16,9 +16,9 @@ export default function ProjectsPage() {
       <div className="mx-auto flex w-full max-w-6xl flex-1 flex-col px-4 py-16">
         <Reveal>
           <p className="sys-label">
-            Sistem 01 <span className="text-zinc-500">/</span> Gama
+            Sistem 01 <span className="text-zinc-400">/</span> Gama
           </p>
-          <h1 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">
+          <h1 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
             Projeler
           </h1>
           <p className="mt-3 max-w-2xl text-zinc-300">

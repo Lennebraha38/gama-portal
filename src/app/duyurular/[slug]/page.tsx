@@ -74,7 +74,7 @@ export default async function DuyuruSayfasi({ params }: Props) {
             </span>
             <span className="text-sm text-zinc-300">{duyuru.tarih}</span>
           </div>
-          <h1 className="mt-3 text-3xl font-extrabold tracking-tight md:text-4xl">
+          <h1 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
             {duyuru.baslik}
           </h1>
         </Reveal>

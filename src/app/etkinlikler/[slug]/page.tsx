@@ -77,12 +77,12 @@ export default async function EtkinlikDetayPage({ params }: Props) {
                 Sonlandı
               </span>
             ) : (
-              <span className="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-300">
+              <span className="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-300">
                 Yaklaşıyor
               </span>
             )}
           </div>
-          <h1 className="mt-4 text-3xl font-extrabold tracking-tight md:text-4xl">{e.baslik}</h1>
+          <h1 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl">{e.baslik}</h1>
 
           <div className="mt-6 grid gap-3 rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-sm backdrop-blur sm:grid-cols-2">
             <div>

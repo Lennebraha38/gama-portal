@@ -61,7 +61,7 @@ export function AnimatedBackground() {
       />
       <div className="absolute -left-32 top-[-10%] h-[500px] w-[500px] animate-drift-1 rounded-full bg-gama-600/25 blur-[120px]" />
       <div className="absolute right-[-10%] top-[25%] h-[420px] w-[420px] animate-drift-2 rounded-full bg-cyan-500/20 blur-[120px]" />
-      <div className="absolute bottom-[-20%] left-[28%] h-[460px] w-[460px] animate-drift-3 rounded-full bg-sky-800/30 blur-[120px]" />
+      <div className="absolute bottom-[-20%] left-[28%] h-[460px] w-[460px] animate-drift-3 rounded-full bg-gama-900/40 blur-[120px]" />
       <div
         ref={izgara}
         className="bg-grid absolute inset-0"

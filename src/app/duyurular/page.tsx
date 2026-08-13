@@ -19,9 +19,9 @@ export default function DuyurularPage() {
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>
               <p className="sys-label">
-                Sistem 01 <span className="text-zinc-500">/</span> Gama
+                Sistem 01 <span className="text-zinc-400">/</span> Gama
               </p>
-              <h1 className="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">Duyurular</h1>
+              <h1 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">Duyurular</h1>
               <p className="mt-3 max-w-2xl text-zinc-300">
                 Gama Topluluğu&apos;nun etkinlik ve proje duyuruları.
               </p>

@@ -18,11 +18,11 @@ export default function HakkimizdaPage() {
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
         <Reveal>
           <p className="sys-label">
-            Sistem 01 <span className="text-zinc-500">/</span> Gama
+            Sistem 01 <span className="text-zinc-400">/</span> Gama
           </p>
           <div className="mt-4 flex items-center gap-4">
             <Logo className="h-12 w-12 drop-shadow-[0_0_16px_rgba(56,189,248,0.6)]" />
-            <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+            <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
               Hakkımızda
             </h1>
           </div>
@@ -47,9 +47,9 @@ export default function HakkimizdaPage() {
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="sys-label">
-              Sistem 02 <span className="text-zinc-500">/</span> Gama
+              Sistem 02 <span className="text-zinc-400">/</span> Gama
             </p>
-            <h2 className="mt-2 text-2xl font-bold tracking-tight md:text-3xl">Mentor Kadromuz</h2>
+            <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">Mentor Kadromuz</h2>
           </div>
         </div>
         <p className="mt-2 text-sm leading-6 text-zinc-200">

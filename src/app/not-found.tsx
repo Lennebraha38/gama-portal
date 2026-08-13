@@ -9,7 +9,7 @@ export default function NotFound() {
       <Reveal className="flex flex-1 flex-col">
         <div className="relative z-10 mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-4 py-24 text-center">
       <Logo className="h-20 w-20 opacity-80" />
-      <p className="mt-8 text-7xl font-extrabold tracking-tight text-gradient md:text-8xl">
+      <p className="mt-8 text-7xl font-bold tracking-tight text-gradient md:text-8xl">
         404
       </p>
       <h1 className="mt-4 text-xl font-bold text-white md:text-2xl">

@@ -16,7 +16,7 @@ export default function GlobalError({
 
   return (
     <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-4 py-24 text-center">
-      <p className="text-7xl font-extrabold tracking-tight text-gradient md:text-8xl">!</p>
+      <p className="text-7xl font-bold tracking-tight text-gradient md:text-8xl">!</p>
       <h1 className="mt-4 text-xl font-bold text-white md:text-2xl">
         Bir şeyler ters gitti
       </h1>

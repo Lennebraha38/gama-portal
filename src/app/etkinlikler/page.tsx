@@ -15,7 +15,7 @@ function TarihRozeti({ tarih }: { tarih: string }) {
   const d = new Date(`${tarih}T12:00:00`);
   return (
     <div className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-gama-500/15 ring-1 ring-gama-400/30">
-      <span className="text-xl font-extrabold leading-none text-white">
+      <span className="text-xl font-bold leading-none text-white">
         {d.getDate().toString().padStart(2, "0")}
       </span>
       <span className="mt-1 text-[11px] font-semibold uppercase tracking-wide text-gama-300">
@@ -35,9 +35,9 @@ export default function EtkinliklerPage() {
       <div className="mx-auto flex w-full max-w-4xl flex-1 flex-col px-4 py-16">
         <Reveal>
           <p className="sys-label">
-            Sistem 01 <span className="text-zinc-500">/</span> Gama
+            Sistem 01 <span className="text-zinc-400">/</span> Gama
           </p>
-          <h1 className="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">Etkinlikler</h1>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight md:text-4xl">Etkinlikler</h1>
           <p className="mt-3 max-w-2xl text-zinc-300">
             Atölye, hackathon, seminer ve topluluk etkinliklerimiz. Takvimine ekle, kaçırma.
           </p>
@@ -142,7 +142,7 @@ export default function EtkinliklerPage() {
                         })}
                       </span>
                       <span className="flex-1 text-sm font-medium text-zinc-200">{e.baslik}</span>
-                      <span className="text-xs text-zinc-500">{e.tur}</span>
+                      <span className="text-xs text-zinc-400">{e.tur}</span>
                     </Link>
                   ))}
                 </div>
