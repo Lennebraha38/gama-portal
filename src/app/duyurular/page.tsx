@@ -16,10 +16,26 @@ export default function DuyurularPage() {
     <PageTransition>
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
         <Reveal>
-          <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">Duyurular</h1>
-          <p className="mt-3 max-w-2xl text-zinc-200">
-            Gama Topluluğu&apos;nun etkinlik ve proje duyuruları.
-          </p>
+          <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">Duyurular</h1>
+              <p className="mt-3 max-w-2xl text-zinc-200">
+                Gama Topluluğu&apos;nun etkinlik ve proje duyuruları.
+              </p>
+            </div>
+            <Link
+              href="/feed.xml"
+              target="_blank"
+              className="inline-flex items-center gap-2 self-start rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white backdrop-blur transition-colors hover:border-white/40 hover:bg-white/10"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+                <path d="M4 11a9 9 0 0 1 9 9" />
+                <path d="M4 4a16 16 0 0 1 16 16" />
+                <circle cx="5" cy="19" r="1" />
+              </svg>
+              RSS
+            </Link>
+          </div>
         </Reveal>
 
         {duyurular.length === 0 ? (

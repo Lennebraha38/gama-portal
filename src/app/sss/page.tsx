@@ -70,8 +70,22 @@ const sorular = [
 export default function SssPage() {
   const [acik, setAcik] = useState<number | null>(0);
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: sorular.map((s) => ({
+      "@type": "Question",
+      name: s.soru,
+      acceptedAnswer: { "@type": "Answer", text: s.cevap },
+    })),
+  };
+
   return (
     <PageTransition>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col px-4 py-16">
         <Reveal>
           <h1 className="text-3xl font-extrabold tracking-tight md:text-4xl">
