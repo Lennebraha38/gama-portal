@@ -33,6 +33,7 @@ export default function KatilPage() {
       <Reveal delay={120}>
         <SubmitForm
         subject="Yeni üyelik başvurusu"
+      tur="katil"
         buttonText="Başvuruyu Gönder"
         fields={[
           {

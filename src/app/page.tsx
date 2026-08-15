@@ -371,6 +371,7 @@ export default function Home() {
                 </p>
                 <SubmitForm
                   subject="Bülten aboneliği"
+                  tur="bulten"
                   buttonText="Abone Ol"
                   successTitle="Aboneliğin alındı!"
                   successText="Bültenimize aramıza hoş geldin. İlk duyuru geldiğinde haberin olacak."

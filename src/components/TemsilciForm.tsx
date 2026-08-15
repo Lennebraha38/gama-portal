@@ -20,6 +20,7 @@ export function TemsilciForm() {
   return (
     <SubmitForm
       subject="İl temsilcisi başvurusu"
+      tur="temsilci"
       buttonText="Adaylığını Gönder"
       initialValues={secilenIl && acikIller.includes(secilenIl) ? { il: secilenIl } : {}}
       fields={[

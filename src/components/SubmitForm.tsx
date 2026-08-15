@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { formConfig } from "@/lib/forms";
+import { supabase } from "@/lib/supabase";
 
 type Field = {
   name: string;
@@ -18,6 +19,7 @@ const inputClass =
 export function SubmitForm({
   subject,
   fields,
+  tur = "form",
   buttonText = "Gönder",
   successTitle = "Başvurun alındı!",
   successText = "Ekibimiz en kısa sürede seninle iletişime geçecek.",
@@ -25,6 +27,7 @@ export function SubmitForm({
 }: {
   subject: string;
   fields: Field[];
+  tur?: string;
   buttonText?: string;
   successTitle?: string;
   successText?: string;
@@ -51,15 +54,34 @@ export function SubmitForm({
       const body = formConfig.web3formsKey
         ? { access_key: formConfig.web3formsKey, subject, ...veri }
         : { _subject: subject, _captcha: "false", ...veri };
-      const res = await fetch(endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(body),
-      });
-      const json = await res.json();
-      const basarili = json?.success === true || json?.success === "true";
-      if (!res.ok || !basarili) {
-        throw new Error(json?.message || "Form gönderilemedi.");
+
+      const kayit = supabase
+        ? supabase.from("form_basvurulari").insert({
+            tur,
+            ad: veri.ad ?? veri.adsoyad ?? null,
+            eposta: veri.eposta ?? null,
+            veri,
+          })
+        : Promise.resolve(null);
+
+      const [epostaSonuc, supabaseSonuc] = await Promise.allSettled([
+        fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(body),
+        }),
+        kayit,
+      ]);
+
+      const epostaOk =
+        epostaSonuc.status === "fulfilled" &&
+        (await epostaSonuc.value
+          .json()
+          .then((j) => j?.success === true || j?.success === "true")
+          .catch(() => false));
+      const supabaseOk = supabaseSonuc.status === "fulfilled";
+      if (!epostaOk && !supabaseOk) {
+        throw new Error("Form gönderilemedi.");
       }
       setDurum("basarili");
       form.reset();
