@@ -93,7 +93,7 @@ export default function Home() {
             className="pointer-events-none absolute bottom-[-120px] right-[-120px] -z-10 h-[380px] w-[380px] rounded-full bg-amber-500/10 blur-[120px]"
           />
           <div className="lg:col-span-7">
-            <div className="animate-fade-up flex items-center gap-3 rounded-full border border-gama-400/25 bg-gama-500/[0.07] px-5 py-2 backdrop-blur">
+            <div className="animate-fade-up flex flex-wrap items-center gap-x-3 gap-y-2 rounded-full border border-gama-400/25 bg-gama-500/[0.07] px-5 py-2 backdrop-blur">
               <Logo className="h-5 w-5" />
               <span className="live-dot h-2 w-2 rounded-full bg-amber-400" />
               <span className="sys-label !tracking-normal text-zinc-300">

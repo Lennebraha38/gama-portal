@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { AnimatedBackground } from "@/components/AnimatedBackground";
 import { siteConfig } from "@/lib/site";
 import { Analytics } from "@/components/Analytics";
+import { PwaKayit } from "@/components/PwaKayit";
 
 export const viewport: Viewport = {
   themeColor: "#060b18",
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.mission,
+  manifest: "/manifest.webmanifest",
   alternates: {
     canonical: "/",
   },
@@ -94,6 +96,7 @@ export default function RootLayout(props: LayoutProps<"/">) {
         }}
       />
         <Analytics />
+        <PwaKayit />
         <AnimatedBackground />
         <Header />
         <main className="relative z-10 flex flex-1 flex-col">{props.children}</main>

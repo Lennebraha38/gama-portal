@@ -29,7 +29,7 @@ export function Header() {
           <span className="text-xl font-bold tracking-tight text-white">{siteConfig.name}</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 text-sm font-medium md:flex" aria-label="Ana menü">
+        <nav className="hidden items-center gap-6 text-sm font-medium lg:flex" aria-label="Ana menü">
           {siteConfig.nav.map((item) => {
             const aktifMi =
               item.href === "/"
@@ -54,7 +54,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <div className="hidden w-64 md:block">
+          <div className="hidden w-56 xl:block">
             <SiteArama />
           </div>
           <Link
@@ -67,7 +67,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setAcik((v) => !v)}
-            className="rounded-lg border border-white/15 bg-white/5 p-2 text-white transition-colors hover:bg-white/10 md:hidden"
+            className="rounded-lg border border-white/15 bg-white/5 p-2 text-white transition-colors hover:bg-white/10 lg:hidden"
             aria-label={acik ? "Menüyü kapat" : "Menüyü aç"}
             aria-expanded={acik}
             aria-controls="mobil-menu"
@@ -99,13 +99,13 @@ export function Header() {
 
       <div
         id="mobil-menu"
-        className={`grid transition-[grid-template-rows] duration-300 ease-out md:hidden ${
+        className={`grid transition-[grid-template-rows] duration-300 ease-out lg:hidden ${
           acik ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
         <div className="overflow-hidden">
           <nav className="border-t border-white/10 bg-[#060b18]/95 px-4 py-4 backdrop-blur-xl">
-            <div className="mb-3 md:hidden">
+            <div className="mb-3 lg:hidden">
               <SiteArama />
             </div>
             <div className="flex flex-col gap-1">
