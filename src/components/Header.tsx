@@ -18,10 +18,10 @@ export function Header() {
       style={{ viewTransitionName: "site-header" }}
     >
       <div aria-hidden className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gama-400/60 to-transparent" />
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-6 lg:px-8">
         <Link
           href="/"
-          className="group flex items-center gap-3"
+          className="group flex shrink-0 items-center gap-3"
           onClick={() => setAcik(false)}
           transitionTypes={["nav-back"]}
         >
@@ -29,7 +29,7 @@ export function Header() {
           <span className="text-xl font-bold tracking-tight text-white">{siteConfig.name}</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 text-sm font-medium lg:flex" aria-label="Ana menü">
+        <nav className="hidden items-center justify-center gap-8 text-sm font-medium tracking-wide lg:flex" aria-label="Ana menü">
           {siteConfig.nav.map((item) => {
             const aktifMi =
               item.href === "/"
@@ -53,10 +53,7 @@ export function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <div className="hidden w-56 xl:block">
-            <SiteArama />
-          </div>
+        <div className="flex shrink-0 items-center gap-3">
           <Link
             href="/katil"
             transitionTypes={["nav-forward"]}
