@@ -86,7 +86,7 @@ export default function Home() {
         <section className="relative mx-auto grid w-full max-w-6xl flex-1 items-center gap-14 px-4 pb-24 pt-20 md:pt-28 lg:grid-cols-12 lg:gap-10">
           <div
             aria-hidden
-            className="pointer-events-none absolute left-[-180px] top-[-160px] -z-10 h-[520px] w-[520px] animate-float-slow rounded-full conic-glow opacity-20 blur-[110px]"
+            className="pointer-events-none absolute left-[-180px] top-[-160px] -z-10 h-[520px] w-[520px] animate-float-slow rounded-full conic-glow opacity-20 blur-[40px]"
           />
           <div
             aria-hidden
@@ -315,7 +315,7 @@ export default function Home() {
         <section className="mx-auto w-full max-w-6xl px-4 pb-20">
           <Reveal>
             <div className="panel-grad relative overflow-hidden rounded-3xl p-10 md:p-14">
-              <div aria-hidden className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-600/15 via-gama-500/10 to-amber-500/5" />
+              <div aria-hidden className="absolute inset-y-0 -left-full w-[300%] animate-gradient-x bg-gradient-to-r from-gama-600/15 via-gama-500/10 to-amber-500/5" />
               <div className="relative">
                 <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
                   <div>
@@ -392,7 +392,7 @@ export default function Home() {
         <section className="mx-auto w-full max-w-6xl px-4 pb-20">
           <Reveal>
             <div className="relative overflow-hidden rounded-3xl border border-gama-500/20 bg-gradient-to-br from-[#0c1a33] via-[#102348] to-[#0a1526] p-10 text-center shadow-[0_0_80px_-20px_rgba(96,165,250,0.4)] md:p-16">
-              <div className="absolute inset-0 animate-gradient-x bg-gradient-to-r from-gama-500/20 via-gama-400/20 to-amber-500/10" />
+              <div className="absolute inset-y-0 -left-full w-[300%] animate-gradient-x bg-gradient-to-r from-gama-500/20 via-gama-400/20 to-amber-500/10" />
               <div className="absolute inset-0 bg-grid opacity-60" />
               <div className="relative">
                 <p className="sys-label">

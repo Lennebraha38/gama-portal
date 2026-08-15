@@ -59,9 +59,9 @@ export function AnimatedBackground() {
         className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(251,191,36,0.07),transparent_60%)]"
         style={{ willChange: "transform" }}
       />
-      <div className="absolute -left-32 top-[-10%] h-[500px] w-[500px] animate-drift-1 rounded-full bg-gama-600/25 blur-[120px]" />
-      <div className="absolute right-[-10%] top-[25%] h-[420px] w-[420px] animate-drift-2 rounded-full bg-gama-500/20 blur-[120px]" />
-      <div className="absolute bottom-[-20%] left-[28%] h-[460px] w-[460px] animate-drift-3 rounded-full bg-gama-900/40 blur-[120px]" />
+      <div className="absolute -left-32 top-[-10%] h-[500px] w-[500px] animate-drift-1 rounded-full bg-gama-600/25 blur-[40px]" />
+      <div className="absolute right-[-10%] top-[25%] h-[420px] w-[420px] animate-drift-2 rounded-full bg-gama-500/20 blur-[40px]" />
+      <div className="absolute bottom-[-20%] left-[28%] h-[460px] w-[460px] animate-drift-3 rounded-full bg-gama-900/40 blur-[40px]" />
       <div
         ref={izgara}
         className="bg-grid absolute inset-0"

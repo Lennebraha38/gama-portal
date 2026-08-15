@@ -47,7 +47,7 @@ export function IlListesi() {
         filtrelenmis.map((bolge) => (
           <section
             key={bolge.bolge}
-            className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur md:p-8"
+            className="rounded-3xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur md:p-8 [content-visibility:auto] [contain-intrinsic-size:auto_220px]"
           >
             <div className="flex items-center gap-3">
               <h2 className="text-lg font-bold text-white">{bolge.bolge}</h2>
