@@ -29,7 +29,7 @@ export function Header() {
           <span className="text-xl font-bold tracking-tight text-white">{siteConfig.name}</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium lg:flex" aria-label="Ana menü">
+        <nav className="hidden items-center gap-8 text-sm font-medium lg:flex" aria-label="Ana menü">
           {siteConfig.nav.map((item) => {
             const aktifMi =
               item.href === "/"

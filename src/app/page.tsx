@@ -100,7 +100,7 @@ export default function Home() {
                 Türkiye&apos;nin gençlik araştırma-geliştirme birliği
               </span>
             </div>
-            <h1 className="animate-fade-up delay-100 mt-8 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight md:text-7xl lg:text-8xl">
+            <h1 className="animate-fade-up delay-100 mt-8 max-w-3xl text-4xl font-bold leading-[1.12] tracking-tight md:text-7xl lg:text-8xl">
               Teknolojik ve bilimsel bağımsızlık için{" "}
               <span className="glow-text text-gradient">gençler</span>{" "}
               buluşuyor.
