@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { formConfig } from "@/lib/forms";
 import { supabase } from "@/lib/supabase";
 
 type Field = {
@@ -48,39 +47,22 @@ export function SubmitForm({
     setDurum("gonderen");
     setHata("");
     try {
-      const endpoint = formConfig.web3formsKey
-        ? "https://api.web3forms.com/submit"
-        : `https://formsubmit.co/ajax/${formConfig.email}`;
-      const body = formConfig.web3formsKey
-        ? { access_key: formConfig.web3formsKey, subject, ...veri }
-        : { _subject: subject, _captcha: "false", ...veri };
-
-      const kayit = supabase
-        ? supabase.from("form_basvurulari").insert({
-            tur,
-            ad: veri.ad ?? veri.adsoyad ?? null,
-            eposta: veri.eposta ?? null,
-            veri,
-          })
-        : Promise.resolve(null);
-
-      const [epostaSonuc, supabaseSonuc] = await Promise.allSettled([
-        fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", Accept: "application/json" },
-          body: JSON.stringify(body),
-        }),
-        kayit,
-      ]);
-
-      const epostaOk =
-        epostaSonuc.status === "fulfilled" &&
-        (await epostaSonuc.value
-          .json()
-          .then((j) => j?.success === true || j?.success === "true")
-          .catch(() => false));
-      const supabaseOk = supabaseSonuc.status === "fulfilled";
-      if (!epostaOk && !supabaseOk) {
+      if (!supabase) {
+        throw new Error("Form sistemi şu an kapalı.");
+      }
+      const temizVeri = Object.fromEntries(
+        Object.entries(veri).map(([k, v]) => [
+          k,
+          typeof v === "string" ? v.slice(0, 500) : v,
+        ])
+      );
+      const { error } = await supabase.from("form_basvurulari").insert({
+        tur,
+        ad: veri.ad ?? veri.adsoyad ?? null,
+        eposta: veri.eposta ?? null,
+        veri: temizVeri,
+      });
+      if (error) {
         throw new Error("Form gönderilemedi.");
       }
       setDurum("basarili");
@@ -144,7 +126,7 @@ export function SubmitForm({
       ))}
       {durum === "hata" && (
         <p className="rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
-          {hata} Bir sorun varsa doğrudan {formConfig.email} adresine yazabilirsin.
+          {hata}
         </p>
       )}
       <button

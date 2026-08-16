@@ -77,6 +77,13 @@ export default function RootLayout(props: LayoutProps<"/">) {
       lang="tr"
       className={`${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
+      <head>
+        <meta
+          httpEquiv="Content-Security-Policy"
+          content="default-src 'self'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; style-src 'self' 'unsafe-inline'; img-src 'self' https:; font-src 'self'; connect-src 'self' https://*.supabase.co https://gc.zgo.at; object-src 'none'; base-uri 'self'; form-action 'self'"
+        />
+        <meta name="referrer" content="no-referrer" />
+      </head>
       <body className="flex min-h-full flex-col">
         <script
           type="application/ld+json"

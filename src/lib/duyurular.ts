@@ -47,10 +47,32 @@ export function duyuruBul(slug: string): Duyuru | null {
   return tumDuyurular().find((d) => d.slug === slug) ?? null;
 }
 
+const esc = (s: string) =>
+  s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
 const kalin = (s: string) => s.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
 
 function satirIci(paragraf: string): string {
-  return kalin(paragraf.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" class="text-gama-400 hover:text-gama-300 underline">$1</a>'));
+  const yerler: string[] = [];
+  const islenmis = paragraf.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, metin: string, url: string) => {
+    const u = url.trim();
+    if (!/^(https?:|mailto:)/i.test(u)) {
+      return `**${metin}**`;
+    }
+    const uygun = u.replace(/["'<>\\]/g, "");
+    yerler.push(
+      `<a href="${uygun}" class="text-gama-400 hover:text-gama-300 underline" rel="noopener noreferrer" target="_blank">${esc(metin)}</a>`
+    );
+    return `\u0000${yerler.length - 1}\u0000`;
+  });
+  const kaçan = esc(islenmis);
+  const kalinli = kalin(kaçan);
+  return kalinli.replace(/\u0000(\d+)\u0000/g, (_, i: string) => yerler[+i]);
 }
 
 export function markdownHTML(icerik: string): string {

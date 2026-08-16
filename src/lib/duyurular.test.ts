@@ -46,4 +46,36 @@ describe("markdownHTML", () => {
   it("boş içerik için boş çıktı", () => {
     expect(markdownHTML("")).toBe("");
   });
+
+  it("javascript: linklerini XSS'e karşı düz metne çevirir", () => {
+    const html = markdownHTML("[tıkla](javascript:alert(1))");
+    expect(html).not.toContain("javascript:");
+    expect(html).not.toContain("<a");
+    expect(html).toContain("tıkla");
+  });
+
+  it("href attribute enjeksiyonunu engeller", () => {
+    const html = markdownHTML('[x](https://ornek.com" onmouseover="alert(1))');
+    expect(html).not.toContain("<a");
+    expect(html).not.toContain('onmouseover="');
+    expect(html).toContain("&quot;");
+  });
+
+  it("HTML etiketlerini içerikte escape eder", () => {
+    const html = markdownHTML("saldırı <script>alert(1)</script>");
+    expect(html).not.toContain("<script>");
+    expect(html).toContain("&lt;script&gt;");
+  });
+
+  it("data: linklerini engeller", () => {
+    const html = markdownHTML("[x](data:text/html,<script>alert(1)</script>)");
+    expect(html).not.toContain("<a");
+    expect(html).not.toContain("data:");
+  });
+
+  it("harici linklere noopener ekler", () => {
+    const html = markdownHTML("[x](https://dışarı.com)");
+    expect(html).toContain('rel="noopener noreferrer"');
+    expect(html).toContain('target="_blank"');
+  });
 });
