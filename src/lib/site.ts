@@ -24,12 +24,10 @@ export const siteConfig = {
   navTopluluk: [
     { href: "/mentor", label: "Mentorluk" },
     { href: "/ekosistem", label: "Ekosistem" },
-    { href: "/bultenler", label: "Bültenler" },
     { href: "/sss", label: "SSS" },
   ],
   nav: [
     { href: "/", label: "Anasayfa" },
-    { href: "/projeler", label: "Projeler" },
     { href: "/etkinlikler", label: "Etkinlikler" },
     { href: "/duyurular", label: "Duyurular" },
     { label: "Topluluk" },
@@ -39,10 +37,8 @@ export const siteConfig = {
   ],
   navGenis: [
     { href: "/", label: "Anasayfa" },
-    { href: "/projeler", label: "Projeler" },
     { href: "/mentor", label: "Mentorluk" },
     { href: "/ekosistem", label: "Ekosistem" },
-    { href: "/bultenler", label: "Bültenler" },
     { href: "/etkinlikler", label: "Etkinlikler" },
     { href: "/duyurular", label: "Duyurular" },
     { href: "/iller", label: "İller" },

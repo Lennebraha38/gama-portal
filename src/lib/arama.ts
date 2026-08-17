@@ -1,8 +1,6 @@
 import type { AramaVerisi } from "@/components/SiteArama";
 import { tumDuyurular } from "./duyurular";
 import { tumEtkinlikler } from "./etkinlikler";
-import { tumProjeler } from "./projeler";
-import { tumBultenler } from "./bultenler";
 import { ilBul, regions } from "./provinces";
 
 const sayfalar: AramaVerisi[] = [
@@ -19,13 +17,6 @@ const sayfalar: AramaVerisi[] = [
     url: "/ekosistem",
     tur: "Sayfa",
     etiket: "Ekosistem",
-  },
-  {
-    baslik: "Bültenler",
-    ozet: "Topluluk gelişmelerinin e-posta bülteni arşivi.",
-    url: "/bultenler",
-    tur: "Sayfa",
-    etiket: "Bülten",
   },
   {
     baslik: "Üye Girişi",
@@ -53,22 +44,6 @@ export function aramaVerileri(): AramaVerisi[] {
     etiket: `${e.tur} ${e.sehir}`,
   }));
 
-  const projeler: AramaVerisi[] = tumProjeler().map((p) => ({
-    baslik: p.baslik,
-    ozet: p.ozet,
-    url: `/projeler/${p.slug}`,
-    tur: "Proje",
-    etiket: p.kapsam,
-  }));
-
-  const bultenler: AramaVerisi[] = tumBultenler().map((b) => ({
-    baslik: b.baslik,
-    ozet: b.ozet,
-    url: `/bultenler/${b.slug}`,
-    tur: "Bülten",
-    etiket: b.tarih,
-  }));
-
   const iller: AramaVerisi[] = regions.flatMap((b) =>
     b.iller.map((il) => ({
       baslik: `${il.il} İl Temsilciliği`,
@@ -83,8 +58,6 @@ export function aramaVerileri(): AramaVerisi[] {
     ...sayfalar,
     ...duyurular,
     ...etkinlikler,
-    ...projeler,
-    ...bultenler,
     ...iller,
   ];
 }

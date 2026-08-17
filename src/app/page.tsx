@@ -275,7 +275,6 @@ export default function Home() {
               </p>
               <div className="mt-4 grid gap-2">
                 {[
-                  { href: "/projeler", metin: "Projeni vitrine taşı" },
                   { href: "/mentor", metin: "Mentorluk programına başvur" },
                 ].map((r) => (
                   <Link

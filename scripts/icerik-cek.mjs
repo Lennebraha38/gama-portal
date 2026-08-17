@@ -29,21 +29,9 @@ const TABLOLAR = [
     ekstralar: {},
   },
   {
-    tablo: "icerik_projeler",
-    dizin: "projeler",
-    alanlar: ["baslik", "durum", "kapsam", "takim", "sehir", "site", "ozet"],
-    ekstralar: {},
-  },
-  {
     tablo: "icerik_etkinlikler",
     dizin: "etkinlikler",
     alanlar: ["baslik", "tarih", "saat", "bitis", "yer", "sehir", "tur", "kayit", "ozet"],
-    ekstralar: {},
-  },
-  {
-    tablo: "icerik_bultenler",
-    dizin: "bultenler",
-    alanlar: ["baslik", "tarih", "ozet"],
     ekstralar: {},
   },
 ];

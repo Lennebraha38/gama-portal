@@ -25,12 +25,6 @@ export const ROZETLER: Rozet[] = [
     kosul: "7 gün üst üste görev",
   },
   {
-    id: "proje-ilk",
-    ad: "Proje Sahibi",
-    aciklama: "İlk projeni Gama vitrinine aday gösterdin.",
-    kosul: "Vitrine proje başvurusu yap",
-  },
-  {
     id: "katilim",
     ad: "Etkinlik Tutkunu",
     aciklama: "Bir etkinliğe katılım bildirdin.",
@@ -42,7 +36,6 @@ export const ROZET_ANAHTARLARI = {
   uye: "gama:rozet:uye",
   streak3: "gama:rozet:streak-3",
   streak7: "gama:rozet:streak-7",
-  proje: "gama:rozet:proje-ilk",
   katilim: "gama:rozet:katilim",
 } as const;
 
@@ -69,7 +62,6 @@ export function kazanilanRozetler(depo: RozetDepo, uyeMi: boolean): string[] {
   if (uyeMi) kazanilan.push("uye");
   if (rozetKazanildi(depo, ROZET_ANAHTARLARI.streak3)) kazanilan.push("streak-3");
   if (rozetKazanildi(depo, ROZET_ANAHTARLARI.streak7)) kazanilan.push("streak-7");
-  if (rozetKazanildi(depo, ROZET_ANAHTARLARI.proje)) kazanilan.push("proje-ilk");
   if (rozetKazanildi(depo, ROZET_ANAHTARLARI.katilim)) kazanilan.push("katilim");
   return kazanilan;
 }
