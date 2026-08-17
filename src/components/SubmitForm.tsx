@@ -16,21 +16,26 @@ const inputClass =
   "rounded-xl border border-white/15 bg-white/[0.07] px-4 py-2.5 text-sm text-white placeholder-zinc-400 backdrop-blur transition-all focus:border-gama-400 focus:outline-none focus:ring-2 focus:ring-gama-400/40 focus:shadow-[0_0_20px_rgba(96,165,250,0.25)]";
 
 export function SubmitForm({
-  subject,
   fields,
   tur = "form",
+  tablo = "form_basvurulari",
+  sabit = {},
   buttonText = "Gönder",
   successTitle = "Başvurun alındı!",
   successText = "Ekibimiz en kısa sürede seninle iletişime geçecek.",
   initialValues = {},
+  onSuccess,
 }: {
   subject: string;
   fields: Field[];
   tur?: string;
+  tablo?: string;
+  sabit?: Record<string, string>;
   buttonText?: string;
   successTitle?: string;
   successText?: string;
   initialValues?: Record<string, string>;
+  onSuccess?: () => void;
 }) {
   const [durum, setDurum] = useState<"bekle" | "gonderen" | "basarili" | "hata">("bekle");
   const [hata, setHata] = useState("");
@@ -53,20 +58,30 @@ export function SubmitForm({
       const temizVeri = Object.fromEntries(
         Object.entries(veri).map(([k, v]) => [
           k,
-          typeof v === "string" ? v.slice(0, 500) : v,
+          typeof v === "string" ? v.slice(0, 500) : null,
         ])
       );
-      const { error } = await supabase.from("form_basvurulari").insert({
-        tur,
-        ad: veri.ad ?? veri.adsoyad ?? null,
-        eposta: veri.eposta ?? null,
-        veri: temizVeri,
-      });
-      if (error) {
-        throw new Error("Form gönderilemedi.");
+      if (tablo === "form_basvurulari") {
+        const { error } = await supabase.from("form_basvurulari").insert({
+          tur,
+          ad: veri.ad ?? veri.adsoyad ?? null,
+          eposta: veri.eposta ?? null,
+          veri: temizVeri,
+        });
+        if (error) {
+          throw new Error("Form gönderilemedi.");
+        }
+      } else {
+        const { error } = await supabase
+          .from(tablo)
+          .insert({ ...temizVeri, ...sabit } as never);
+        if (error) {
+          throw new Error("Form gönderilemedi.");
+        }
       }
       setDurum("basarili");
       form.reset();
+      onSuccess?.();
     } catch (err) {
       setDurum("hata");
       setHata(err instanceof Error ? err.message : "Bir şeyler ters gitti.");

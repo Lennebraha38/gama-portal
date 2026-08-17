@@ -6,11 +6,15 @@ import { usePathname } from "next/navigation";
 import { siteConfig } from "@/lib/site";
 import { Logo } from "@/components/Logo";
 import { SiteArama } from "@/components/SiteArama";
+import { UyelikRozeti } from "@/components/UyelikRozeti";
 
 export function Header() {
   const [acik, setAcik] = useState(false);
+  const [toplulukAcik, setToplulukAcik] = useState(false);
   const pathname = usePathname();
   const aktif = (href: string) => (href === "/" ? pathname === "/" : pathname.startsWith(href));
+
+  const toplulukAktif = siteConfig.navTopluluk.some((t) => pathname.startsWith(t.href));
 
   return (
     <header
@@ -31,6 +35,53 @@ export function Header() {
 
         <nav className="hidden items-center justify-center gap-8 text-sm font-medium tracking-wide lg:flex" aria-label="Ana menü">
           {siteConfig.nav.map((item) => {
+            if (!("href" in item)) {
+              const alt = siteConfig.navTopluluk;
+              return (
+                <div key={item.label} className="group relative">
+                  <button
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded={toplulukAcik}
+                    onClick={() => setToplulukAcik((v) => !v)}
+                    onBlur={() => setToplulukAcik(false)}
+                    className={`nav-link flex items-center gap-1.5 ${
+                      toplulukAktif
+                        ? "text-gama-300 [text-shadow:0_0_16px_rgba(96,165,250,0.5)]"
+                        : "text-zinc-200 transition-colors hover:text-white"
+                    }`}
+                  >
+                    {item.label}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5 transition-transform group-hover:rotate-180">
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </button>
+                  <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-3 opacity-0 transition-all duration-150 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                    <div className="w-56 rounded-2xl border border-gama-500/20 bg-[#0a1226]/95 p-2 shadow-[0_12px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+                      {alt.map((altItem) => {
+                        const altAktif = pathname.startsWith(altItem.href);
+                        return (
+                          <Link
+                            key={altItem.href}
+                            href={altItem.href}
+                            onClick={() => setToplulukAcik(false)}
+                            aria-current={altAktif ? "page" : undefined}
+                            transitionTypes={["nav-forward"]}
+                            className={`block rounded-xl px-3.5 py-2 text-sm transition-colors ${
+                              altAktif
+                                ? "bg-gama-500/10 text-gama-300"
+                                : "text-zinc-200 hover:bg-white/10 hover:text-white"
+                            }`}
+                          >
+                            {altItem.label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              );
+            }
             const aktifMi =
               item.href === "/"
                 ? pathname === "/"
@@ -54,6 +105,7 @@ export function Header() {
         </nav>
 
         <div className="flex shrink-0 items-center gap-3">
+          <UyelikRozeti />
           <Link
             href="/katil"
             transitionTypes={["nav-forward"]}
@@ -106,7 +158,7 @@ export function Header() {
               <SiteArama />
             </div>
             <div className="flex flex-col gap-1">
-              {siteConfig.nav.map((item) => (
+              {siteConfig.navGenis.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -120,6 +172,16 @@ export function Header() {
                   {item.label}
                 </Link>
               ))}
+              <Link
+                href="/uye"
+                onClick={() => setAcik(false)}
+                transitionTypes={["nav-forward"]}
+                className={`rounded-lg px-3 py-2.5 text-sm font-medium transition-colors hover:bg-white/10 ${
+                  pathname.startsWith("/uye") ? "bg-gama-500/10 text-gama-300" : "text-zinc-200"
+                }`}
+              >
+                Üyelik
+              </Link>
               <Link
                 href="/katil"
                 onClick={() => setAcik(false)}

@@ -21,7 +21,7 @@ export function Footer() {
         <div aria-hidden className="section-divider mt-8" />
         <div className="mt-8 flex flex-col gap-8 text-sm text-zinc-300 md:flex-row md:items-start md:justify-between">
           <nav className="grid grid-cols-2 gap-x-12 gap-y-3 sm:grid-cols-3" aria-label="Hızlı bağlantılar">
-            {siteConfig.nav.map((item) => (
+            {siteConfig.navGenis.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

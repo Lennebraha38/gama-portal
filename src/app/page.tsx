@@ -8,6 +8,7 @@ import { GeriSayim } from "@/components/GeriSayim";
 import { SubmitForm } from "@/components/SubmitForm";
 import { PageTransition } from "@/components/PageTransition";
 import { Reveal } from "@/components/Reveal";
+import { GunlukGorev } from "@/components/GunlukGorev";
 
 const icons = {
   kaynak: (
@@ -258,6 +259,41 @@ export default function Home() {
               ))}
             </div>
           )}
+        </section>
+
+        <section className="mx-auto w-full max-w-6xl px-4 py-20">
+          <Reveal>
+            <BolumBaslik numara="03" baslik="Bugün ne yapabilirsin?" baglantiHref="/kaynak" baglantiMetin="Rozetler" />
+          </Reveal>
+          <div className="mt-8 grid gap-5 lg:grid-cols-2">
+            <GunlukGorev kompakt />
+            <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur">
+              <p className="text-xs font-semibold uppercase tracking-widest text-gama-300">
+                Topluluk Rotaları
+              </p>
+              <p className="mt-1.5 text-sm leading-6 text-zinc-300">
+                Fikrini projeye, projeyi ekibe, ekibi mentorlukla büyütmeye
+                taşıyan dört yol:
+              </p>
+              <div className="mt-4 grid gap-2">
+                {[
+                  { href: "/projeler", metin: "Projeni vitrine taşı" },
+                  { href: "/mentor", metin: "Mentorluk programına başvur" },
+                  { href: "/challenge", metin: "Haftalık challenge'a katıl" },
+                  { href: "/quiz", metin: "Teknoloji quizinde kendini dene" },
+                ].map((r) => (
+                  <Link
+                    key={r.href}
+                    href={r.href}
+                    transitionTypes={["nav-forward"]}
+                    className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-zinc-200 transition-colors hover:border-gama-400/40 hover:bg-gama-500/10 hover:text-white"
+                  >
+                    {r.metin} →
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="mx-auto w-full max-w-6xl px-4 py-20">

@@ -5,6 +5,7 @@ import { PageTransition } from "@/components/PageTransition";
 import { Reveal } from "@/components/Reveal";
 import { etkinlikBul, etkinlikDetayi, etkinlikMarkdownHTML, tumEtkinlikler } from "@/lib/etkinlikler";
 import { siteConfig } from "@/lib/site";
+import { EtkinlikKayit } from "@/components/EtkinlikKayit";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -130,6 +131,12 @@ export default async function EtkinlikDetayPage({ params }: Props) {
             </a>
           </div>
         </Reveal>
+
+        {!detay.sonaErdi && (
+          <Reveal delay={80}>
+            <EtkinlikKayit slug={e.slug} ad={e.baslik} />
+          </Reveal>
+        )}
 
         <Reveal delay={100}>
           <article

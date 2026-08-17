@@ -1,5 +1,6 @@
 import { tumDuyurular } from "@/lib/duyurular";
 import { tumYazilar } from "@/lib/gunluk";
+import { tumBultenler } from "@/lib/bultenler";
 import { siteConfig } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -16,19 +17,28 @@ function xmlEsc(s: string) {
 export function GET() {
   const duyurular = tumDuyurular();
   const yazilar = tumYazilar();
+  const bultenler = tumBultenler();
 
-  const items = [...duyurular, ...yazilar]
+  const items = [...duyurular, ...yazilar, ...bultenler]
     .sort((a, b) => b.tarih.localeCompare(a.tarih))
     .map((kayit) => {
       const url = "tur" in kayit
         ? `${siteConfig.siteUrl}/duyurular/${kayit.slug}`
-        : `${siteConfig.siteUrl}/gunluk/${kayit.slug}`;
+        : "yazar" in kayit
+          ? `${siteConfig.siteUrl}/gunluk/${kayit.slug}`
+          : `${siteConfig.siteUrl}/bultenler/${kayit.slug}`;
       return `    <item>
       <title>${xmlEsc(kayit.baslik)}</title>
       <link>${url}</link>
       <guid isPermaLink="true">${url}</guid>
       <pubDate>${new Date(kayit.tarih + "T00:00:00Z").toUTCString()}</pubDate>
-      <category>${xmlEsc("tur" in kayit ? kayit.tur : "Bilim Günlüğü")}</category>
+      <category>${xmlEsc(
+        "tur" in kayit
+          ? (kayit as { tur: string }).tur
+          : "yazar" in kayit
+            ? "Bilim Günlüğü"
+            : "Bülten",
+      )}</category>
       <description>${xmlEsc(kayit.ozet)}</description>
     </item>`;
     })

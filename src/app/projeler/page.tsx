@@ -3,6 +3,8 @@ import Link from "next/link";
 import { PageTransition } from "@/components/PageTransition";
 import { Reveal } from "@/components/Reveal";
 import { tumProjeler } from "@/lib/projeler";
+import { ProjeVitrinFormu } from "@/components/ProjeVitrinFormu";
+import { TakimFormu } from "@/components/TakimFormu";
 
 export const metadata: Metadata = {
   title: "Projeler",
@@ -90,19 +92,32 @@ export default function ProjelerPage() {
         </Reveal>
 
         <Reveal delay={150}>
-          <div className="mt-12 rounded-3xl border border-white/10 bg-white/[0.03] p-8 text-center backdrop-blur">
-            <h2 className="text-xl font-bold text-white">Bir sonraki proje senin fikrin</h2>
-            <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-zinc-200">
-              Gama; fon, takım ve mentorluk desteğiyle fikrini hayata
-              geçirmene yardımcı olur. Fikrini bizimle paylaş.
+          <div className="mt-12 rounded-3xl border border-gama-500/20 bg-gama-500/[0.06] p-8 backdrop-blur">
+            <p className="sys-label">
+              Üye Vitrini <span className="text-zinc-400">/</span> Projeni Paylaş
             </p>
-            <Link
-              href="/katil"
-              transitionTypes={["nav-forward"]}
-              className="mt-6 inline-block rounded-full bg-gradient-to-r from-gama-500 to-gama-400 px-7 py-3 font-semibold text-white transition-all hover:shadow-[0_0_24px_rgba(96,165,250,0.55)]"
-            >
-              Fikrini Paylaş
-            </Link>
+            <h2 className="mt-2 text-2xl font-bold text-white">Projeni Gama vitrinine taşı</h2>
+            <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-zinc-200">
+              Üyelerimizin projeleri il etiketi ve MTKB uyumlu tema ile vitrinde
+              sergilenir. Başvurun ekibimizce incelenir, onaylanan projeler bu
+              sayfada yayınlanır ve ilinin liderlik skoruna katkı sağlar.
+            </p>
+            <ProjeVitrinFormu />
+          </div>
+        </Reveal>
+
+        <Reveal delay={180}>
+          <div className="mt-10 rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur">
+            <p className="sys-label">
+              Takım <span className="text-zinc-400">/</span> Birlikte Üretmek
+            </p>
+            <h2 className="mt-2 text-2xl font-bold text-white">Takım kur ya da katıl</h2>
+            <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-zinc-200">
+              İyi projeler ekiplerle büyür. Projene takım arıyorsan ya da bir
+              takıma katılmak istiyorsan ilanını bırak; ilindeki temsilcin
+              seni uygun üyelerle buluşturur.
+            </p>
+            <TakimFormu />
           </div>
         </Reveal>
       </div>

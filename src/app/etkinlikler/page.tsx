@@ -5,6 +5,8 @@ import { PageTransition } from "@/components/PageTransition";
 import { Reveal } from "@/components/Reveal";
 import { etkinlikDetayi, tumEtkinlikler } from "@/lib/etkinlikler";
 import { GunKaldi } from "@/components/GunKaldi";
+import { KatilimSayaci } from "@/components/KatilimSayaci";
+import { AyTakvimi } from "@/components/AyTakvimi";
 
 export const metadata: Metadata = {
   title: "Etkinlikler",
@@ -85,6 +87,7 @@ export default function EtkinliklerPage() {
                           {e.yer && (
                             <span className="text-sm text-zinc-400">{e.yer}</span>
                           )}
+                          <KatilimSayaci slug={e.slug} />
                         </div>
                         <h2 className="mt-3 text-lg font-bold text-white">
                           <Link
@@ -122,6 +125,31 @@ export default function EtkinliklerPage() {
                       </div>
                     </article>
                   ))}
+                </div>
+              </Reveal>
+            )}
+
+            {tumu.length > 0 && (
+              <Reveal delay={130}>
+                <div className="mt-12 grid gap-6 lg:grid-cols-[1fr_320px]">
+                  <AyTakvimi
+                    etkinlikler={tumu.map((e) => ({
+                      tarih: e.tarih,
+                      baslik: e.baslik,
+                      slug: e.slug,
+                    }))}
+                  />
+                  <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 backdrop-blur">
+                    <p className="font-semibold text-white">Etkinlik önerin mi var?</p>
+                    <p className="mt-2 text-sm leading-6 text-zinc-300">
+                      İlindeki okullar, kulüpler ve atölyeler için bir etkinlik
+                      fikrin varsa temsilcinle paylaş ya da{" "}
+                      <Link href="/iletisim" className="text-gama-300 underline-offset-4 hover:underline">
+                        bize yaz
+                      </Link>
+                      . İlk kez etkinlik düzenleyenlere ekipçe yol gösteririz.
+                    </p>
+                  </div>
                 </div>
               </Reveal>
             )}
