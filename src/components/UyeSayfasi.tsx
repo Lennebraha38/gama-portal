@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { supabase } from "@/lib/supabase";
 import { tumIller } from "@/lib/provinces";
-import { GunlukGorev } from "@/components/GunlukGorev";
 import Link from "next/link";
 
 type Profil = {
@@ -206,11 +205,7 @@ export function UyeSayfasi() {
               )}
             </p>
             <p className="mt-1 text-sm text-zinc-300">
-              Profilini tamamla; rozetlerin{" "}
-              <Link href="/kaynak" className="text-gama-300 underline-offset-4 hover:underline">
-                Katkı Rozetleri
-              </Link>{" "}
-              sayfasında birikir.
+              Profilini tamamla; rozetlerin burada birikir.
             </p>
           </div>
           <button
@@ -239,12 +234,6 @@ export function UyeSayfasi() {
             <li className="rounded-xl bg-white/5 px-4 py-3">Vitrin projesi başına 10 puan</li>
             <li className="rounded-xl bg-white/5 px-4 py-3">Mentor eşleşmesi başına 3 puan</li>
           </ul>
-          <Link
-            href="/liderlik"
-            className="mt-5 inline-block rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-          >
-            Liderlik Tablosu →
-          </Link>
         </div>
       )}
 
@@ -312,10 +301,6 @@ export function UyeSayfasi() {
           )}
         </div>
       </form>
-
-      <div className="mt-6">
-        <GunlukGorev />
-      </div>
     </div>
   );
 }

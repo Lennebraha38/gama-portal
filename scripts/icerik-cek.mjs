@@ -29,12 +29,6 @@ const TABLOLAR = [
     ekstralar: {},
   },
   {
-    tablo: "icerik_gunluk",
-    dizin: "gunluk",
-    alanlar: ["baslik", "tarih", "yazar", "etiketler", "ozet"],
-    ekstralar: { etiketler: (s) => (s.etiketler || "").split(",").map((e) => e.trim()).filter(Boolean).join(", ") },
-  },
-  {
     tablo: "icerik_projeler",
     dizin: "projeler",
     alanlar: ["baslik", "durum", "kapsam", "takim", "sehir", "site", "ozet"],
@@ -50,18 +44,6 @@ const TABLOLAR = [
     tablo: "icerik_bultenler",
     dizin: "bultenler",
     alanlar: ["baslik", "tarih", "ozet"],
-    ekstralar: {},
-  },
-  {
-    tablo: "icerik_challenges",
-    dizin: "challenges",
-    alanlar: ["baslik", "hafta", "zorluk", "alan", "son_tarih", "ozet"],
-    ekstralar: {},
-  },
-  {
-    tablo: "icerik_amalar",
-    dizin: "amalar",
-    alanlar: ["baslik", "konuk", "alan", "tarih", "ozet"],
     ekstralar: {},
   },
 ];

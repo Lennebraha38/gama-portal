@@ -35,13 +35,13 @@ describe("ROZETLER", () => {
 
 describe("rozetKazanildi / rozetIsaretle", () => {
   it("işaretlenmemiş rozet kazanılmamıştır", () => {
-    expect(rozetKazanildi(depoOlustur(), ROZET_ANAHTARLARI.quizUsta)).toBe(false);
+    expect(rozetKazanildi(depoOlustur(), ROZET_ANAHTARLARI.proje)).toBe(false);
   });
 
   it("işaretlenen rozet kazanılmış sayılır", () => {
     const depo = depoOlustur();
-    rozetIsaretle(depo, ROZET_ANAHTARLARI.quizUsta);
-    expect(rozetKazanildi(depo, ROZET_ANAHTARLARI.quizUsta)).toBe(true);
+    rozetIsaretle(depo, ROZET_ANAHTARLARI.proje);
+    expect(rozetKazanildi(depo, ROZET_ANAHTARLARI.proje)).toBe(true);
   });
 });
 
@@ -56,11 +56,9 @@ describe("kazanilanRozetler", () => {
 
   it("işaretli rozetleri listeler", () => {
     const depo = depoOlustur();
-    rozetIsaretle(depo, ROZET_ANAHTARLARI.quizUsta);
-    rozetIsaretle(depo, ROZET_ANAHTARLARI.challenge);
+    rozetIsaretle(depo, ROZET_ANAHTARLARI.proje);
     const kazanilan = kazanilanRozetler(depo, true);
-    expect(kazanilan).toContain("quiz-usta");
-    expect(kazanilan).toContain("challenge-ilk");
+    expect(kazanilan).toContain("proje-ilk");
     expect(kazanilan).toContain("uye");
     expect(kazanilan).not.toContain("streak-7");
   });

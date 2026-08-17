@@ -2,20 +2,10 @@ import type { AramaVerisi } from "@/components/SiteArama";
 import { tumDuyurular } from "./duyurular";
 import { tumEtkinlikler } from "./etkinlikler";
 import { tumProjeler } from "./projeler";
-import { tumYazilar } from "./gunluk";
 import { tumBultenler } from "./bultenler";
-import { tumAmalar } from "./amalar";
-import { tumChallenge } from "./challenges";
 import { ilBul, regions } from "./provinces";
 
 const sayfalar: AramaVerisi[] = [
-  {
-    baslik: "İl Liderlik Tablosu",
-    ozet: "81 il temsilciliğinin üye, etkinlik, proje ve mentorluk skorları.",
-    url: "/liderlik",
-    tur: "Sayfa",
-    etiket: "Liderlik",
-  },
   {
     baslik: "Mentorluk Programı",
     ozet: "Mentor ve mentee başvuruları; kohort bazlı adil eşleştirme.",
@@ -36,34 +26,6 @@ const sayfalar: AramaVerisi[] = [
     url: "/bultenler",
     tur: "Sayfa",
     etiket: "Bülten",
-  },
-  {
-    baslik: "Haftalık Challenge",
-    ozet: "Haftalık teknoloji görevleri; çözümünü gönder, rozet kazan.",
-    url: "/challenge",
-    tur: "Sayfa",
-    etiket: "Challenge",
-  },
-  {
-    baslik: "Teknoloji Quiz",
-    ozet: "Uzay, yapay zekâ, yazılım ve robotikten bilgi yarışması.",
-    url: "/quiz",
-    tur: "Sayfa",
-    etiket: "Quiz",
-  },
-  {
-    baslik: "Açık Kaynak Katkı Rehberi",
-    ozet: "Git temelleri, fork, pull request ve katkı rozetleri.",
-    url: "/kaynak",
-    tur: "Sayfa",
-    etiket: "Açık Kaynak",
-  },
-  {
-    baslik: "AMA Arşivi",
-    ozet: "Konukların soru-cevap buluşmalarının kayıtları ve özetleri.",
-    url: "/ama",
-    tur: "Sayfa",
-    etiket: "AMA",
   },
   {
     baslik: "Üye Girişi",
@@ -99,36 +61,12 @@ export function aramaVerileri(): AramaVerisi[] {
     etiket: p.kapsam,
   }));
 
-  const yazilar: AramaVerisi[] = tumYazilar().map((y) => ({
-    baslik: y.baslik,
-    ozet: y.ozet,
-    url: `/gunluk/${y.slug}`,
-    tur: "Günlük",
-    etiket: y.etiketler.join(", "),
-  }));
-
   const bultenler: AramaVerisi[] = tumBultenler().map((b) => ({
     baslik: b.baslik,
     ozet: b.ozet,
     url: `/bultenler/${b.slug}`,
     tur: "Bülten",
     etiket: b.tarih,
-  }));
-
-  const amalar: AramaVerisi[] = tumAmalar().map((a) => ({
-    baslik: a.konuk,
-    ozet: a.ozet,
-    url: `/ama/${a.slug}`,
-    tur: "AMA",
-    etiket: a.alan,
-  }));
-
-  const challenges: AramaVerisi[] = tumChallenge().map((c) => ({
-    baslik: `Challenge ${c.hafta}: ${c.baslik}`,
-    ozet: c.ozet,
-    url: `/challenge`,
-    tur: "Challenge",
-    etiket: `${c.zorluk} ${c.alan}`,
   }));
 
   const iller: AramaVerisi[] = regions.flatMap((b) =>
@@ -146,10 +84,7 @@ export function aramaVerileri(): AramaVerisi[] {
     ...duyurular,
     ...etkinlikler,
     ...projeler,
-    ...yazilar,
     ...bultenler,
-    ...amalar,
-    ...challenges,
     ...iller,
   ];
 }
