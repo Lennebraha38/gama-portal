@@ -31,7 +31,7 @@ const TABLOLAR = [
   {
     tablo: "icerik_gunluk",
     dizin: "gunluk",
-    alanlar: ["baslik", "tarih", "yazar", "ozet"],
+    alanlar: ["baslik", "tarih", "yazar", "etiketler", "ozet"],
     ekstralar: { etiketler: (s) => (s.etiketler || "").split(",").map((e) => e.trim()).filter(Boolean).join(", ") },
   },
   {
