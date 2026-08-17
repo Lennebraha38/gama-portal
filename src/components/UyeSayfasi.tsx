@@ -51,13 +51,15 @@ export function UyeSayfasi() {
   }, []);
 
   useEffect(() => {
-    if (!supabase) {
-      setOturum(false);
-      return;
-    }
-    const istemci = supabase;
     let iptal = false;
+    let abonelik: { subscription: { unsubscribe: () => void } } | undefined;
     async function baslat() {
+      await Promise.resolve();
+      if (!supabase) {
+        if (!iptal) setOturum(false);
+        return;
+      }
+      const istemci = supabase;
       const { data } = await istemci.auth.getSession();
       if (iptal) return;
       if (data.session) {
@@ -66,15 +68,20 @@ export function UyeSayfasi() {
       } else {
         setOturum(false);
       }
+      if (!iptal) {
+        const { data: abonelikVerisi } = istemci.auth.onAuthStateChange(
+          (_olay, oturum) => {
+            setOturum(Boolean(oturum));
+            if (oturum) void profilYukle(oturum.user.id);
+          },
+        );
+        abonelik = abonelikVerisi;
+      }
     }
-    baslat();
-    const { data: abonelik } = istemci.auth.onAuthStateChange((_olay, oturum) => {
-      setOturum(Boolean(oturum));
-      if (oturum) void profilYukle(oturum.user.id);
-    });
+    void baslat();
     return () => {
       iptal = true;
-      abonelik.subscription.unsubscribe();
+      abonelik?.subscription.unsubscribe();
     };
   }, [profilYukle]);
 
