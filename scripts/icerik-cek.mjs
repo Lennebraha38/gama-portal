@@ -61,7 +61,7 @@ const TABLOLAR = [
   {
     tablo: "icerik_amalar",
     dizin: "amalar",
-    alanlar: ["konuk", "alan", "tarih", "ozet"],
+    alanlar: ["baslik", "konuk", "alan", "tarih", "ozet"],
     ekstralar: {},
   },
 ];
