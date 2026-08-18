@@ -1,6 +1,5 @@
 import type { AramaVerisi } from "@/components/SiteArama";
 import { tumDuyurular } from "./duyurular";
-import { tumEtkinlikler } from "./etkinlikler";
 import { ilBul, regions } from "./provinces";
 
 const sayfalar: AramaVerisi[] = [
@@ -36,14 +35,6 @@ export function aramaVerileri(): AramaVerisi[] {
     etiket: d.tur,
   }));
 
-  const etkinlikler: AramaVerisi[] = tumEtkinlikler().map((e) => ({
-    baslik: e.baslik,
-    ozet: e.ozet,
-    url: `/etkinlikler/${e.slug}`,
-    tur: "Etkinlik",
-    etiket: `${e.tur} ${e.sehir}`,
-  }));
-
   const iller: AramaVerisi[] = regions.flatMap((b) =>
     b.iller.map((il) => ({
       baslik: `${il.il} İl Temsilciliği`,
@@ -57,7 +48,6 @@ export function aramaVerileri(): AramaVerisi[] {
   return [
     ...sayfalar,
     ...duyurular,
-    ...etkinlikler,
     ...iller,
   ];
 }

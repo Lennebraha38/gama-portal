@@ -23,15 +23,9 @@ const ANAHTAR = envOku("NEXT_PUBLIC_SUPABASE_ANON_KEY");
 
 const TABLOLAR = [
   {
-    tablo: "icerik_duyurular",
-    dizin: "duyurular",
-    alanlar: ["baslik", "tarih", "tur", "ozet"],
-    ekstralar: {},
-  },
-  {
-    tablo: "icerik_etkinlikler",
-    dizin: "etkinlikler",
-    alanlar: ["baslik", "tarih", "saat", "bitis", "yer", "sehir", "tur", "kayit", "ozet"],
+    tablo: "icerik_bultenler",
+    dizin: "bultenler",
+    alanlar: ["baslik", "tarih", "ozet"],
     ekstralar: {},
   },
 ];

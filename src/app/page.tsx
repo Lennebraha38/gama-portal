@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
 import { tumDuyurular } from "@/lib/duyurular";
-import { yaklasanEtkinlikler } from "@/lib/etkinlikler";
 import { Logo } from "@/components/Logo";
 import { Stats } from "@/components/Stats";
-import { GeriSayim } from "@/components/GeriSayim";
 import { SubmitForm } from "@/components/SubmitForm";
 import { PageTransition } from "@/components/PageTransition";
 import { Reveal } from "@/components/Reveal";
@@ -77,8 +75,6 @@ function BolumBaslik({
 
 export default function Home() {
   const sonDuyurular = tumDuyurular().slice(0, 3);
-  const sonEtkinlikler = yaklasanEtkinlikler(3);
-  const ilkEtkinlik = sonEtkinlikler[0];
 
   return (
     <PageTransition>
@@ -144,27 +140,6 @@ export default function Home() {
                 <div className="mt-5">
                   <Stats />
                 </div>
-                {ilkEtkinlik && (
-                  <Link
-                    href={`/etkinlikler/${ilkEtkinlik.slug}`}
-                    transitionTypes={["nav-forward"]}
-                    className="group mt-5 block rounded-xl border border-white/10 bg-white/[0.04] p-4 transition-colors hover:border-gama-400/40"
-                  >
-                    <p className="sys-label text-amber-400/90">Sonraki Etkinlik</p>
-                    <h3 className="mt-1 truncate font-semibold text-white transition-colors group-hover:text-gama-300">
-                      {ilkEtkinlik.baslik}
-                    </h3>
-                    <p className="mt-1 font-mono text-xs text-zinc-400">
-                      {new Date(`${ilkEtkinlik.tarih}T12:00:00`).toLocaleDateString("tr-TR", {
-                        day: "numeric",
-                        month: "long",
-                        year: "numeric",
-                      })}{" "}
-                      · {ilkEtkinlik.sehir}
-                    </p>
-                  </Link>
-                )}
-                {ilkEtkinlik && <GeriSayim hedefISO={ilkEtkinlik.baslangicISO} />}
               </div>
             </div>
           </div>
@@ -186,51 +161,10 @@ export default function Home() {
           </div>
         </section>
 
-        {sonEtkinlikler.length > 0 && (
-          <section className="mx-auto w-full max-w-6xl px-4 py-20">
-            <Reveal>
-              <BolumBaslik
-                numara="01"
-                baslik="Yaklaşan etkinlikler"
-                baglantiHref="/etkinlikler"
-                baglantiMetin="Tümü"
-              />
-            </Reveal>
-            <div className="mt-8 grid gap-5 md:grid-cols-3">
-              {sonEtkinlikler.map((e, i) => (
-                <Reveal key={e.slug} delay={i * 100}>
-                  <Link
-                    href={`/etkinlikler/${e.slug}`}
-                    transitionTypes={["nav-forward"]}
-                    className="card-glass block h-full rounded-2xl p-6 backdrop-blur"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span className="rounded-full bg-gama-500/20 px-3 py-1 text-xs font-semibold text-gama-300">
-                        {e.tur}
-                      </span>
-                      <span className="font-mono text-xs text-zinc-400">
-                        {new Date(`${e.tarih}T12:00:00`).toLocaleDateString("tr-TR", {
-                          day: "numeric",
-                          month: "long",
-                        })}
-                      </span>
-                    </div>
-                    <h3 className="mt-3 font-semibold text-white">{e.baslik}</h3>
-                    <p className="mt-2 line-clamp-2 text-sm leading-6 text-zinc-300">{e.ozet}</p>
-                    <p className="mt-3 font-mono text-xs text-zinc-400">
-                      {e.saat} · {e.sehir}
-                    </p>
-                  </Link>
-                </Reveal>
-              ))}
-            </div>
-          </section>
-        )}
-
         <section className="mx-auto w-full max-w-6xl px-4 py-20">
           <Reveal>
             <BolumBaslik
-              numara="02"
+              numara="01"
               baslik="Son gelişmeler"
               baglantiHref="/duyurular"
               baglantiMetin="Tümü"

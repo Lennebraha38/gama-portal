@@ -24,19 +24,12 @@ export const ROZETLER: Rozet[] = [
     aciklama: "7 gün üst üste günlük görevini işaretledin.",
     kosul: "7 gün üst üste görev",
   },
-  {
-    id: "katilim",
-    ad: "Etkinlik Tutkunu",
-    aciklama: "Bir etkinliğe katılım bildirdin.",
-    kosul: "Bir etkinliğe katılım bildir",
-  },
 ];
 
 export const ROZET_ANAHTARLARI = {
   uye: "gama:rozet:uye",
   streak3: "gama:rozet:streak-3",
   streak7: "gama:rozet:streak-7",
-  katilim: "gama:rozet:katilim",
 } as const;
 
 export type RozetDepo = Pick<Storage, "getItem" | "setItem">;
@@ -62,6 +55,5 @@ export function kazanilanRozetler(depo: RozetDepo, uyeMi: boolean): string[] {
   if (uyeMi) kazanilan.push("uye");
   if (rozetKazanildi(depo, ROZET_ANAHTARLARI.streak3)) kazanilan.push("streak-3");
   if (rozetKazanildi(depo, ROZET_ANAHTARLARI.streak7)) kazanilan.push("streak-7");
-  if (rozetKazanildi(depo, ROZET_ANAHTARLARI.katilim)) kazanilan.push("katilim");
   return kazanilan;
 }

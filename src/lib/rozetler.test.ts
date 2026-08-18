@@ -35,13 +35,13 @@ describe("ROZETLER", () => {
 
 describe("rozetKazanildi / rozetIsaretle", () => {
   it("işaretlenmemiş rozet kazanılmamıştır", () => {
-    expect(rozetKazanildi(depoOlustur(), ROZET_ANAHTARLARI.katilim)).toBe(false);
+    expect(rozetKazanildi(depoOlustur(), ROZET_ANAHTARLARI.streak3)).toBe(false);
   });
 
   it("işaretlenen rozet kazanılmış sayılır", () => {
     const depo = depoOlustur();
-    rozetIsaretle(depo, ROZET_ANAHTARLARI.katilim);
-    expect(rozetKazanildi(depo, ROZET_ANAHTARLARI.katilim)).toBe(true);
+    rozetIsaretle(depo, ROZET_ANAHTARLARI.streak3);
+    expect(rozetKazanildi(depo, ROZET_ANAHTARLARI.streak3)).toBe(true);
   });
 });
 
@@ -56,10 +56,10 @@ describe("kazanilanRozetler", () => {
 
   it("işaretli rozetleri listeler", () => {
     const depo = depoOlustur();
-    rozetIsaretle(depo, ROZET_ANAHTARLARI.katilim);
+    rozetIsaretle(depo, ROZET_ANAHTARLARI.streak3);
     const kazanilan = kazanilanRozetler(depo, true);
-    expect(kazanilan).toContain("katilim");
     expect(kazanilan).toContain("uye");
+    expect(kazanilan).toContain("streak-3");
     expect(kazanilan).not.toContain("streak-7");
   });
 });

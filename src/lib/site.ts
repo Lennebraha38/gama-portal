@@ -28,7 +28,6 @@ export const siteConfig = {
   ],
   nav: [
     { href: "/", label: "Anasayfa" },
-    { href: "/etkinlikler", label: "Etkinlikler" },
     { href: "/duyurular", label: "Duyurular" },
     { label: "Topluluk" },
     { href: "/iller", label: "İller" },
@@ -39,7 +38,6 @@ export const siteConfig = {
     { href: "/", label: "Anasayfa" },
     { href: "/mentor", label: "Mentorluk" },
     { href: "/ekosistem", label: "Ekosistem" },
-    { href: "/etkinlikler", label: "Etkinlikler" },
     { href: "/duyurular", label: "Duyurular" },
     { href: "/iller", label: "İller" },
     { href: "/hakkimizda", label: "Hakkımızda" },
@@ -85,7 +83,7 @@ export const siteConfig = {
     "Savunma Teknolojileri",
   ],
   socials: [
-    { id: "instagram", label: "Instagram", href: "https://www.instagram.com/gama_turkiye" },
+    { id: "instagram", label: "Instagram", href: "https://www.instagram.com/gama__turkiye" },
   ],
   analytics: {
     goatcounter: "lennebraha38",
